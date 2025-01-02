@@ -2,6 +2,6 @@ namespace Crogen.CrogenPooling
 {
     public enum EffectPoolType
     {
-        WaterBeam, FireBall, 
+        WaterBeam, FireBall, SpikeEffect, SmileBumbExplosion, 
     }
 }
