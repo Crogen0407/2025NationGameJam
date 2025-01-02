@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   health: 0
-  attackDelay: 0
+  attackDelay: 5
   defensive: 0
   criticalPercent: 0
   criticalDamage: 0

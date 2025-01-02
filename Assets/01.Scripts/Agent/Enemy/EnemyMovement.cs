@@ -35,6 +35,6 @@ public class EnemyMovement : MonoBehaviour, IGroundMovement2D
 
     public void StopImmediately()
     {
-        throw new System.NotImplementedException();
+        Velocity = new Vector2(0, rb.velocity.y);
     }
 }

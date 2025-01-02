@@ -29,11 +29,20 @@ public class EnemyMoveState : AgentState
     public override void UpdateState()
     {
         base.UpdateState();
-        (_agentBase as Enemy).FindPlayer();
 
-        if((_agentBase as Enemy).playerObject != null)
-        { 
-            Turn((_agentBase as Enemy).ClacPlayerDistance());
+        if ((_agentBase as Enemy).playerObject != null)
+        {
+            float dis = (_agentBase as Enemy).ClacPlayerDistance();
+            
+            if (Mathf.Abs(dis) < Mathf.Abs((_agentBase as Enemy).playerAttackDistance)) 
+            { 
+                _agentBase.Movement.StopImmediately();
+                _agentBase.StateMachine.ChangeState(EnemyStateEnum.Attack);
+            }
+            else
+            {
+                Turn(dis);
+            }
         }
         else if ((_agentBase as Enemy).playerObject == null)
         {
@@ -54,14 +63,30 @@ public class EnemyMoveState : AgentState
     {
         int _dir = Random.Range(0, 2);
 
-        if (_dir == 0) dir = Vector3.right;
-        else if (_dir == 1) dir = Vector3.left;
+        if (_dir == 0)
+        {
+            dir = Vector3.right;
+            _agentBase.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (_dir == 1)
+        {
+            dir = Vector3.left;
+            _agentBase.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     private void Turn(float _dir)
     {
-        if (_dir < 0) dir = Vector3.right;
-        else if (_dir > 0) dir = Vector3.left;
+        if (_dir < 0)
+        {
+            dir = Vector3.right;
+            _agentBase.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (_dir > 0)
+        {
+            dir = Vector3.left;
+            _agentBase.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
         else if (_dir == 0) return;
     }
 }

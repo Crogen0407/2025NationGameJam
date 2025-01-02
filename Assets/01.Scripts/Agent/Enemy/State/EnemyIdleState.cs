@@ -26,7 +26,6 @@ public class EnemyIdleState : AgentState
     public override void UpdateState()
     {
         base.UpdateState();
-        (_agentBase as Enemy).FindPlayer();
 
         if ((_agentBase as Enemy).playerObject != null)
         {
