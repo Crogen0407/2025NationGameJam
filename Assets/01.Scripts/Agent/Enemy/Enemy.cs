@@ -7,11 +7,11 @@ using UnityEngine;
 public class Enemy : Agent
 {
     public HealthSystem healthSystem { get; private set; }
-    [field:SerializeField] public AgentStatSO statSO { get; private set; }
+    [field: SerializeField] public AgentStatSO statSO { get; private set; }
 
     public GameObject playerObject { get; private set; }
-    [field:SerializeField] public float radiusValue { get; private set; }
-    [field:SerializeField] private LayerMask playerLayer;
+    [field: SerializeField] public float radiusValue { get; private set; }
+    [field: SerializeField] private LayerMask playerLayer;
 
     private void Awake()
     {
@@ -19,6 +19,12 @@ public class Enemy : Agent
         Initialize<EnemyStateEnum>();
 
         playerObject = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radiusValue);
     }
 
     public void FindPlayer()
@@ -34,9 +40,9 @@ public class Enemy : Agent
         }
     }
 
-    private void OnDrawGizmos()
+    public float ClacPlayerDistance()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radiusValue);
+        if (playerObject == null) return 0f;
+        return transform.position.x - playerObject.transform.position.x;
     }
 }

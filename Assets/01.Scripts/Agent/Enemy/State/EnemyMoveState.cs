@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyMoveState : AgentState
 {
-    private float maxTurnTime = 5f;
+    private float maxTurnTime = 2f;
     private float turnTime = 0f;
     private Vector3 dir;
 
@@ -33,8 +33,7 @@ public class EnemyMoveState : AgentState
 
         if((_agentBase as Enemy).playerObject != null)
         { 
-            float dis = _agentBase.transform.position.x - (_agentBase as Enemy).playerObject.transform.position.x;
-            Turn(dis);
+            Turn((_agentBase as Enemy).ClacPlayerDistance());
         }
         else if ((_agentBase as Enemy).playerObject == null)
         {
