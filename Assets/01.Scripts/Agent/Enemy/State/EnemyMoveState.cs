@@ -56,7 +56,7 @@ public class EnemyMoveState : AgentState
                 turnTime = maxTurnTime;
             }
         }
-        _agentBase.Movement.SetMovement(dir, true);
+        _agentBase.Movement.SetMovement(dir, false);
     }
 
     private void Turn()
