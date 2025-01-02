@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
     {
         Vector3 finalMovement = movement;
         finalMovement *= Speed;
-
+        
         _rigidbody.velocity = new Vector2(finalMovement.x, _rigidbody.velocity.y);
     }
 
