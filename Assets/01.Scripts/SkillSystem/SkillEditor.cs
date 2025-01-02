@@ -13,7 +13,7 @@ namespace _01.Scripts.SkillSystem
         { 
             base.OnInspectorGUI();
             
-            var itemsEnum = Enum.GetValues(typeof(SkillEnum));
+            var itemsEnum = Enum.GetValues(typeof(ModeEnum));
             
             var commonItemArray = (SkillInfoManager)target;
             if (commonItemArray.skills is not { Length: > 0 } || commonItemArray.skills.Length != itemsEnum.Length)
@@ -37,12 +37,12 @@ namespace _01.Scripts.SkillSystem
                 var commonItem = commonItemArray.skills[idx];
                 if (commonItemArray.toggled[idx] == EditorGUILayout.BeginFoldoutHeaderGroup(commonItemArray.toggled[idx], $"{type}: {commonItem.skillName}"))
                 {
-                    commonItem.skillType = (SkillEnum)type;
+                    commonItem.modeType = (ModeEnum)type;
                     commonItem.skillName = EditorGUILayout.TextField("Name", commonItem.skillName);
                     EditorGUILayout.LabelField("스킬 이미지");
                     commonItem.skillSprite =
                         (Sprite)EditorGUILayout.ObjectField("InvSprite", commonItem.skillSprite, typeof(Sprite), false);
-                    commonItem.isGaugeSkill = EditorGUILayout.ToggleLeft("Is Gauge Skill", commonItem.isGaugeSkill);
+                    commonItem.isGaugeSkill = EditorGUILayout.Toggle("GaugeSkill", commonItem.isGaugeSkill);
                     if (commonItem.isGaugeSkill)
                     {
                         EditorGUILayout.LabelField("게이지 스킬 게이지의 최대 양(단위:초)");
