@@ -1,12 +1,12 @@
 ﻿using Crogen.AgentFSM;
-using Unity.VisualScripting;
 using UnityEngine;
-using StateMachine = Crogen.AgentFSM.StateMachine;
 
 public class PlayerMoveState : AgentState
 {
-    private Player _player;
-    private PlayerMovement _playerMovement;
+    private readonly Player _player;
+    private readonly PlayerMovement _playerMovement;
+    private Vector2 _direction;
+    private bool _isMoving = false;
     
     public PlayerMoveState(Agent agentBase, StateMachine stateMachine, string animBoolName) : base(agentBase, stateMachine, animBoolName)
     {
@@ -17,21 +17,31 @@ public class PlayerMoveState : AgentState
     public override void Enter()
     {
         base.Enter();
+        _isMoving = true;
         _player.InputReader.MoveEvent += OnMove;
     }
 
-    private void OnMove(Vector2 obj)
+    private void OnMove(Vector2 dir, bool isMoving)
     {
-        
+        _direction = dir;
+        _isMoving = isMoving;
     }
 
     public override void Exit()
     {
+        _player.InputReader.MoveEvent -= OnMove;
         base.Exit();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        _direction = Input.GetAxisRaw("Horizontal") * Vector2.right;
+        _playerMovement.SetMovement(_direction);
+        if(!_isMoving)
+        {
+            _playerMovement.StopImmediately();
+            _stateMachine.ChangeState(PlayerStateEnum.Idle);
+        }
     }
 }

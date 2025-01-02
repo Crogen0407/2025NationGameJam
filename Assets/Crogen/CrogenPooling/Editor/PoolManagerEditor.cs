@@ -96,7 +96,7 @@ public class PoolManagerEditor : Editor
 		        string str = _currentSelectedPoolCategory.name.ToString();
 		        string newName = EditorGUILayout.DelayedTextField(str);
 		        
-		        if (str.Equals(_currentSelectedPoolCategory.name) == false)
+		        if (str.Equals(newName) == false)
 		        {
 			        string assetPath =  AssetDatabase.GetAssetPath(_currentSelectedPoolCategory.GetInstanceID());
 			        AssetDatabase.RenameAsset(assetPath, newName);

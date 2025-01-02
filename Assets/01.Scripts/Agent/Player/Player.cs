@@ -1,3 +1,4 @@
+using System;
 using Crogen.AgentFSM;
 using Crogen.PowerfulInput;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class Player : Agent
     {
         //처음 State는 Idle입니다.
         Initialize<PlayerStateEnum>();
+        Movement.Initialize(this);
     }
-    
-    
 }
