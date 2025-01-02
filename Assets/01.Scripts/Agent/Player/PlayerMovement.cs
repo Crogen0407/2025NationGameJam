@@ -12,9 +12,8 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
     public Vector3 Velocity { get; set; }
     public Agent AgentBase { get; set; }
     public bool IsGround { get; set; }
-
-    private Player _player;
     
+    private Player _player;
     //Jump
     [SerializeField] private float _jumpPower = 10f;
     [SerializeField] private LayerMask _whatIsGround;
@@ -27,16 +26,6 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
         _rigidbody = GetComponent<Rigidbody2D>(); 
     }
 
-    private void Start()
-    {
-        _player.InputReader.JumpEvent += OnJump;
-    }
-
-    private void OnDestroy()
-    {
-        _player.InputReader.JumpEvent -= OnJump;
-    }
-
     private void Update()
     {
         GroundCheck();
@@ -45,7 +34,7 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
     private void GroundCheck()
     {
         IsGround = Physics2D.BoxCast(transform.position, _groundCheckSize, 0, Vector2.zero, 0, _whatIsGround);
-        if (IsGround && _curJumpCount != 0) _curJumpCount = 0;
+        if (IsGround && _curJumpCount > 0) _curJumpCount = 0;
     }
     
     public void Initialize(Agent agent)
@@ -58,7 +47,7 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
     {
         Vector3 finalMovement = movement;
         finalMovement *= Speed;
-
+        
         _rigidbody.velocity = new Vector2(finalMovement.x, _rigidbody.velocity.y);
     }
 
@@ -72,7 +61,7 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
         _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 
-    private void OnJump()
+    public void OnJump()
     {
         if (_curJumpCount >= JumpCount) return;
         ++_curJumpCount;
