@@ -1,25 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Test : MonoBehaviour
+public class StageInGameManager : MonoBehaviour
 {
     [SerializeField] private GameEventChannelSO _systemEventChannel;
     [SerializeField] private string _nextSceneName;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
-            fadeEvt.isFadeIn = true;
-
-            StageSaveData.blockDictionary[StageSaveData.currentKey].isClear = true;
-            _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
-            _systemEventChannel.RaiseEvent(fadeEvt);
-        }
+        if(Input.GetKeyDown(KeyCode.M))
+            StageClear();
         
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -30,6 +20,16 @@ public class Test : MonoBehaviour
             _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
             _systemEventChannel.RaiseEvent(fadeEvt);
         }
+    }
+
+    public void StageClear()
+    {
+        FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
+        fadeEvt.isFadeIn = true;
+
+        StageSaveData.blockDictionary[StageSaveData.currentKey].isClear = true;
+        _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
+        _systemEventChannel.RaiseEvent(fadeEvt);
     }
 
     private void HandleFadeComplete(FadeComplete obj)

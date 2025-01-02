@@ -2,16 +2,23 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
-public class Block : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public enum StageType
+{
+    None = 0,
+    Red = 1,
+    Yellow = 2,
+    Green = 3,
+    End,
+}
+
+public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameEventChannelSO _cameraEvents;
-    
     private SpriteRenderer _spriteRenderer;
     private static bool _isClick;
     
-    //Debug
     public Tuple<Vector2Int, Vector2Int> key;
     public StageType stageType = StageType.None;
     public bool isClear;
@@ -24,11 +31,11 @@ public class Block : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, 
         _isClick = false;
     }
 
-    public void Init(Tuple<Vector2Int, Vector2Int> key)
+    public void Init(Tuple<Vector2Int, Vector2Int> LTandRB)
     {
-        this.key = key;
-        Width = key.Item2.x - key.Item1.x;
-        Height = Mathf.Abs(key.Item1.y - key.Item2.y);
+        this.key = LTandRB;
+        Width = LTandRB.Item2.x - LTandRB.Item1.x;
+        Height = Mathf.Abs(LTandRB.Item1.y - LTandRB.Item2.y);
         transform.localScale = new Vector3(Width, Height);
     }
 
@@ -36,22 +43,24 @@ public class Block : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, 
     {
         if (isClear)
         {
-            _spriteRenderer.color = Color.gray;
+            _spriteRenderer.DOColor(Color.gray, Random.Range(1f, 2f));
             return;
         }
+
+        if (type != StageType.None)
+            _spriteRenderer.sortingOrder = 1;
         
         stageType = type;
-        _spriteRenderer.sortingOrder = 1;
         switch (type)
         {
             case StageType.Red:
-                _spriteRenderer.color = new Color(200,0,0);
+                _spriteRenderer.DOColor(new Color(200, 0, 0), Random.Range(0.5f, 2f));
                 break;
             case StageType.Yellow:
-                _spriteRenderer.color = Color.yellow;
+                _spriteRenderer.DOColor(Color.yellow, Random.Range(0.5f, 2f));
                 break;
             case StageType.Green:
-                _spriteRenderer.color = Color.green;
+                _spriteRenderer.DOColor(Color.green, Random.Range(0.5f, 2f));
                 break;
         }
     }

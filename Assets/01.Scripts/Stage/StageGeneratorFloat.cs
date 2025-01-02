@@ -15,7 +15,7 @@ public struct StageLineFloat
 
 public class StageGeneratorFloat : MonoBehaviour
 {
-    [SerializeField] private Block _block;
+    [FormerlySerializedAs("stage")] [FormerlySerializedAs("_block")] [SerializeField] private StageBlock stageBlock;
     
     [SerializeField] private int _sliceCount;
     [SerializeField] private int _stageCount;
@@ -24,8 +24,8 @@ public class StageGeneratorFloat : MonoBehaviour
     [SerializeField] private float _height;
 
     // LeftTop, RightBottom을 Key로 가지는 블록 딕셔너리
-    private Dictionary<Tuple<Vector2, Vector2>, Block> _blockDictionary =
-        new Dictionary<Tuple<Vector2, Vector2>, Block>();
+    private Dictionary<Tuple<Vector2, Vector2>, StageBlock> _blockDictionary =
+        new Dictionary<Tuple<Vector2, Vector2>, StageBlock>();
 
     private List<StageLineFloat> _rowLineList = new List<StageLineFloat>();
     private List<StageLineFloat> _colLineList = new List<StageLineFloat>();
@@ -49,7 +49,7 @@ public class StageGeneratorFloat : MonoBehaviour
 
     private void SelectBlock()
     {
-        List<Block> blocks = _blockDictionary.Values.ToList();
+        List<StageBlock> blocks = _blockDictionary.Values.ToList();
         int stageIdx = 1;
 
         for (int i = 0; i < _stageCount; i++)
@@ -139,14 +139,14 @@ public class StageGeneratorFloat : MonoBehaviour
 
                 if (!_blockDictionary.ContainsKey(LTAndRB))
                 {
-                    Block block = Instantiate(_block, transform);
+                    StageBlock stageBlock = Instantiate(this.stageBlock, transform);
                     
                     //block.Init(LTAndRB);
-                    block.transform.localPosition = new Vector3(LTAndRB.Item1.x + block.Width * 0.5f, 
-                        LTAndRB.Item1.y + block.Height * 0.5f);
+                    stageBlock.transform.localPosition = new Vector3(LTAndRB.Item1.x + stageBlock.Width * 0.5f, 
+                        LTAndRB.Item1.y + stageBlock.Height * 0.5f);
                     
-                    Debug.Log($"{block.name}, {LTAndRB.Item1}, {LTAndRB.Item2}");
-                    _blockDictionary.Add(LTAndRB, block);
+                    Debug.Log($"{stageBlock.name}, {LTAndRB.Item1}, {LTAndRB.Item2}");
+                    _blockDictionary.Add(LTAndRB, stageBlock);
                 }
             }
         }
