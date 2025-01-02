@@ -9,7 +9,7 @@ namespace Crogen.PowerfulInput
     {
         #region Input Event
 
-        public event Action<Vector3> MoveEvent;
+        public event Action<Vector2> MoveEvent;
         public event Action DashEvent;
         public event Action AttackEvent;
 
@@ -40,7 +40,7 @@ namespace Crogen.PowerfulInput
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoveEvent?.Invoke(context.ReadValue<Vector3>());
+            MoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnAttack(InputAction.CallbackContext context)

@@ -88,18 +88,24 @@ public class PoolManagerEditor : Editor
         GUILayout.Space(20);
 
         //PoolBase Name
-        GUILayout.BeginHorizontal();
+        if (_currentSelectedPoolCategory != null)
         {
-        	GUILayout.Label("Name", EditorStyles.boldLabel, GUILayout.Width(70));
-        	string str = _currentSelectedPoolCategory.name.ToString();
-        	_currentSelectedPoolCategory.name = EditorGUILayout.DelayedTextField(str);
-	        if (str.Equals(_currentSelectedPoolCategory.name) == false)
+	        GUILayout.BeginHorizontal();
 	        {
-		        EditorUtility.SetDirty(_currentSelectedPoolCategory);
-		        AssetDatabase.SaveAssets();
+		        GUILayout.Label("Name", EditorStyles.boldLabel, GUILayout.Width(70));
+		        string str = _currentSelectedPoolCategory.name.ToString();
+		        string newName = EditorGUILayout.DelayedTextField(str);
+		        
+		        if (str.Equals(_currentSelectedPoolCategory.name) == false)
+		        {
+			        string assetPath =  AssetDatabase.GetAssetPath(_currentSelectedPoolCategory.GetInstanceID());
+			        AssetDatabase.RenameAsset(assetPath, newName);
+			        EditorUtility.SetDirty(_currentSelectedPoolCategory);
+			        AssetDatabase.SaveAssets();
+		        }
 	        }
+	        GUILayout.EndHorizontal();    
         }
-        GUILayout.EndHorizontal();
 		
         //PoolBase Serialize
         if (_currentSelectedPoolCategory != null)
