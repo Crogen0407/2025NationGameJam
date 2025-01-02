@@ -1,7 +1,7 @@
 ﻿using Crogen.AgentFSM;
 using UnityEngine;
 
-public class PlayerMoveState : AgentState
+public class PlayerMoveState : PlayerGroundState
 {
     private readonly Player _player;
     private readonly PlayerMovement _playerMovement;
@@ -23,7 +23,6 @@ public class PlayerMoveState : AgentState
 
     private void OnMove(Vector2 dir, bool isMoving)
     {
-        _direction = dir;
         _isMoving = isMoving;
     }
 

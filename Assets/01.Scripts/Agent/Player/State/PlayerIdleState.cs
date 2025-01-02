@@ -1,7 +1,7 @@
 ﻿using Crogen.AgentFSM;
 using UnityEngine;
 
-public class PlayerIdleState : AgentState
+public class PlayerIdleState : PlayerGroundState
 {
     private Player _player;
     
