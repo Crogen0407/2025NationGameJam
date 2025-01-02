@@ -41,7 +41,8 @@ namespace _01.Scripts.SkillSystem
                     commonItem.skillName = EditorGUILayout.TextField("Name", commonItem.skillName);
                     EditorGUILayout.LabelField("스킬 이미지");
                     commonItem.skillSprite =
-                        (Sprite)EditorGUILayout.ObjectField("InvSprite", commonItem.skillSprite, typeof(Sprite), false);
+                        (Sprite)EditorGUILayout.ObjectField("Sprite", commonItem.skillSprite, typeof(Sprite), false);
+                    commonItem.skillTime = EditorGUILayout.FloatField("스킬 쿨타임", commonItem.skillTime);
                     commonItem.isGaugeSkill = EditorGUILayout.Toggle("GaugeSkill", commonItem.isGaugeSkill);
                     if (commonItem.isGaugeSkill)
                     {

@@ -36,8 +36,8 @@ namespace _01.Scripts.PlayerModeSystem
                 var commonItem = commonItemArray.PlayerModes[idx];
                 if (commonItemArray.toggled[idx] == EditorGUILayout.BeginFoldoutHeaderGroup(commonItemArray.toggled[idx], $"{type}"))
                 {
-                    commonItem.ModeInfo = EditorGUILayout.ObjectField("object Info Serial", commonItem.ModeInfo, typeof(ModeInfo), false) as ModeInfo;
-                    if (commonItem.ModeInfo) commonItem.ModeInfo.mode = (ModeEnum)type;
+                    commonItem.modeInfo = EditorGUILayout.ObjectField("object Info Serial", commonItem.modeInfo, typeof(ModeInfo), false) as ModeInfo;
+                    if (commonItem.modeInfo) commonItem.modeInfo.mode = (ModeEnum)type;
                     EditorGUILayout.Space(14);
                 }
                 EditorGUILayout.EndFoldoutHeaderGroup();

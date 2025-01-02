@@ -23,7 +23,7 @@ public class ModeManager : MonoBehaviour
     {
         var mode = new PlayerMode
         {
-            ModeInfo = PlayerModes[(int)modeEnum].ModeInfo
+            modeInfo = PlayerModes[(int)modeEnum].modeInfo
         };
         mode.Init();
         return mode;
