@@ -1,10 +1,8 @@
-using Crogen.AgentFSM.Boss;
-using Crogen.HealthSystem;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
-public class BossInfoContainer : MonoBehaviour
+public class BossHealthContainer : MonoBehaviour
 {
     private Boss _boss;
     private DefaultHealthSystem _bossHealthSystem;
@@ -31,8 +29,8 @@ public class BossInfoContainer : MonoBehaviour
 
     private void HandleBossHpChanged()
     {
+        _rectTransform.DOShakeAnchorPos(0.1f, 10)
+            .OnComplete(()=>_rectTransform.DOAnchorPos(new Vector3(0, -27), 0.1f).SetUpdate(false)).SetUpdate(false);
         _healthSlider.value = (_bossHealthSystem.Hp / _bossHealthSystem.maxHp);
-        _rectTransform.DOShakeAnchorPos(0.1f, 1)
-            .OnComplete(()=>_rectTransform.DOAnchorPos(new Vector3(0, -27), 0.1f));
     }
 }
