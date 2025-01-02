@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
   m_Name: Effect
   m_EditorClassIdentifier: 
-  pairs: []
+  pairs:
+  - poolType: WaterBeam
+    prefab: {fileID: 6106071834417346636, guid: 5b2fcac9d2977334aa575b18fc1a6bce, type: 3}
+    poolCount: 2
