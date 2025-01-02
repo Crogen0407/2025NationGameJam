@@ -16,3 +16,6 @@ MonoBehaviour:
   - poolType: WaterBeam
     prefab: {fileID: 6106071834417346636, guid: 5b2fcac9d2977334aa575b18fc1a6bce, type: 3}
     poolCount: 2
+  - poolType: FireBall
+    prefab: {fileID: 0}
+    poolCount: 2
