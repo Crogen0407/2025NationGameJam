@@ -5,6 +5,7 @@ public class AgentStatSO : ScriptableObject
 {
     public float speed;
     public float health;
+    public float damage;
     public float attackDelay;
     public float defensive;
     public float criticalPercent;
