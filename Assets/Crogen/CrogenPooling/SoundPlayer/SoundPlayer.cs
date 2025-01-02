@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 using Crogen.CrogenPooling;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 public class SoundPlayer : MonoBehaviour, IPoolingObject
 {
