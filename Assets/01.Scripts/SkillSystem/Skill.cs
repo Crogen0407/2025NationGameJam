@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace _01.Scripts.SkillSystem
 {
@@ -13,6 +15,14 @@ namespace _01.Scripts.SkillSystem
         public Sprite skillSprite;
         public float skillTime;
         private float _currentSkillTime;
+        
+        //게이지 스킬 전용 프로퍼티
+        public bool isGaugeSkill;
+        public float skillGauge = -1f;
+        public float currentSkillGauge;
+        public float gaugeSkillChargeSpeed;
+        public bool doGaugeSkillCharge = true;
+        
 
         public void Init(Skill skill)
         {
@@ -20,7 +30,6 @@ namespace _01.Scripts.SkillSystem
             skillName = skill.skillName;
             skillSprite = skill.skillSprite;
             skillTime = skill.skillTime;
-            _currentSkillTime = 0f;
         }
 
         public void Use()
@@ -36,6 +45,21 @@ namespace _01.Scripts.SkillSystem
                 yield return null;
             }
             _currentSkillTime = skillTime;
+        }
+
+        private IEnumerator GaugeSkillCharge()
+        {
+            while (true)
+            {
+                if (currentSkillGauge < skillGauge && doGaugeSkillCharge)
+                {
+                    currentSkillGauge += Time.deltaTime * gaugeSkillChargeSpeed;
+                }
+                else if(currentSkillGauge>skillGauge)
+                    currentSkillGauge = skillGauge;
+                yield return null;
+            }
+            // ReSharper disable once IteratorNeverReturns
         }
     }
 }
