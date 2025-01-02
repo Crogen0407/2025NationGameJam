@@ -1,0 +1,68 @@
+using Crogen.AgentFSM;
+using Crogen.AgentFSM.Movement;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyMoveState : AgentState
+{
+    private float maxTurnTime = 5f;
+    private float turnTime = 0f;
+    private Vector3 dir;
+
+    public EnemyMoveState(Agent agentBase, StateMachine stateMachine, string animBoolName) : base(agentBase, stateMachine, animBoolName)
+    {
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        turnTime = maxTurnTime;
+        Turn();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void UpdateState()
+    {
+        base.UpdateState();
+        (_agentBase as Enemy).FindPlayer();
+
+        if((_agentBase as Enemy).playerObject != null)
+        { 
+            float dis = _agentBase.transform.position.x - (_agentBase as Enemy).playerObject.transform.position.x;
+            Turn(dis);
+        }
+        else if ((_agentBase as Enemy).playerObject == null)
+        {
+            if (turnTime >= 0)
+            {
+                turnTime -= Time.deltaTime;
+            }
+            else
+            {
+                Turn();
+                turnTime = maxTurnTime;
+            }
+        }
+        _agentBase.Movement.SetMovement(dir, true);
+    }
+
+    private void Turn()
+    {
+        int _dir = Random.Range(0, 2);
+
+        if (_dir == 0) dir = Vector3.right;
+        else if (_dir == 1) dir = Vector3.left;
+    }
+
+    private void Turn(float _dir)
+    {
+        if (_dir < 0) dir = Vector3.right;
+        else if (_dir > 0) dir = Vector3.left;
+        else if (_dir == 0) return;
+    }
+}
