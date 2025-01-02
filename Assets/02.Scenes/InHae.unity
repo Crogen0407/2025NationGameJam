@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0c8d03b5e9c4440be6adf8e04fcb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseStage: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
+  baseStageBlock: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
   _sliceCount: 15
   _stageCount: 6
   _width: 10

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class StageManager : MonoBehaviour
 {
@@ -10,7 +11,17 @@ public class StageManager : MonoBehaviour
     
     [SerializeField] private GameEventChannelSO _systemEventChannel;
     [SerializeField] private string _nextSceneName;
+
+    public static StageManager Instance;
     
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(Instance.gameObject);
+    }
+
     private void Start()
     {
         StageType type = StageSaveData.blockDictionary[StageSaveData.currentKey].stageType;
@@ -57,7 +68,7 @@ public class StageManager : MonoBehaviour
         _systemEventChannel.RaiseEvent(fadeEvt);
     }
 
-    private void HandleFadeComplete(FadeComplete obj)
+    private void HandleFadeComplete(FadeComplete evt)
     {
         _systemEventChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
         SceneManager.LoadScene(_nextSceneName);
