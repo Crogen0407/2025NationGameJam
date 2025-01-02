@@ -32,6 +32,7 @@ namespace _01.Scripts.SkillSystem
             skillName = skill.skillName;
             skillSprite = skill.skillSprite;
             skillTime = skill.skillTime;
+            currentSkillTime = skillTime;
             isGaugeSkill = skill.isGaugeSkill;
             skillGauge = skill.skillGauge;
             currentSkillGauge = skillGauge;
@@ -45,6 +46,7 @@ namespace _01.Scripts.SkillSystem
         public void Use()
         {
             if (currentSkillTime < skillTime) return;
+            currentSkillTime = 0f;
             SkillUseManager.Instance.Use(this);
         }
 

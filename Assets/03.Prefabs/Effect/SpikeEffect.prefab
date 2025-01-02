@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6628007781419052443}
   - component: {fileID: 7650585986219059004}
   - component: {fileID: 44827146695805616}
+  - component: {fileID: 7731900292299487294}
   m_Layer: 0
   m_Name: SpikeEffect
   m_TagString: Untagged
@@ -4864,6 +4865,27 @@ MonoBehaviour:
   pushEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7731900292299487294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152448957404086859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3bd21fc361000479e0b5aa722e462d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 2
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 128
+  _usingExcludeCast: 1
+  excludedDamageCasterList: []
+  center: {x: 0, y: 0}
+  radius: 3.5
 --- !u!1 &7171595068087551548
 GameObject:
   m_ObjectHideFlags: 0

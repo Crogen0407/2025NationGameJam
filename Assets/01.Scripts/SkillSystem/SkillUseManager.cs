@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 namespace _01.Scripts.SkillSystem
@@ -9,6 +10,13 @@ namespace _01.Scripts.SkillSystem
     {
         public static SkillUseManager Instance;
         public Coroutine CurrentSkill;
+        [SerializeField] private GameObject smileBombPrefab;
+        private Camera _camera;
+
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
 
         private void Awake()
         {
@@ -22,9 +30,13 @@ namespace _01.Scripts.SkillSystem
             switch (skill.modeType)
             {
                 case ModeEnum.Magenta:
+                    StartCoroutine(Spike(skill));
                     break;
                 case ModeEnum.Yellow:
-                    Debug.Log("노랑스킬사용~");
+                    if (!skill.isUsingSkill)
+                    {
+                        StartCoroutine(HappyBomb(skill));
+                    }
                     break;
                 case ModeEnum.Darkblue:
                     break;
@@ -32,7 +44,10 @@ namespace _01.Scripts.SkillSystem
                     CurrentSkill = StartCoroutine(WaterBeam(skill));
                     break;
                 case ModeEnum.Red:
-                    Debug.Log("빨강스킬사용~");
+                    StartCoroutine(FireBall(skill));
+                    break;
+                case ModeEnum.Green:
+                    Debug.Log("초록스킬사용~");
                     break;
             }
         }
@@ -44,23 +59,89 @@ namespace _01.Scripts.SkillSystem
 
         IEnumerator WaterBeam(Skill skill)
         {
+            var o = SkillDebug.Instance.gameObject;
+            var dirvec = (o.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
+            float deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
+            var ef = gameObject.Pop(EffectPoolType.WaterBeam, o.transform.position, Quaternion.identity);
+            ef.gameObject.transform.parent = o.transform;
+            var caster = ef.gameObject.GetComponent<DamageCaster2D>();
             while (Input.GetKey(KeyCode.Q) && skill.currentSkillGauge>0)
             {
+                ef.gameObject.transform.rotation = Quaternion.Euler(0,0,deg+90);
                 skill.doGaugeSkillCharge = false;
-                //todo: 플레이어 받아오기
-                var o = new GameObject();
-                var mobs =Physics2D.CircleCastAll(o.transform.position, 3f, o.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), 3f, LayerMask.GetMask("Monster"));//todo: 몬스터 레이어 받기
-                foreach (var m in mobs)
-                {
-                    var oo = m.transform.gameObject.GetComponent("몬스터~");
-                    //todo: 몬스터 피격판정
-                    //oo.hit(player.attackPower * 배율) 
-                }
-                skill.currentSkillGauge-=0.1f;
-                yield return new WaitForSeconds(0.1f);//내일의 나: 게이지 스킬 줄어드는 ui는 lerp로 만드셈
+                caster.CastDamage(1);
+                dirvec = (o.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
+                deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
+                yield return null;
+                skill.currentSkillGauge-=Time.deltaTime;
             }
+            ef.Push();
+
             skill.doGaugeSkillCharge = true;
             yield break;
+        }
+
+        IEnumerator HappyBomb(Skill skill)
+        {
+            var o = SkillDebug.Instance.gameObject;
+            var bomb = Instantiate(smileBombPrefab, o.transform.position + new Vector3(0,1f,0), Quaternion.identity);
+            var rb = bomb.gameObject.GetComponent<Rigidbody2D>();
+            skill.isUsingSkill = true;
+            float elapsedTime = 0;
+            rb.Sleep();
+            yield return new WaitForSeconds(0.1f);
+            while (!Input.GetKeyDown(KeyCode.Q) && !Input.GetMouseButtonDown(0) && elapsedTime < 8)
+            {
+                bomb.transform.position= o.transform.position + new Vector3(0,1f,0);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            rb.WakeUp();
+            skill.isUsingSkill = false;
+            rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - o.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(1.5f);
+            Destroy(bomb);//폭탄 풀링(해도 되고 안해도 되고-)
+            var ef = gameObject.Pop(EffectPoolType.SmileBumbExplosion, bomb.transform.position, Quaternion.identity);
+            ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
+            yield return new WaitForSeconds(0.3f);
+            ef.Push();
+        }
+
+        private IEnumerator Spike(Skill skill)
+        {
+            skill.doGaugeSkillCharge = false;
+            var o = SkillDebug.Instance.gameObject;
+            var ef = gameObject.Pop(EffectPoolType.SpikeEffect, o.transform.position, Quaternion.identity);
+            ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
+            while ((Input.GetKey(KeyCode.Q) && skill.currentSkillGauge > 0.2))
+            {
+                yield return new WaitForSeconds(0.3f);
+                ef.Push();
+                ef = gameObject.Pop(EffectPoolType.SpikeEffect, o.transform.position, Quaternion.identity);
+                ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
+                skill.currentSkillGauge -= 0.3f;
+            }
+            skill.doGaugeSkillCharge = true;
+        }
+
+        private IEnumerator FireBall(Skill skill)
+        {
+            var o = SkillDebug.Instance.gameObject;
+            var dirvec = ((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - o.transform.position)).normalized;
+            Debug.Log(dirvec);
+            float deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
+            var ef = gameObject.Pop(EffectPoolType.FireBall, o.transform.position, Quaternion.Euler(0,0,deg-90));
+            var caster = ef.gameObject.GetComponent<DamageCaster2D>();
+            var rb = ef.gameObject.GetComponent<Rigidbody2D>();
+            float elapsedTime = 0f;
+            rb.AddForce(dirvec * 200f, ForceMode2D.Force);
+            while (elapsedTime < 3f)
+            {
+                caster.CastDamage(4);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            ef.Push();
         }
     }
 }

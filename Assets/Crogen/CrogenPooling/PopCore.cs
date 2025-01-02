@@ -57,7 +57,7 @@ namespace Crogen.CrogenPooling
             }
         }
 
-        public static IPoolingObject Pop(this GameObject target, Enum type, Vector3 pos, Quaternion rot)
+        public static IPoolingObject  Pop(this GameObject target, Enum type, Vector3 pos, Quaternion rot)
         {
             string typeName = type.ToString();
 
