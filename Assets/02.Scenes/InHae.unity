@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0c8d03b5e9c4440be6adf8e04fcb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _block: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
+  _baseStage: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
   _sliceCount: 15
   _stageCount: 6
   _width: 10
@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 334842903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.34, y: -2.49, z: 0}
+  m_LocalPosition: {x: -14.5, y: -5.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 1151547329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.684535, y: 1.9091935, z: -2.2449944}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -538,7 +538,7 @@ Transform:
   m_GameObject: {fileID: 1325019614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.684535, y: 1.9091935, z: -2.2449944}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -557,6 +557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532478262192888458082f847b2f667f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneLoadEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _cameraEventChannel: {fileID: 11400000, guid: 85502a1cb540619409c55ecce2eb88f1, type: 2}
   _systemEventChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
   _nextSceneName: InHae2

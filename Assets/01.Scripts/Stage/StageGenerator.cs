@@ -2,18 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public enum StageType
-{
-    None = 0,
-    Red = 1,
-    Yellow = 2,
-    Green = 3,
-    End,
-}
 public enum SliceType
 {
     Row = 0,
@@ -29,7 +22,7 @@ public struct StageLine
 
 public class StageGenerator : MonoBehaviour
 {
-    [SerializeField] private Block _block;
+    [FormerlySerializedAs("_baseStage")] [SerializeField] private StageBlock baseStageBlock;
     
     [SerializeField] private int _sliceCount;
     [SerializeField] private int _stageCount;
@@ -38,8 +31,8 @@ public class StageGenerator : MonoBehaviour
     [SerializeField] private int _height;
 
     // LeftTop, RightBottom을 Key로 가지는 블록 딕셔너리
-    private Dictionary<Tuple<Vector2Int, Vector2Int>, Block> _blockDictionary = 
-        new Dictionary<Tuple<Vector2Int, Vector2Int>, Block>();
+    private Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock> _blockDictionary = 
+        new Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock>();
 
     private List<StageLine> _rowLineList = new List<StageLine>();
     private List<StageLine> _colLineList = new List<StageLine>();
@@ -79,7 +72,7 @@ public class StageGenerator : MonoBehaviour
 
     private void SelectBlock()
     {
-        List<Block> blocks = _blockDictionary.Values.ToList();
+        List<StageBlock> blocks = _blockDictionary.Values.ToList();
         int stageIdx = 1;
 
         for (int i = 0; i < _stageCount; i++)
@@ -169,11 +162,11 @@ public class StageGenerator : MonoBehaviour
 
                 if (!_blockDictionary.ContainsKey(LTAndRB))
                 {
-                    Block block = Instantiate(_block, transform);
-                    block.Init(LTAndRB);
-                    block.transform.localPosition = new Vector3(LTAndRB.Item1.x + block.Width * 0.5f, 
-                        LTAndRB.Item1.y + block.Height * 0.5f);
-                    _blockDictionary.Add(LTAndRB, block);
+                    StageBlock stageBlock = Instantiate(this.baseStageBlock, transform);
+                    stageBlock.Init(LTAndRB);
+                    StageMoveEffect(stageBlock, new Vector3(LTAndRB.Item1.x + stageBlock.Width * 0.5f, 
+                        LTAndRB.Item1.y + stageBlock.Height * 0.5f));
+                    _blockDictionary.Add(LTAndRB, stageBlock);
                 }
             }
         }
@@ -183,16 +176,22 @@ public class StageGenerator : MonoBehaviour
     {
         foreach (var loadBlock in _blockDictionary)
         {
-            Block block = Instantiate(_block, transform);
+            StageBlock stageBlock = Instantiate(this.baseStageBlock, transform);
 
             if (loadBlock.Value.isClear)
-                block.isClear = true;
+                stageBlock.isClear = true;
             
-            block.Init(loadBlock.Key);
-            block.transform.localPosition = new Vector3(loadBlock.Key.Item1.x + block.Width * 0.5f, 
-                loadBlock.Key.Item1.y + block.Height * 0.5f);
-            block.SetType(loadBlock.Value.stageType);
+            stageBlock.Init(loadBlock.Key);
+            StageMoveEffect(stageBlock, new Vector3(loadBlock.Key.Item1.x + stageBlock.Width * 0.5f, 
+                loadBlock.Key.Item1.y + stageBlock.Height * 0.5f));
+            stageBlock.SetType(loadBlock.Value.stageType);
         }
+    }
+
+    private void StageMoveEffect(StageBlock stageBlock, Vector3 targetPos )
+    {
+        stageBlock.transform.localPosition = Vector3.zero;
+        stageBlock.transform.DOLocalMove(targetPos, Random.Range(0.1f, 1f));
     }
 
     private StageLine GetMostClosetColLine(StageLine currentCol)
