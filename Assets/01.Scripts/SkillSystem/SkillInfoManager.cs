@@ -18,10 +18,10 @@ namespace _01.Scripts.SkillSystem
             DontDestroyOnLoad(gameObject);
         }
 
-        public Skill GetSkill(SkillEnum skill)
+        public Skill GetSkill(ModeEnum mode)
         {
             var o = new Skill();
-            o.Init(skills[(int)skill]);
+            o.Init(skills[(int)mode]);
             return o;
         }
     }

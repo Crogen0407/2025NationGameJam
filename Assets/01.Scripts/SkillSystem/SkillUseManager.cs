@@ -17,28 +17,39 @@ namespace _01.Scripts.SkillSystem
 
         public void Use(Skill skill)
         {
-            switch (skill.skillType)
+            if(skill.skillTime != 0)
+                StartCoroutine(skill.SkillCooldown());
+            switch (skill.modeType)
             {
-                case SkillEnum.Spray:
+                case ModeEnum.Magenta:
                     break;
-                case SkillEnum.BombThrow:
+                case ModeEnum.Yellow:
+                    Debug.Log("노랑스킬사용~");
                     break;
-                case SkillEnum.IceShot:
+                case ModeEnum.Darkblue:
                     break;
-                case SkillEnum.WaterBeam:
+                case ModeEnum.Blue:
                     CurrentSkill = StartCoroutine(WaterBeam(skill));
                     break;
+                case ModeEnum.Red:
+                    Debug.Log("빨강스킬사용~");
+                    break;
             }
+        }
+        
+        public void SkillGaugeCharge(Skill skill)
+        {
+            StartCoroutine(skill.GaugeSkillCharge());
         }
 
         IEnumerator WaterBeam(Skill skill)
         {
-            skill.doGaugeSkillCharge = false;
             while (Input.GetKey(KeyCode.Q) && skill.currentSkillGauge>0)
             {
+                skill.doGaugeSkillCharge = false;
                 //todo: 플레이어 받아오기
-                var o = new Player();
-                var mobs =Physics2D.CircleCastAll(o.transform.position, 50f, Vector2.down, 3f, LayerMask.GetMask("Monster"));//todo: 몬스터 레이어 받기
+                var o = new GameObject();
+                var mobs =Physics2D.CircleCastAll(o.transform.position, 3f, o.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), 3f, LayerMask.GetMask("Monster"));//todo: 몬스터 레이어 받기
                 foreach (var m in mobs)
                 {
                     var oo = m.transform.gameObject.GetComponent("몬스터~");
@@ -48,7 +59,6 @@ namespace _01.Scripts.SkillSystem
                 skill.currentSkillGauge-=0.1f;
                 yield return new WaitForSeconds(0.1f);//내일의 나: 게이지 스킬 줄어드는 ui는 lerp로 만드셈
             }
-
             skill.doGaugeSkillCharge = true;
             yield break;
         }
