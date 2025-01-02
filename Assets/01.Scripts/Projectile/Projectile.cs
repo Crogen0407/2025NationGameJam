@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IPoolingObject
 {
-    public int Damage { get; set; }
-    public Vector2 Direction { get; set; }
-    public float Speed { get; set; }
+    [field:SerializeField] public int Damage { get; set; }
+    [field:SerializeField] public Vector2 Direction { get; set; }
+    [field:SerializeField] public float Speed { get; set; }
     private DamageCaster2D _damageCaster;
     public string OriginPoolType { get; set; }
     public new GameObject gameObject { get; set; }
