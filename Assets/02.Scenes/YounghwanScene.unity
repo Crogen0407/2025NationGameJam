@@ -870,9 +870,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d01c47b272aac24cb6f29bf72d5d339, type: 2}
   - {fileID: 11400000, guid: 70fc0bf0320d7524fbc1fb75bff7bc1a, type: 2}
   poolingPairs:
-  - poolType: SoundPlayer
-    prefab: {fileID: 1598646136496023633, guid: 759661f82fd32e24eb329c60f21b235f, type: 3}
-    poolCount: 20
+  - poolType: WaterBeam
+    prefab: {fileID: 6106071834417346636, guid: 5b2fcac9d2977334aa575b18fc1a6bce, type: 3}
+    poolCount: 2
+  - poolType: FireBall
+    prefab: {fileID: 525850294450694971, guid: 1a7a220ed8f80cf4aa4b41cb642820f8, type: 3}
+    poolCount: 2
+  - poolType: SpikeEffect
+    prefab: {fileID: 1152448957404086859, guid: 8fc279a2b767a1e4fba46271281675b2, type: 3}
+    poolCount: 1
 --- !u!4 &2057981372
 Transform:
   m_ObjectHideFlags: 0
@@ -893,7 +899,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1108170459}
+  - {fileID: 2057981372}
   - {fileID: 376941647}
   - {fileID: 647705548}
-  - {fileID: 2057981372}
   - {fileID: 283135344}
