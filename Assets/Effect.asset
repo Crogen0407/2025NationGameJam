@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
+  m_Name: Effect
+  m_EditorClassIdentifier: 
+  pairs:
+  - poolType: WaterBeam
+    prefab: {fileID: 6106071834417346636, guid: 5b2fcac9d2977334aa575b18fc1a6bce, type: 3}
+    poolCount: 2
+  - poolType: FireBall
+    prefab: {fileID: 525850294450694971, guid: 1a7a220ed8f80cf4aa4b41cb642820f8, type: 3}
+    poolCount: 2
+  - poolType: SpikeEffect
+    prefab: {fileID: 1152448957404086859, guid: 8fc279a2b767a1e4fba46271281675b2, type: 3}
+    poolCount: 1
+  - poolType: SmileBumbExplosion
+    prefab: {fileID: 4229150000124977012, guid: 711780af6be00eb4c96ecdb112e0d605, type: 3}
+    poolCount: 5
