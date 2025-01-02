@@ -22,7 +22,7 @@ public class PlayerIdleState : AgentState
         base.Exit();
     }
     
-    private void HandleStartMove(Vector2 dir)
+    private void HandleStartMove(Vector2 dir, bool isFirst)
     {
         _stateMachine.ChangeState(PlayerStateEnum.Move);
     }
