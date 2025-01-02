@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Crogen.HealthSystem
 {
-    public abstract class HealthSystem : MonoBehaviour
+    public abstract class HealthSystem : MonoBehaviour, IDamageable
     {
         [Header("Hp Option")]
         [SerializeField] private float _hp = 100.0f;
@@ -47,5 +47,15 @@ namespace Crogen.HealthSystem
         protected abstract void OnHpUp();
         protected abstract void OnHpDown();
         protected abstract void OnDie();
+
+        public void TakeDamage(float value)
+        {
+            Hp -= value;
+        }
+
+        public void Heal(float value)
+        {
+            Hp += value;
+        }
     }    
 }

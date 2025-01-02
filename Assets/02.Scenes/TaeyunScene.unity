@@ -123,6 +123,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &56978845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56978846}
+  - component: {fileID: 56978847}
+  m_Layer: 7
+  m_Name: DamageCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56978846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56978845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 88734316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56978847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56978845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6481a3c94b541ce409c28ab0b2650c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 1
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 64
+  _usingExcludeCast: 0
+  excludedDamageCasterList: []
+  center: {x: -1.02, y: 0.52}
+  size: {x: 1, y: 1}
 --- !u!1 &88734314
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <statSO>k__BackingField: {fileID: 11400000, guid: 8dc0f34f9da346b45bd111dcfa8f5fd4, type: 2}
+  <DamageCaster2D>k__BackingField: {fileID: 56978847}
   <findRadiusValue>k__BackingField: 4
   playerLayer:
     serializedVersion: 2
@@ -179,6 +233,7 @@ Transform:
   m_Children:
   - {fileID: 353052345}
   - {fileID: 351695010}
+  - {fileID: 56978846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &88734317

@@ -19,19 +19,21 @@ public class EnemyAttackState : AgentState
 
     public override void UpdateState()
     {
-        base.UpdateState();
-        float dis = (_agentBase as Enemy).ClacPlayerDistance();
+        Enemy enemy = _agentBase as Enemy;
 
-        if ((_agentBase as Enemy).playerObject == null || Mathf.Abs(dis) > Mathf.Abs((_agentBase as Enemy).playerAttackDistance))
+        base.UpdateState();
+        float dis = (enemy).ClacPlayerDistance();
+
+        if (enemy.playerObject == null || Mathf.Abs(dis) > Mathf.Abs(enemy.playerAttackDistance))
         {
             _agentBase.StateMachine.ChangeState(EnemyStateEnum.Move);
         }
-        else if ((_agentBase as Enemy).currentAttackDelay <= 0)
+        else if (enemy.currentAttackDelay <= 0)
         {
             _agentBase.Movement.StopImmediately();
-            (_agentBase as Enemy).InitAttackDelay();
+            enemy.InitAttackDelay();
             Turn(dis);
-            Debug.Log("공격하기");
+            enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
         }
     }
 

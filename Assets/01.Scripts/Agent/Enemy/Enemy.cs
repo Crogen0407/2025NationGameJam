@@ -8,6 +8,7 @@ public class Enemy : Agent
 {
     public HealthSystem healthSystem { get; private set; }
     [field: SerializeField] public AgentStatSO statSO { get; private set; }
+    [field: SerializeField] public DamageCaster2D DamageCaster2D { get; private set; }
 
     public GameObject playerObject { get; private set; }
     [field: SerializeField] public float findRadiusValue { get; private set; }
