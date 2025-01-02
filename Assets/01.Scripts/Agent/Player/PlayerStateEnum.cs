@@ -1,4 +1,4 @@
 ﻿public enum PlayerStateEnum
 {
-    Idle, Move, Die, Jump
+    Idle, Move, Die
 }
