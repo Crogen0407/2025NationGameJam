@@ -38,18 +38,18 @@ public class StageGenerator : MonoBehaviour
     private List<StageLine> _colLineList = new List<StageLine>();
     private List<StageLine> currentColLines = new List<StageLine>();
 
-    private void Start()
+    private void Awake()
     {
-        if (!StageSaveData.isSave || StageSaveData.isEnd)
+        if (!StageSaveData.Instance.isSave || StageSaveData.Instance.isReset)
         {
             StageGenerate();
-            StageSaveData.isSave = true;
-            StageSaveData.isEnd = false;
-            StageSaveData.blockDictionary = _blockDictionary;
+            StageSaveData.Instance.isSave = true;
+            StageSaveData.Instance.isReset = false;
+            StageSaveData.Instance.blockDictionary = _blockDictionary;
         }
         else
         {
-            _blockDictionary = StageSaveData.blockDictionary;
+            _blockDictionary = StageSaveData.Instance.blockDictionary;
             LoadStage();
         }
     }
@@ -191,7 +191,8 @@ public class StageGenerator : MonoBehaviour
     private void StageMoveEffect(StageBlock stageBlock, Vector3 targetPos )
     {
         stageBlock.transform.localPosition = Vector3.zero;
-        stageBlock.transform.DOLocalMove(targetPos, Random.Range(0.1f, 1f));
+        stageBlock.transform.DOLocalMove(targetPos, Random.Range(0.1f, 1f))
+            .OnComplete(() => stageBlock.transform.localPosition = targetPos);
     }
 
     private StageLine GetMostClosetColLine(StageLine currentCol)

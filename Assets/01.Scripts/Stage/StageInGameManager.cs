@@ -16,7 +16,7 @@ public class StageInGameManager : MonoBehaviour
             FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
             fadeEvt.isFadeIn = true;
 
-            StageSaveData.isEnd = true;
+            StageSaveData.Instance.isReset = true;
             _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
             _systemEventChannel.RaiseEvent(fadeEvt);
         }
@@ -27,7 +27,7 @@ public class StageInGameManager : MonoBehaviour
         FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
         fadeEvt.isFadeIn = true;
 
-        StageSaveData.blockDictionary[StageSaveData.currentKey].isClear = true;
+        StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].isClear = true;
         _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
         _systemEventChannel.RaiseEvent(fadeEvt);
     }

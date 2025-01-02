@@ -82,8 +82,8 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         float lensSize = 0.01f;
         evt.lensSize = lensSize;
 
-        StageSaveData.currentKey = key;
-        Debug.Log(StageSaveData.currentKey);
+        StageSaveData.Instance.currentKey = key;
+        Debug.Log(StageSaveData.Instance.currentKey);
         
         _cameraEvents.RaiseEvent(evt);
     }

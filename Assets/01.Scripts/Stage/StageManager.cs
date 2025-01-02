@@ -24,7 +24,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        StageType type = StageSaveData.blockDictionary[StageSaveData.currentKey].stageType;
+        StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
 
         List<Stage> typeMatchStage = _stages.Where(x => x.type == type).ToList();
         Stage randomStage = typeMatchStage[Random.Range(0, typeMatchStage.Count)];
@@ -43,7 +43,7 @@ public class StageManager : MonoBehaviour
             FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
             fadeEvt.isFadeIn = true;
 
-            StageSaveData.isEnd = true;
+            StageSaveData.Instance.isReset = true;
             _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
             _systemEventChannel.RaiseEvent(fadeEvt);
         }
@@ -63,7 +63,7 @@ public class StageManager : MonoBehaviour
         FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
         fadeEvt.isFadeIn = true;
 
-        StageSaveData.blockDictionary[StageSaveData.currentKey].isClear = true;
+        StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].isClear = true;
         _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
         _systemEventChannel.RaiseEvent(fadeEvt);
     }
