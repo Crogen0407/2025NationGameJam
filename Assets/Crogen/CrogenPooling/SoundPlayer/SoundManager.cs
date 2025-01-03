@@ -72,7 +72,7 @@ public class SoundManager : MonoBehaviour
 
                 StartCoroutine(CoroutineFadeBGM(_oldSoundPlayer, _curSoundPlayer));
             }
-        }
+        }  
     }
 
     private IEnumerator CoroutineFadeBGM(SoundPlayer oldSoundPlayer, SoundPlayer curSoundPlayer)
