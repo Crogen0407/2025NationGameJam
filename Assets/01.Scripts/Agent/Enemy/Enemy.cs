@@ -74,4 +74,9 @@ public class Enemy : Agent
     {
         currentAttackDelay = statSO.attackDelay;
     }
+
+    public void Die()
+    {
+        Animator.SetBool("Die", true);
+    }
 }
