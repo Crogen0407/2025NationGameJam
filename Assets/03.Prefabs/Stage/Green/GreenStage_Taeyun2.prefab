@@ -790,6 +790,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
       value: Ground5
@@ -1023,6 +1027,10 @@ PrefabInstance:
     - target: {fileID: 2818387432473698049, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
