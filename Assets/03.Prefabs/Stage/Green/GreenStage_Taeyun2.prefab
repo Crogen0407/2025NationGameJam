@@ -246,9 +246,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7115316296464383974, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+      propertyPath: _groundParents
+      value: 
+      objectReference: {fileID: 6956832703824140537}
     - target: {fileID: 8675215781030229084, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
       propertyPath: m_Name
-      value: TemplateStage Variant 1
+      value: GreenStage_Taeyun2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
