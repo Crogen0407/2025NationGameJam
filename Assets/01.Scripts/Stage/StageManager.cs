@@ -52,6 +52,10 @@ public class StageManager : MonoBehaviour
         confiner.m_BoundingShape2D = _currentStage.cameraBounds.GetComponent<Collider2D>();
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(_currentStage.stageType.ToString()); 
+    }
 #if UNITY_EDITOR
     private void Update()
     {

@@ -90,6 +90,7 @@ namespace _01.Scripts.SkillSystem
             var ef = gameObject.Pop(EffectPoolType.WaterBeam, gameObject.transform.position, Quaternion.identity);
             ef.gameObject.transform.parent = gameObject.transform;
             var caster = ef.gameObject.GetComponent<DamageCaster2D>();
+            var o = SoundManager.Instance.PlaySFX("WaterBeam");
             while (Input.GetKey(KeyCode.Q) && skill.currentSkillGauge>0)
             {
                 ef.gameObject.transform.rotation = Quaternion.Euler(0,0,deg+90);
@@ -101,8 +102,19 @@ namespace _01.Scripts.SkillSystem
                 skill.currentSkillGauge-=Time.deltaTime;
             }
             ef.Push();
-
             skill.doGaugeSkillCharge = true;
+            float elapsedTime = 0f;
+            float volTemp = o.AudioSource.volume;
+            while (elapsedTime < 1)
+            {
+                elapsedTime += Time.deltaTime;
+                o.AudioSource.volume -= Time.deltaTime * volTemp;
+                yield return null;
+            }
+            o.Push();
+            o.AudioSource.volume = volTemp;
+
+            
             yield break;
         }
 
@@ -114,7 +126,6 @@ namespace _01.Scripts.SkillSystem
             skill.isUsingSkill = true;
             float elapsedTime = 0;
             col.isTrigger = true;
-            rb.Sleep();
             yield return new WaitForSeconds(0.1f);
             while (!Input.GetKeyDown(KeyCode.Q) && !Input.GetMouseButtonDown(0) && elapsedTime < 8)
             {
@@ -123,7 +134,6 @@ namespace _01.Scripts.SkillSystem
                 yield return null;
             }
             col.isTrigger = false;
-            rb.WakeUp();
             skill.isUsingSkill = false;
             rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
@@ -141,10 +151,12 @@ namespace _01.Scripts.SkillSystem
             ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
             while ((Input.GetKey(KeyCode.Q) && skill.currentSkillGauge > 0.2))
             {
-                yield return new WaitForSeconds(0.3f);
                 ef.Push();
                 ef = gameObject.Pop(EffectPoolType.SpikeEffect, gameObject.transform.position, Quaternion.identity);
+                SoundManager.Instance.PlaySFX("Spike");
+                yield return new WaitForSeconds(0.15f);
                 ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
+                yield return new WaitForSeconds(0.15f);
                 skill.currentSkillGauge -= 0.3f;
             }
             skill.doGaugeSkillCharge = true;
