@@ -21,7 +21,13 @@ public class Raser : MonoBehaviour
     {
         StartCoroutine(TickDamaage());
         StartCoroutine(Co_DestoryRaser());
-        gameObject.Pop(raserEffect, effectPos);
+    }
+
+    private void OnEnable()
+    {
+
+        SimplePoolingObject raser = gameObject.Pop(raserEffect, effectPos) as SimplePoolingObject;
+        raser.transform.localRotation = Quaternion.Euler(0, 0, 90);
     }
 
     void Update()

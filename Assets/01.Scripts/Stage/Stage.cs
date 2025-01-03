@@ -7,6 +7,8 @@ public class Stage : MonoBehaviour
 {
     public Transform cameraBounds;
     
+    public StageType stageType;
+    
     [SerializeField] private SpriteRenderer _background;
     [SerializeField] private Transform _platfromParents;
     [SerializeField] private Transform _groundParents;
@@ -29,8 +31,10 @@ public class Stage : MonoBehaviour
         }
     }
 
-    public void Init(StageMaterials materials)
+    public void Init(StageMaterials materials, StageType type)
     {
+        stageType = type;
+        
         _background.material = materials.bgMat;
         
         foreach (SpriteRenderer spriteRenderer in _groundParents.GetComponentsInChildren<SpriteRenderer>())
