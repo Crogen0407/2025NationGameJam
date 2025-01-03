@@ -1,5 +1,6 @@
 using System.Collections;
 using Crogen.CrogenPooling;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _01.Scripts.SkillSystem
@@ -28,6 +29,7 @@ namespace _01.Scripts.SkillSystem
             switch (skill.modeType)
             {
                 case ModeEnum.White:
+                    StartCoroutine(Dash(skill));
                     break;
                 case ModeEnum.Magenta:
                     StartCoroutine(Spike(skill));
@@ -57,6 +59,30 @@ namespace _01.Scripts.SkillSystem
             StartCoroutine(skill.GaugeSkillCharge());
         }
 
+        private IEnumerator Dash(Skill skill)
+        {
+            Player player = transform.parent.GetComponent(typeof(Player)) as Player;
+            SpriteRenderer spriteRenderer = transform.parent.Find("Visual").GetComponent<SpriteRenderer>();
+            float dashDis = 2f;
+            float dashDuration = 0.1f;
+            Vector2 dashDir = new Vector2(Mathf.Sign(player.LookDirection.x) * dashDis, 0);
+    
+            LayerMask mask = LayerMask.GetMask("Default") | LayerMask.GetMask("Ground");
+            Debug.DrawRay(player.transform.position + Vector3.up, dashDir*dashDis,Color.green );
+
+            RaycastHit2D hit = Physics2D.Raycast(player.transform.position + Vector3.up, dashDir, dashDis, mask);
+
+            Vector2 dashEndPos = dashDir - (Vector2)transform.position;
+            
+            if (hit.collider != null)
+            {
+                dashEndPos.x = hit.point.x;
+            }
+            
+            player.transform.DOMoveX(dashEndPos.x, dashDuration);
+            yield return new WaitForSeconds(dashDuration);
+        }
+        
         IEnumerator WaterBeam(Skill skill)
         {
             var dirvec = (gameObject.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
