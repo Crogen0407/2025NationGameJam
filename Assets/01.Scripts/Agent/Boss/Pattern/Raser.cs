@@ -39,6 +39,7 @@ public class Raser : MonoBehaviour
             Debug.Log("레이자피해");
             damageCaster.CastDamage((int)(damage * raserValue));
             yield return new WaitForSeconds(0.2f);
+            CameraShakeController.Shake(0.1f, 2f);
         }
     }
 

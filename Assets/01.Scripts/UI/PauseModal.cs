@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using Crogen.PowerfulInput;
 using DG.Tweening;
 using TMPro;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PauseModal : MonoBehaviour
@@ -15,7 +18,8 @@ public class PauseModal : MonoBehaviour
    [SerializeField] private GameObject backGround;
    [SerializeField] private GameObject panel;
    [SerializeField] private Animator anim;
-   [SerializeField] private Slider volumeSlider;
+   [SerializeField] private Slider bgmVolumeSlider;
+   [SerializeField] private Slider sfxVolumeSlider;
    [SerializeField] private Slider frameSlider;
    [SerializeField] private TextMeshProUGUI maxFrameText;
    [SerializeField] private AudioMixer audioMixer;
@@ -27,7 +31,8 @@ public class PauseModal : MonoBehaviour
       DontDestroyOnLoad(gameObject);
       backGround.GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 0f);
       panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-3000f, 0f);
-      volumeSlider.onValueChanged.AddListener(OnVolumeChange);
+      bgmVolumeSlider.onValueChanged.AddListener(OnBgmVolumeChange);
+      sfxVolumeSlider.onValueChanged.AddListener(OnSfxVolumeChange);
       frameSlider.onValueChanged.AddListener(OnFrameChange);
       maxFrameText.text = ((int)frameSlider.value * 15).ToString();
    }
@@ -44,9 +49,14 @@ public class PauseModal : MonoBehaviour
       }
    }
 
-   private void OnVolumeChange(float volume)
+   private void OnBgmVolumeChange(float volume)
    {
-      audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+      audioMixer.SetFloat("BGM", Mathf.Log10(volume) * 20);
+   }
+
+   private void OnSfxVolumeChange(float volume)
+   {
+      audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
    }
 
    private void OnFrameChange(float frame)
@@ -57,9 +67,7 @@ public class PauseModal : MonoBehaviour
 
    public void OnExit()
    {
-      //todo: 저장하다
-      throw new NotImplementedException();
-      SceneManager.LoadScene("타이틀덩어리");//todo: 타이틀을 찾다
+      Application.Quit();
    }
 
    public void OnBackToTheScene()
@@ -71,15 +79,13 @@ public class PauseModal : MonoBehaviour
    {
       backGround.SetActive(true);
       _isUiOn = true;
-      Time.timeScale = 0f;
       backGround.GetComponent<Image>().DOFade(0.4f, 1f).SetUpdate(true);
-      panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1f).SetUpdate(true);
+      panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1f).SetUpdate(true);  
    }
 
    public void PauseOff()
    {
       _isUiOn = false;
-      Time.timeScale = 1;
       backGround.GetComponent<Image>().DOFade(0f, 1f).OnComplete(()=>backGround.SetActive(false)).SetUpdate(true);
       panel.GetComponent<RectTransform>().DOAnchorPosX(-3000f, 1f).SetUpdate(true);
    }
