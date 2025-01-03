@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933637c74b7b92c4cb7071754d5535e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 10
+  <Direction>k__BackingField: {x: 0, y: 0}
+  <Speed>k__BackingField: 0
+  _lifeTime: 10
 --- !u!114 &2737397689370070013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,10 +68,10 @@ MonoBehaviour:
   _whatIsCastable:
     serializedVersion: 2
     m_Bits: 129
-  _usingExcludeCast: 1
+  _usingExcludeCast: 0
   excludedDamageCasterList: []
   center: {x: 0, y: 0}
-  radius: 0.88
+  radius: 0.55
 --- !u!1 &279283117464289925
 GameObject:
   m_ObjectHideFlags: 0
