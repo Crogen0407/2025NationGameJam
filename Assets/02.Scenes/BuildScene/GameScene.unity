@@ -156,9 +156,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 67fbb83b9efbc354785eb595f72c4628, type: 2}
   - {fileID: 11400000, guid: aff9f569bd4564a468776b4c60a1429a, type: 2}
   soundDataList:
-  - name: TitleScene
-    type: 2
-    clip: {fileID: 8300000, guid: f26d921ba5636ef4ebc53a730e2d2f1d, type: 3}
+  - name: WaterBeam
+    type: 1
+    clip: {fileID: 8300000, guid: 91b65af072ca4014a82d84722e6dc321, type: 3}
+  - name: Spike
+    type: 1
+    clip: {fileID: 8300000, guid: 0e15e05707fb7cb47bc3cd7ae6e8f1cf, type: 3}
 --- !u!4 &118288097
 Transform:
   m_ObjectHideFlags: 0
