@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraEventChannel: {fileID: 11400000, guid: 85502a1cb540619409c55ecce2eb88f1, type: 2}
   _systemEventChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
-  _nextSceneName: InHae2
+  _nextSceneName: GameScene
 --- !u!114 &1567811488
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using Crogen.AgentFSM;
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -32,6 +33,8 @@ public class BossPattern1State : AgentState
 
     IEnumerator Co_JumpJump() 
     {
+        Boss _boss = _agentBase as Boss;
+
         _agentBase.Animator.SetBool(hashJump, true);
         if (Mathf.Approximately(_agentBase.transform.localEulerAngles.y, 0))
         {
@@ -48,10 +51,11 @@ public class BossPattern1State : AgentState
 
         _agentBase.transform.DOMoveY(_agentBase.transform.position.y - 3f, 0.1f);
         yield return new WaitForSeconds(0.1f);
-        (_agentBase as Boss).groundEffect.SetActive(true);
-        (_agentBase as Boss).DamageCaster2D_Ground.CastDamage((int)((_agentBase as Boss).statSO.damage * jumpDamageValue));
+        (_agentBase as Boss).gameObject.Pop(_boss.groundEffect, _boss.groundPos);
+
+        _boss.DamageCaster2D_Ground.CastDamage((int)(_boss.statSO.damage * jumpDamageValue));
         yield return new WaitForSeconds(0.2f);
-        (_agentBase as Boss).groundEffect.SetActive(false);
+        //(_agentBase as Boss).groundEffect.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
         yield return null;

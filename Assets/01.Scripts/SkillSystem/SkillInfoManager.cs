@@ -1,13 +1,10 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _01.Scripts.SkillSystem
 {
     public class SkillInfoManager : MonoBehaviour
     {
         public static SkillInfoManager Instance;
-        public Animator animator;
-
         
         //스킬 에디터
         public Skill[] skills;

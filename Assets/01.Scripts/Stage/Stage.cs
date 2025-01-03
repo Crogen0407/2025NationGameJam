@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _01.Scripts.PlayerModeSystem;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public StageType type;
     public Transform cameraBounds;
     
-    [SerializeField] private Material _redMat;
-    [SerializeField] private Material _greenMat;
-    [SerializeField] private Material _yellowMat;
-    [SerializeField] private Material _blueMat;
+    public StageType stageType;
+    
+    [SerializeField] private SpriteRenderer _background;
+    [SerializeField] private Transform _platfromParents;
     [SerializeField] private Transform _groundParents;
+    [SerializeField] private ModeAdder _modeAdder;
+    
     public FollowTarget mirror;
     public FollowTarget mirrorCam;
     
@@ -31,29 +33,21 @@ public class Stage : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Init(StageMaterials materials, StageType type)
     {
-        Material material = null;
+        stageType = type;
         
-        switch (type)
-        {
-            case StageType.Red:
-                material = _redMat;
-                break;
-            case StageType.Yellow:
-                material = _yellowMat;
-                break;
-            case StageType.Green:
-                material = _greenMat;
-                break;
-            case StageType.Blue:
-                material = _blueMat;
-                break;
-        }
-
+        _background.material = materials.bgMat;
+        
         foreach (SpriteRenderer spriteRenderer in _groundParents.GetComponentsInChildren<SpriteRenderer>())
-        {
-            spriteRenderer.material = material;
-        }
+            spriteRenderer.material = materials.groundMat;
+        
+        foreach (SpriteRenderer spriteRenderer in _platfromParents.GetComponentsInChildren<SpriteRenderer>())
+            spriteRenderer.material = materials.platformMat;
+    }
+
+    public void StageClear()
+    {
+        _modeAdder.Trigger(stageType);
     }
 }

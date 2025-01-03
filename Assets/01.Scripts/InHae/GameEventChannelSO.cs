@@ -15,7 +15,7 @@ public class GameEventChannelSO : ScriptableObject
     
     public void AddListener<T>(Action<T> handler) where T : GameEvent
     {
-        if (_lookUp.ContainsKey(handler) == false) //ÀÌ¹Ì ±¸µ¶ÇÏ´Â ¸Å¼­µå´Â Áßº¹ Á¦°Å
+        if (_lookUp.ContainsKey(handler) == false) //ì´ë¯¸ êµ¬ë…í•˜ëŠ” ë§¤ì„œë“œëŠ” ì¤‘ë³µ ì œê±°
         {
             Action<GameEvent> CastHandler = (evt) => handler(evt as T);
             _lookUp[handler] = CastHandler;

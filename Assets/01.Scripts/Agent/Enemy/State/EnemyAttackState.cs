@@ -2,20 +2,24 @@ using Crogen.AgentFSM;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 public class EnemyAttackState : AgentState
 {
+    private readonly Enemy _enemy;
+    
     public EnemyAttackState(Agent agentBase, StateMachine stateMachine, string animBoolName) : base(agentBase, stateMachine, animBoolName)
     {
+        _enemy = agentBase as Enemy;
     }
     private readonly int hashAttack = Animator.StringToHash("Attack");
 
 
     public override void Enter()
     {
-        // °ø°Ý
-        Debug.Log("°ø°Ý°¡´É");
+        // ï¿½ï¿½ï¿½ï¿½
+        Debug.Log("ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½");
         base.Enter();
         _agentBase.Movement.StopImmediately();
         //(_agentBase as Enemy).attackEffect.SetActive(true);
@@ -23,21 +27,19 @@ public class EnemyAttackState : AgentState
 
     public override void UpdateState()
     {
-        Enemy enemy = _agentBase as Enemy;
-
         base.UpdateState();
-        float dis = (enemy).ClacPlayerDistance();
+        float dis = (_enemy).ClacPlayerDistance();
         _agentBase.Movement.StopImmediately();
 
-        if (enemy.playerObject == null || Mathf.Abs(dis) > Mathf.Abs(enemy.playerAttackDistance))
+        if (_enemy.playerObject == null || Mathf.Abs(dis) > Mathf.Abs(_enemy.playerAttackDistance))
         {
             _agentBase.StateMachine.ChangeState(EnemyStateEnum.Move);
             _agentBase.Animator.SetBool(hashAttack, false);
         }
-        else if (enemy.currentAttackDelay <= 0)
+        else if (_enemy.currentAttackDelay <= 0)
         {
             
-            enemy.InitAttackDelay();
+            _enemy.InitAttackDelay();
             Turn(dis);
             //enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
             _agentBase.Animator.SetBool(hashAttack, true);
@@ -47,9 +49,8 @@ public class EnemyAttackState : AgentState
 
     public override void Exit()
     {
-        _agentBase.Animator.SetBool(hashAttack, false);
-        (_agentBase as Enemy).attackEffect.SetActive(false);
-
+        _enemy.Animator.SetBool(hashAttack, false);
+        
         base.Exit();
     }
 

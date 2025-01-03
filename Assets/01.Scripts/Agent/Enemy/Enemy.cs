@@ -17,7 +17,7 @@ public class Enemy : Agent
 
     [field: SerializeField] public float playerAttackDistance { get; private set; }
     public float currentAttackDelay { get; private set; }
-    [field: SerializeField] public GameObject attackEffect;
+    [field: SerializeField] public EffectPoolType AttackEffectPoolType;
 
     private void Awake()
     {

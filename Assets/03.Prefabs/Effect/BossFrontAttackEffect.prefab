@@ -19336,8 +19336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26cf1c624f17a24bb6159523e28a5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutoPush: 1
-  duration: 1
+  isAutoPush: 0
+  duration: 5
   popEvent:
     m_PersistentCalls:
       m_Calls:

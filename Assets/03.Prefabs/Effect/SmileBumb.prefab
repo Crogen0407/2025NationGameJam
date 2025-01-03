@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1437347818394739903}
   - component: {fileID: 7699517455976595226}
   - component: {fileID: 7132249768232077692}
+  - component: {fileID: 5449818467688320884}
   m_Layer: 0
   m_Name: SmileBumb
   m_TagString: Untagged
@@ -235,6 +236,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5449818467688320884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523144011223639228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26cf1c624f17a24bb6159523e28a5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAutoPush: 0
+  duration: 0
+  popEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7367343967374769660}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  pushEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4530085076386844890
 GameObject:
   m_ObjectHideFlags: 0

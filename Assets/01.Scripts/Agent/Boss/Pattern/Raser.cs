@@ -1,3 +1,4 @@
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,16 +9,22 @@ public class Raser : MonoBehaviour
     private DamageCaster2D damageCaster;
     public float damage;
     private float raserValue = 0.5f;
+    [SerializeField] private EffectPoolType raserEffect;
+    [SerializeField] private Transform effectPos;
 
-    private void Awake()
-    {
-        damageCaster = GetComponentInChildren<DamageCaster2D>();
-    }
 
     private void Start()
     {
         StartCoroutine(TickDamaage());
         StartCoroutine(Co_DestoryRaser());
+    }
+
+    private void OnEnable()
+    {
+
+        SimplePoolingObject raser = gameObject.Pop(raserEffect, effectPos) as SimplePoolingObject;
+        raser.transform.localRotation = Quaternion.Euler(0, 0, 90);
+        damageCaster = GetComponentInChildren<DamageCaster2D>();
     }
 
     void Update()
@@ -31,7 +38,7 @@ public class Raser : MonoBehaviour
         {
             Debug.Log("레이자피해");
             damageCaster.CastDamage((int)(damage * raserValue));
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

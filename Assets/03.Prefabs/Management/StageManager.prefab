@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6638305601110413636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4416437136308889155}
+  - component: {fileID: 4164372803374338892}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4416437136308889155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638305601110413636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.375, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4164372803374338892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638305601110413636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeae9c564eb2cda48976ad6a9434293b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materialsList:
+  - type: 1
+    bgMat: {fileID: 2100000, guid: 193c304ecf68eeb44b926f34378e84ea, type: 2}
+    groundMat: {fileID: 2100000, guid: 082ac70060b4ce248900d2a58b4fae65, type: 2}
+    platformMat: {fileID: 2100000, guid: 082ac70060b4ce248900d2a58b4fae65, type: 2}
+  - type: 2
+    bgMat: {fileID: 2100000, guid: 477350320479acf488a3d36933181ab6, type: 2}
+    groundMat: {fileID: 2100000, guid: 0e65ee5dfd37af24d9d781fb4e7f97d6, type: 2}
+    platformMat: {fileID: 2100000, guid: 0e65ee5dfd37af24d9d781fb4e7f97d6, type: 2}
+  - type: 3
+    bgMat: {fileID: 2100000, guid: f953879b473b089428705a75514bd9d5, type: 2}
+    groundMat: {fileID: 2100000, guid: 0a44b6eb5a01ddb459bd92ff06670c63, type: 2}
+    platformMat: {fileID: 2100000, guid: 0a44b6eb5a01ddb459bd92ff06670c63, type: 2}
+  - type: 4
+    bgMat: {fileID: 2100000, guid: dda38e34409032d468b690ac759f994a, type: 2}
+    groundMat: {fileID: 2100000, guid: a989f6f6c157ee54ba2a795f07bc317f, type: 2}
+    platformMat: {fileID: 2100000, guid: a989f6f6c157ee54ba2a795f07bc317f, type: 2}
+  _player: {fileID: 1758423134974034682, guid: 95e01321128f39d43a65b94885235c75, type: 3}
+  _virtualCamera: {fileID: 0}
+  _stages:
+  - {fileID: 2844145295115727474, guid: 8ffcede059621bb4baa6fef83c2bdb79, type: 3}
+  - {fileID: 140743813704445636, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+  - {fileID: 5083942420014792985, guid: 000718f744e5301498ddc0c29f1838db, type: 3}
+  - {fileID: 1262394731342453497, guid: 4975a237c65d75b48bf1301cf0054ffd, type: 3}
+  - {fileID: 4235210899081328871, guid: 797d141dc11671646b90c816d38fe82a, type: 3}
+  - {fileID: 8290313039239797296, guid: 32002c4be999a854da131e5d3cf80ef3, type: 3}
+  - {fileID: 8114827042842249983, guid: 61a25b8d5436c63418d2a38ba43bfbc1, type: 3}
+  - {fileID: 3361354535464937244, guid: 90c2c8857a515d04db87bedc1c74992e, type: 3}
+  - {fileID: 8054965253402617746, guid: 997283f645962d047bf1254402b944e9, type: 3}
+  - {fileID: 2193137830280672424, guid: dc58f7e1ef961f040a74b490bf8e3fce, type: 3}
+  _systemEventChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
+  _nextSceneName: StageSelectScene

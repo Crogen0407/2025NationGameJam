@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.CrogenPooling;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class EnemyAnimatorExtension : MonoBehaviour
 {
     private Enemy enemy;
     [SerializeField] private UnityEvent attackEvent;
+    [SerializeField] private Transform effectPos;
 
     private void Awake()
     {
@@ -26,6 +28,6 @@ public class EnemyAnimatorExtension : MonoBehaviour
 
     public void TriggerSkillEffect()
     {
-        enemy.attackEffect.SetActive(!enemy.attackEffect.activeSelf);
+        gameObject.Pop(enemy.AttackEffectPoolType, effectPos);
     }
 }
