@@ -3,6 +3,7 @@ using Crogen.AgentFSM;
 using Crogen.HealthSystem;
 using Crogen.PowerfulInput;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Agent
 {
@@ -10,6 +11,8 @@ public class Player : Agent
     [field:SerializeField] public AgentStatSO AgentStatSO { get; private set; }
     private DefaultHealthSystem _healthSystem;
     public Vector2 LookDirection { get; set; }
+
+    [SerializeField] private GameEventChannelSO _systemChannel;
      
     private void Awake()
     {
@@ -35,5 +38,21 @@ public class Player : Agent
     public void HitSound()
     {
         SoundManager.Instance.PlaySFX("PlayerHitSound");
+    }
+
+    public void DieScene()
+    {
+        FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
+        fadeEvt.isFadeIn = true;
+
+        Debug.Log("ASDSFdasfasd");
+        _systemChannel.AddListener<FadeComplete>(HandleFadeComplete);
+        _systemChannel.RaiseEvent(fadeEvt);
+    }
+    
+    private void HandleFadeComplete(FadeComplete obj)
+    {
+        _systemChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
+        SceneManager.LoadScene("DeadScene");
     }
 }
