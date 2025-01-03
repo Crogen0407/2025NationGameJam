@@ -43,3 +43,6 @@ MonoBehaviour:
   - name: BlackHeart
     type: 1
     clip: {fileID: 8300000, guid: 487c5205ca137bb48913063d650a282c, type: 3}
+  - name: ShootSound
+    type: 1
+    clip: {fileID: 8300000, guid: 41d4bd9fde38ea74e9289a39bf9c34a3, type: 3}

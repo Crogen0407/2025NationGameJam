@@ -56,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
     
     public void OnAttack()
     {
+        SoundManager.Instance.PlaySFX("ShootSound");
         PlayerBullet playerBullet = gameObject.Pop(ProjectilePoolType.PlayerBullet, _firePointTrm.position, Quaternion.identity) as PlayerBullet;
         playerBullet.Initialize(_player.LookDirection, 10f, (int)PlayerStat.damage);
     }
