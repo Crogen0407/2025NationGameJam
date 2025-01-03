@@ -19,7 +19,6 @@ public class StageSaveData : MonoBehaviour
 
     public bool isSave;
     public bool isReset;
-    public Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock> blockDictionary = 
-        new Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock>();
+    public Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock> blockDictionary = new ();
     public Tuple<Vector2Int, Vector2Int> currentKey;
 }
