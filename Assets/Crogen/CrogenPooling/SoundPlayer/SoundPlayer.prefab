@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 4826518920608294195}
-  <AudioMixer>k__BackingField: {fileID: 24100000, guid: 6acca6f6e41acfc4da1fb5f6cd07330a, type: 2}
+  <AudioMixer>k__BackingField: {fileID: 24100000, guid: f30afa78db8503940badc190d2ec0284, type: 2}
 --- !u!82 &4826518920608294195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56,9 +56,8 @@ AudioSource:
   m_GameObject: {fileID: 1598646136496023633}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 6acca6f6e41acfc4da1fb5f6cd07330a, type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f30afa78db8503940badc190d2ec0284, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
