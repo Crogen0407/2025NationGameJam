@@ -16,6 +16,12 @@ public class PlayerBullet : Projectile
         _spriteRenderer = GetComponentInChildren(typeof(SpriteRenderer)) as SpriteRenderer;
     }
 
+
+    public override void OnPush()
+    {
+        gameObject.Pop(EffectPoolType.PlayerBulletExplosionEffect, transform.position, Quaternion.identity); 
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -26,7 +32,7 @@ public class PlayerBullet : Projectile
             this.Push();
         }
     }
-
+    
     public void SetColor(Color color)
     {
         _spriteRenderer.material.SetColor(_colorID, color);

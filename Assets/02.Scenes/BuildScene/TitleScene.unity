@@ -2166,6 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bae846923339e74b88492b6fdc4c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isNewSkill: 0
   holdingPlayerModes: 06000000
   PlayerModes:
   - modeInfo: {fileID: 11400000, guid: 8ce51588067e4824fbaea46b8c35b91c, type: 2}
