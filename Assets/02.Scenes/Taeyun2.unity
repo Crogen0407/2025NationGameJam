@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554721565515522626, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3094528251220390309, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: m_LocalPosition.x
@@ -611,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7520939265761391337, guid: ba36846fde3e5a048baaa6cae9dd25e3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 638664627, guid: e4de4a9ead1cf0840a6d0ea01a09b681, type: 3}
     - target: {fileID: 9023520264236823032, guid: ba36846fde3e5a048baaa6cae9dd25e3, type: 3}
       propertyPath: <raserAttackTransforms>k__BackingField.Array.data[0]
       value: 
