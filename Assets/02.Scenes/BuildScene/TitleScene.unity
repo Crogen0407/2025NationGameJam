@@ -1240,6 +1240,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1758423134974034682, guid: 95e01321128f39d43a65b94885235c75, type: 3}
+      propertyPath: _systemChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
     - target: {fileID: 2219603167316686166, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: startModeForDebug.Array.size
       value: 2

@@ -25,9 +25,10 @@ public class ScreenManager : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         _fadeImage.color = new Color(0, 0, 0, startValue);
         
-        sequence.Append(_fadeImage.DOFade(fadeValue, 0.8f).OnComplete(() =>
+        sequence.Append(_fadeImage.DOFade(fadeValue, 0.8f).SetUpdate(true).OnComplete(() =>
         {
             _systemChannel.RaiseEvent(SystemEvents.FadeComplete);
+            Time.timeScale = 1f;
         }));
     }
 }

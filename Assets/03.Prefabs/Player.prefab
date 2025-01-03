@@ -57,6 +57,7 @@ MonoBehaviour:
   isDead: 0
   <InputReader>k__BackingField: {fileID: 11400000, guid: 836c45128fe44d04995e0341f944d184, type: 2}
   <AgentStatSO>k__BackingField: {fileID: 11400000, guid: 9d61c17a6dfa62a4693fbaa72ed9e6cc, type: 2}
+  _systemChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
 --- !u!114 &8207925708664427696
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,7 +41,6 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        StartBlackHeart();
         if(HeartDataManager.instance != null)
         {
             for(int i = 0; i < heartPiece.Count; i++)
@@ -244,7 +243,6 @@ public class HeartManager : MonoBehaviour
     
     private void HandleFadeComplete(FadeComplete obj)
     {
-        StageSaveData.Instance.currentStage.stageType = StageType.Black;
         _systemEventChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
         SceneManager.LoadScene(_nextSceneName);
     }
