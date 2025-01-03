@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeartDataManager : MonoBehaviour
@@ -18,6 +19,14 @@ public class HeartDataManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < heartColorList.Count; i++)
+        {
+            heartColorList[i] = Color.white;
         }
     }
 
