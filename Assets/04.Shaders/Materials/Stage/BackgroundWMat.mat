@@ -45,7 +45,7 @@ Material:
     - _Edge2: 1
     m_Colors:
     - _Color1: {r: 1, g: 0.9740085, b: 0.8584906, a: 1}
-    - _Color2: {r: 0.93962264, g: 0.9008372, b: 0.86338913, a: 1}
+    - _Color2: {r: 0.9245283, g: 0.8277145, b: 0.7309007, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6307486333558094238
 MonoBehaviour:

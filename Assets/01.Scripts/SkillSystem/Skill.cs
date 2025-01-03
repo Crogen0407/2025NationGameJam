@@ -59,7 +59,7 @@ namespace _01.Scripts.SkillSystem
             }
             else
             {
-                return currentSkillTime / skillGauge;
+                return currentSkillTime / skillTime;
             }
         }
         

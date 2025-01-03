@@ -8,5 +8,6 @@ namespace _01.Scripts.SkillSystem
         Darkblue,
         Magenta,
         Green,
+        White
     }
 }

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ed19a73d4de75347ab8de64060a8f34, type: 3}
-  m_Name: Yellow
+  m_Name: White
   m_EditorClassIdentifier: 
-  mode: 2
+  mode: 6
   playerIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  modeColor: {r: 1, g: 0.8958727, b: 0, a: 1}
+  modeColor: {r: 1, g: 1, b: 1, a: 1}
