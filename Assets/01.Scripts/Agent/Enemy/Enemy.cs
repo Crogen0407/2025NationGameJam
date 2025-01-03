@@ -18,20 +18,20 @@ public class Enemy : Agent
     [field: SerializeField] public float playerAttackDistance { get; private set; }
     public float currentAttackDelay { get; private set; }
     [field: SerializeField] public EffectPoolType AttackEffectPoolType;
-    [SerializeField] private DefaultHealthSystem _healthSystem;
 
     private void Awake()
     {
-        healthSystem = GetComponent<HealthSystem>();
         Initialize<EnemyStateEnum>();
+        healthSystem = GetComponent<DefaultHealthSystem>();
 
         playerObject = null;
-        _healthSystem.dieEvent.AddListener(OnDie);
+        (healthSystem as DefaultHealthSystem).dieEvent.AddListener(OnDie);
     }
-
+    
     private void OnDie()
     {
-        StateMachine.ChangeState(PlayerStateEnum.Die, true);
+        Debug.Log("ddf");
+        StateMachine.ChangeState(EnemyStateEnum.Die, true);
     }
     protected override void Start()
     {
@@ -75,6 +75,11 @@ public class Enemy : Agent
     {
         if (playerObject == null) return 0f;
         return transform.position.x - playerObject.transform.position.x;
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     public void InitAttackDelay()
