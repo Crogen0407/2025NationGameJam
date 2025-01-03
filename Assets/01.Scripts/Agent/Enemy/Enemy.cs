@@ -16,7 +16,6 @@ public class Enemy : Agent
     [field: SerializeField] private LayerMask playerLayer;
 
     [field: SerializeField] public float playerAttackDistance { get; private set; }
-    [field:SerializeField] public Transform attackPos { get; private set; }
     public float currentAttackDelay { get; private set; }
 
     private void Awake()
