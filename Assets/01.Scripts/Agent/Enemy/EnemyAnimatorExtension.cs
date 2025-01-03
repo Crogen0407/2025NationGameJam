@@ -23,4 +23,9 @@ public class EnemyAnimatorExtension : MonoBehaviour
     {
         Destroy(enemy.gameObject);
     }
+
+    public void TriggerSkillEffect()
+    {
+        enemy.attackEffect.SetActive(!enemy.attackEffect.activeSelf);
+    }
 }

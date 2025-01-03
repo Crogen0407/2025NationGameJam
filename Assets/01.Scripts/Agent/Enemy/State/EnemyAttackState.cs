@@ -18,6 +18,7 @@ public class EnemyAttackState : AgentState
         Debug.Log("공격가능");
         base.Enter();
         _agentBase.Movement.StopImmediately();
+        //(_agentBase as Enemy).attackEffect.SetActive(true);
     }
 
     public override void UpdateState()
@@ -31,6 +32,7 @@ public class EnemyAttackState : AgentState
         if (enemy.playerObject == null || Mathf.Abs(dis) > Mathf.Abs(enemy.playerAttackDistance))
         {
             _agentBase.StateMachine.ChangeState(EnemyStateEnum.Move);
+            _agentBase.Animator.SetBool(hashAttack, false);
         }
         else if (enemy.currentAttackDelay <= 0)
         {
@@ -39,12 +41,14 @@ public class EnemyAttackState : AgentState
             Turn(dis);
             //enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
             _agentBase.Animator.SetBool(hashAttack, true);
+            //enemy.attackEffect.SetActive(true);
         }
     }
 
     public override void Exit()
     {
         _agentBase.Animator.SetBool(hashAttack, false);
+        (_agentBase as Enemy).attackEffect.SetActive(false);
 
         base.Exit();
     }
