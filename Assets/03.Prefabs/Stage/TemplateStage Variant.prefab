@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7115316296464383974, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+      propertyPath: mirrorCam
+      value: 
+      objectReference: {fileID: 9026722807059693830}
+    - target: {fileID: 7115316296464383974, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+      propertyPath: _groundParents
+      value: 
+      objectReference: {fileID: 2080377895643435843}
     - target: {fileID: 8675215781030229084, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
       propertyPath: m_Name
       value: TemplateStage Variant
@@ -57,3 +65,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+--- !u!4 &2080377895643435843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6921968760072034317, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+  m_PrefabInstance: {fileID: 8994032902540299086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9026722807059693830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 113827856070658632, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+  m_PrefabInstance: {fileID: 8994032902540299086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbae4e4c64211b44b7d4578b987d00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
