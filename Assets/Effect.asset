@@ -43,3 +43,6 @@ MonoBehaviour:
   - poolType: BossFrontAttackEffect
     prefab: {fileID: 7815850466813602163, guid: ff0ee39fec7050741b0f06dbd98a853e, type: 3}
     poolCount: 2
+  - poolType: SmileBumb
+    prefab: {fileID: 4523144011223639228, guid: 27efa3753cf81644799e00daae115a81, type: 3}
+    poolCount: 1
