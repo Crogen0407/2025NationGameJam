@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,8 +11,10 @@ public class Stage : MonoBehaviour
     [SerializeField] private Material _redMat;
     [SerializeField] private Material _greenMat;
     [SerializeField] private Material _yellowMat;
+    [SerializeField] private Material _blueMat;
     [SerializeField] private Transform _groundParents;
     public FollowTarget mirror;
+    public FollowTarget mirrorCam;
     
     private List<Enemy> Enemies;
     public int surviveEnemyCount => Enemies.Count(x => !x.isDead);
@@ -42,6 +45,9 @@ public class Stage : MonoBehaviour
                 break;
             case StageType.Green:
                 material = _greenMat;
+                break;
+            case StageType.Blue:
+                material = _blueMat;
                 break;
         }
 

@@ -10,6 +10,7 @@ public enum StageType
     Red = 1,
     Yellow = 2,
     Green = 3,
+    Blue = 4,
     End,
 }
 
@@ -20,6 +21,7 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     [SerializeField] private Material _redMat;
     [SerializeField] private Material _greenMat;
     [SerializeField] private Material _yellowMat;
+    [SerializeField] private Material _blueMat;
     
     private SpriteRenderer _spriteRenderer;
     private static bool _isClick;
@@ -74,12 +76,13 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             case StageType.Green:
                 material = _greenMat;
                 break;
+            case StageType.Blue:
+                material = _blueMat;
+                break;
         }
 
         if (material != null)
-        {
             _spriteRenderer.material = new Material(material);
-        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
