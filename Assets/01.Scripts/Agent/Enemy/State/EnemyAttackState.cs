@@ -9,6 +9,7 @@ public class EnemyAttackState : AgentState
     public EnemyAttackState(Agent agentBase, StateMachine stateMachine, string animBoolName) : base(agentBase, stateMachine, animBoolName)
     {
     }
+    private readonly int hashAttack = Animator.StringToHash("Attack");
 
     public override void Enter()
     {
@@ -34,11 +35,14 @@ public class EnemyAttackState : AgentState
             enemy.InitAttackDelay();
             Turn(dis);
             enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
+            _agentBase.Animator.SetBool(hashAttack, true);
         }
     }
 
     public override void Exit()
     {
+        _agentBase.Animator.SetBool(hashAttack, false);
+
         base.Exit();
     }
 
