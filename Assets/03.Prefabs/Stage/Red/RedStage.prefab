@@ -677,6 +677,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2822702294911062824, guid: 0cc3c41777165ab41b979a5a5c399525, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.58
+      objectReference: {fileID: 0}
     - target: {fileID: 5303988995233861728, guid: 0cc3c41777165ab41b979a5a5c399525, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 5
