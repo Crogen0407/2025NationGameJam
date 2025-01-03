@@ -257,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDataSOList:
   - {fileID: 11400000, guid: 67fbb83b9efbc354785eb595f72c4628, type: 2}
+  - {fileID: 11400000, guid: aff9f569bd4564a468776b4c60a1429a, type: 2}
   soundDataList:
   - name: TitleScene
     type: 2
@@ -322,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4184472a6717cad488d9361ba3d51782, type: 2}
+    - target: {fileID: 1445729346418830540, guid: 664894a348e779e43bdfee3d47c852fc, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2335040838215612294, guid: 664894a348e779e43bdfee3d47c852fc, type: 3}
       propertyPath: target
       value: 
@@ -1196,6 +1201,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219603167316686166, guid: 95e01321128f39d43a65b94885235c75, type: 3}
+      propertyPath: startModeForDebug.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3094528251220390309, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.41
@@ -1463,6 +1472,130 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1379475225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379475227}
+  - component: {fileID: 1379475226}
+  m_Layer: 0
+  m_Name: SkillEditor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1379475226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379475225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b618b0391d607f43aa520fe1369edce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  skills:
+  - modeType: 0
+    skillName: "\uB208\uBB3C\uBCF4\uB77C"
+    skillSprite: {fileID: 21300000, guid: cd29f5000bb04154db90c59d23291f1b, type: 3}
+    skillTime: 0
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 1
+    skillGauge: 30
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 1
+    doGaugeSkillCharge: 1
+  - modeType: 1
+    skillName: "\uD30C\uC774\uC5B4\uBCFC"
+    skillSprite: {fileID: 21300000, guid: 7dde56a05bd826c479d1483c97698631, type: 3}
+    skillTime: 0.5
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 0
+    skillGauge: -1
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0
+    doGaugeSkillCharge: 1
+  - modeType: 2
+    skillName: "\uB178\uB791\uB178\uB791"
+    skillSprite: {fileID: 21300000, guid: 194676aee0687cc489b49f7babae7a22, type: 3}
+    skillTime: 6
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 0
+    skillGauge: -1
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0
+    doGaugeSkillCharge: 1
+  - modeType: 3
+    skillName: 
+    skillSprite: {fileID: 0}
+    skillTime: 0
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 0
+    skillGauge: -1
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0
+    doGaugeSkillCharge: 1
+  - modeType: 4
+    skillName: "\uAC00\uC2DC!!"
+    skillSprite: {fileID: 21300000, guid: 46c72f5388b24fe469be00c27144fae7, type: 3}
+    skillTime: 0.3
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 1
+    skillGauge: 5
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0.25
+    doGaugeSkillCharge: 1
+  - modeType: 5
+    skillName: 
+    skillSprite: {fileID: 0}
+    skillTime: 0
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 0
+    skillGauge: -1
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0
+    doGaugeSkillCharge: 1
+  - modeType: 6
+    skillName: 
+    skillSprite: {fileID: 0}
+    skillTime: 0
+    currentSkillTime: 0
+    isUsingSkill: 0
+    isGaugeSkill: 0
+    skillGauge: -1
+    currentSkillGauge: 0
+    gaugeSkillChargeSpeed: 0
+    doGaugeSkillCharge: 1
+  toggled: 00000000000000
+--- !u!4 &1379475227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379475225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1397222506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +2025,143 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1705359902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705359904}
+  - component: {fileID: 1705359903}
+  m_Layer: 0
+  m_Name: ModeEditor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1705359903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705359902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bae846923339e74b88492b6fdc4c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerModes:
+  - modeInfo: {fileID: 11400000, guid: 8ce51588067e4824fbaea46b8c35b91c, type: 2}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 11400000, guid: 97fe2aac3a869e34ab32a77b97e18c6e, type: 2}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 11400000, guid: f480cab7d532fcc42a027a687ec4ad4c, type: 2}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 0}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 11400000, guid: 62c76b19e72295643b26c42188ca6dc2, type: 2}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 0}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  - modeInfo: {fileID: 11400000, guid: 4268a1c14dfb09c4b9a44cb5efbdd13b, type: 2}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  toggled: 00000000000000
+--- !u!4 &1705359904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705359902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.53961927, y: 0.010202913, z: 0.047513526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102190185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,3 +2225,5 @@ SceneRoots:
   - {fileID: 1604195475}
   - {fileID: 2102190186}
   - {fileID: 662804476}
+  - {fileID: 1379475227}
+  - {fileID: 1705359904}

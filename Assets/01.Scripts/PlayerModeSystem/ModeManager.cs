@@ -14,6 +14,7 @@ namespace _01.Scripts.PlayerModeSystem
         private void Awake()
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         public PlayerMode GetMode(ModeEnum modeEnum)
