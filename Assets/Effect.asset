@@ -34,3 +34,6 @@ MonoBehaviour:
   - poolType: EnemyAttackEffect03
     prefab: {fileID: 5541027382828644563, guid: e6124f786fb9a8d46bb88b7d23b9289a, type: 3}
     poolCount: 8
+  - poolType: DarknessBeam
+    prefab: {fileID: 4052461292184501366, guid: d4558d4678bbb2445b57a633682f7422, type: 3}
+    poolCount: 8
