@@ -5,6 +5,7 @@ using Crogen.PowerfulInput;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,15 +18,18 @@ public class PauseModal : MonoBehaviour
    [SerializeField] private Slider volumeSlider;
    [SerializeField] private Slider frameSlider;
    [SerializeField] private TextMeshProUGUI maxFrameText;
+   [SerializeField] private AudioMixer audioMixer;
    private bool _isUiOn = false;
    
 
    private void Awake()
    {
+      DontDestroyOnLoad(gameObject);
       backGround.GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 0f);
       panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-3000f, 0f);
       volumeSlider.onValueChanged.AddListener(OnVolumeChange);
       frameSlider.onValueChanged.AddListener(OnFrameChange);
+      maxFrameText.text = ((int)frameSlider.value * 15).ToString();
    }
 
    private void Update()
@@ -40,9 +44,9 @@ public class PauseModal : MonoBehaviour
       }
    }
 
-   private static void OnVolumeChange(float volume)
+   private void OnVolumeChange(float volume)
    {
-      //todo: 사운드 매니저의 볼륨 조절
+      audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
    }
 
    private void OnFrameChange(float frame)
