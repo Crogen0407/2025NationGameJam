@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Crogen.CrogenPooling;
 using UnityEngine;
 
@@ -29,6 +27,8 @@ namespace _01.Scripts.SkillSystem
                 StartCoroutine(skill.SkillCooldown());
             switch (skill.modeType)
             {
+                case ModeEnum.White:
+                    break;
                 case ModeEnum.Magenta:
                     StartCoroutine(Spike(skill));
                     break;
@@ -59,18 +59,17 @@ namespace _01.Scripts.SkillSystem
 
         IEnumerator WaterBeam(Skill skill)
         {
-            var o = SkillDebug.Instance.gameObject;
-            var dirvec = (o.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
+            var dirvec = (gameObject.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
             float deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
-            var ef = gameObject.Pop(EffectPoolType.WaterBeam, o.transform.position, Quaternion.identity);
-            ef.gameObject.transform.parent = o.transform;
+            var ef = gameObject.Pop(EffectPoolType.WaterBeam, gameObject.transform.position, Quaternion.identity);
+            ef.gameObject.transform.parent = gameObject.transform;
             var caster = ef.gameObject.GetComponent<DamageCaster2D>();
             while (Input.GetKey(KeyCode.Q) && skill.currentSkillGauge>0)
             {
                 ef.gameObject.transform.rotation = Quaternion.Euler(0,0,deg+90);
                 skill.doGaugeSkillCharge = false;
                 caster.CastDamage(1);
-                dirvec = (o.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
+                dirvec = (gameObject.transform.position - _camera.ScreenToWorldPoint((Vector2)Input.mousePosition));
                 deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
                 yield return null;
                 skill.currentSkillGauge-=Time.deltaTime;
@@ -83,22 +82,24 @@ namespace _01.Scripts.SkillSystem
 
         IEnumerator HappyBomb(Skill skill)
         {
-            var o = SkillDebug.Instance.gameObject;
-            var bomb = Instantiate(smileBombPrefab, o.transform.position + new Vector3(0,1f,0), Quaternion.identity);
+            var bomb = Instantiate(smileBombPrefab, gameObject.transform.position + new Vector3(0,1f,0), Quaternion.identity);
             var rb = bomb.gameObject.GetComponent<Rigidbody2D>();
+            var col = bomb.gameObject.GetComponent<Collider2D>();
             skill.isUsingSkill = true;
             float elapsedTime = 0;
+            col.isTrigger = true;
             rb.Sleep();
             yield return new WaitForSeconds(0.1f);
             while (!Input.GetKeyDown(KeyCode.Q) && !Input.GetMouseButtonDown(0) && elapsedTime < 8)
             {
-                bomb.transform.position= o.transform.position + new Vector3(0,1f,0);
+                bomb.transform.position= gameObject.transform.position + new Vector3(0,1f,0);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+            col.isTrigger = false;
             rb.WakeUp();
             skill.isUsingSkill = false;
-            rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - o.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
+            rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
             Destroy(bomb);//폭탄 풀링(해도 되고 안해도 되고-)
             var ef = gameObject.Pop(EffectPoolType.SmileBumbExplosion, bomb.transform.position, Quaternion.identity);
@@ -110,14 +111,13 @@ namespace _01.Scripts.SkillSystem
         private IEnumerator Spike(Skill skill)
         {
             skill.doGaugeSkillCharge = false;
-            var o = SkillDebug.Instance.gameObject;
-            var ef = gameObject.Pop(EffectPoolType.SpikeEffect, o.transform.position, Quaternion.identity);
+            var ef = gameObject.Pop(EffectPoolType.SpikeEffect, gameObject.transform.position, Quaternion.identity);
             ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
             while ((Input.GetKey(KeyCode.Q) && skill.currentSkillGauge > 0.2))
             {
                 yield return new WaitForSeconds(0.3f);
                 ef.Push();
-                ef = gameObject.Pop(EffectPoolType.SpikeEffect, o.transform.position, Quaternion.identity);
+                ef = gameObject.Pop(EffectPoolType.SpikeEffect, gameObject.transform.position, Quaternion.identity);
                 ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
                 skill.currentSkillGauge -= 0.3f;
             }
@@ -126,11 +126,10 @@ namespace _01.Scripts.SkillSystem
 
         private IEnumerator FireBall(Skill skill)
         {
-            var o = SkillDebug.Instance.gameObject;
-            var dirvec = ((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - o.transform.position)).normalized;
+            var dirvec = ((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized;
             Debug.Log(dirvec);
             float deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
-            var ef = gameObject.Pop(EffectPoolType.FireBall, o.transform.position, Quaternion.Euler(0,0,deg-90));
+            var ef = gameObject.Pop(EffectPoolType.FireBall, gameObject.transform.position, Quaternion.Euler(0,0,deg-90));
             var caster = ef.gameObject.GetComponent<DamageCaster2D>();
             var rb = ef.gameObject.GetComponent<Rigidbody2D>();
             float elapsedTime = 0f;
