@@ -41,17 +41,18 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        if(HeartDataManager.instance != null)
-        {
-            for(int i = 0; i < heartPiece.Count; i++)
-            {
-                heartPiece[i].pieceColor = HeartDataManager.instance.heartColorList[i];
-                if (i == 0)
-                    PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i], () => _isInit = true);
-                else
-                    PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i]);
-            }
-        }
+        StartBlackHeart();
+        // if(HeartDataManager.instance != null)
+        // {
+        //     for(int i = 0; i < heartPiece.Count; i++)
+        //     {
+        //         heartPiece[i].pieceColor = HeartDataManager.instance.heartColorList[i];
+        //         if (i == 0)
+        //             PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i], () => _isInit = true);
+        //         else
+        //             PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i]);
+        //     }
+        // }
     }
 
     private void Update()
@@ -86,11 +87,12 @@ public class HeartManager : MonoBehaviour
                 for (int i = 0; i < heartPiece.Count; i++)
                 {
                     var heart = heartPiece[i];
-                    
+                     
                     if (heart.heartPiece == hit.collider.gameObject)
                     {
                         if (heart.pieceColor != Color.white)
                             return;
+                        SoundManager.Instance.PlaySFX("ButtonClick");
                         _currentHeart = heartPart;
                         HeartPart.isClick = true;
                         _currentHeart.SmallSize();
@@ -197,6 +199,7 @@ public class HeartManager : MonoBehaviour
         for (int i = 0; i < heartPiece.Count; i++)
         {
             yield return new WaitForSeconds(0.5f);
+            SoundManager.Instance.PlaySFX("BlackHeart");
             var heart = heartPiece[i];
             
             if (i == heartPiece.Count - 1)
@@ -219,6 +222,7 @@ public class HeartManager : MonoBehaviour
     {
         _heart.DOShakePosition(3f, 0.5f).OnComplete(() =>
         {
+            SoundManager.Instance.PlaySFX("BrokenHeart");
             for (int i = 0; i < heartPiece.Count(); i++)
             {
                 Vector2 dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
