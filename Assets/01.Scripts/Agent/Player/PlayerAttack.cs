@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     
     private void Awake()
     {
-        _player = GetComponent<Player>();
+        _player = GetComponent<Player>(); 
         _visualTrm = transform.Find("Visual");
         if (_firePointTrm == null) return;
         InputReader.AttackEvent += OnAttack;
