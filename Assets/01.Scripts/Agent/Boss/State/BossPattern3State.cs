@@ -37,9 +37,9 @@ public class BossPattern3State : AgentState
         SimplePoolingObject effect = boss.gameObject.Pop(boss.frontAttack, boss.frontPos) as SimplePoolingObject;
         _agentBase.Animator.SetBool(hashPattern3, true);
         boss.DamageCoster2D_Front.CastDamage((int)(boss.statSO.damage * frontAttackValue));
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         effect.Push();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         _agentBase.Animator.SetBool(hashPattern3, false);
         _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
     }
