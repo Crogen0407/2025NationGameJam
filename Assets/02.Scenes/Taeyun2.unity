@@ -135,6 +135,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedStage_Taeyun
       objectReference: {fileID: 0}
+    - target: {fileID: 2349967857083742158, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976587827432651474, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075409188217251039, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439011243776228606, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522393058317852831, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816728158320636237, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087658925392872813, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595672744645012399, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236562993477787415, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232315484965313979, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438089421912987275, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734929740175513205, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725884050042188844, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8232724866102539409, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,6 +226,14 @@ PrefabInstance:
     - target: {fileID: 8232724866102539409, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728995197394408862, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846024479260691347, guid: 9b0c299e1e8161f40a94d15420228c68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

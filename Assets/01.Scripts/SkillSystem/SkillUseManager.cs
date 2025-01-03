@@ -80,7 +80,7 @@ namespace _01.Scripts.SkillSystem
 
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position + Vector3.up, dashDir, dashDis, mask);
 
-            Vector2 dashEndPos = dashDir - (Vector2)transform.position;
+            Vector2 dashEndPos = dashDir + (Vector2)transform.position;
             
             if (hit.collider != null)
             {
