@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raser
       objectReference: {fileID: 0}
+    - target: {fileID: 8012562394254487388, guid: 4d87356976a82e444a0408bfe90c87ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
