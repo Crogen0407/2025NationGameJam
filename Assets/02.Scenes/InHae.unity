@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseStageBlock: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
-  _sliceCount: 15
+  _sliceCount: 8
   _stageCount: 9
-  _width: 15
-  _height: 15
+  _width: 10
+  _height: 10
 --- !u!4 &334842905
 Transform:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.87, y: -6.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

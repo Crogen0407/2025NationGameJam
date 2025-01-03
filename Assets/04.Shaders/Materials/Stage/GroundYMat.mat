@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BackgroundYMat
+  m_Name: GroundYMat
   m_Shader: {fileID: -6465566751694194690, guid: c6c50b47c18fb544e8e7981b4ae4d819, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Edge1: 0
+    - _Edge1: 0.92
     - _Edge2: 1
     m_Colors:
-    - _Color1: {r: 0.9158193, g: 1, b: 0, a: 1}
-    - _Color2: {r: 1, g: 0.78027445, b: 0.5641509, a: 1}
+    - _Color1: {r: 1, g: 0.8225472, b: 0.3754716, a: 1}
+    - _Color2: {r: 1, g: 0.7399328, b: 0.42830187, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6307486333558094238
 MonoBehaviour:

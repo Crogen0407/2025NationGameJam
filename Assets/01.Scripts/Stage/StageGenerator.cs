@@ -75,6 +75,9 @@ public class StageGenerator : MonoBehaviour
         List<StageBlock> blocks = _blockDictionary.Values.ToList();
         int stageIdx = 1;
 
+        if (blocks.Count < _stageCount)
+            _stageCount = blocks.Count;
+        
         for (int i = 0; i < _stageCount; i++)
         {
             int randIdx = Random.Range(0, blocks.Count - i);
@@ -164,6 +167,12 @@ public class StageGenerator : MonoBehaviour
                 {
                     StageBlock stageBlock = Instantiate(_baseStageBlock, transform);
                     stageBlock.Init(LTAndRB);
+
+                    stageBlock._currentCol = currentCol;
+                    stageBlock._closetRow = currentRow;
+                    stageBlock._closetCol = closetColLine;
+                    stageBlock._closetRow = closetRowLine;
+                    
                     StageMoveEffect(stageBlock, new Vector3(LTAndRB.Item1.x + stageBlock.Width * 0.5f, 
                         LTAndRB.Item1.y + stageBlock.Height * 0.5f));
                     _blockDictionary.Add(LTAndRB, stageBlock);
