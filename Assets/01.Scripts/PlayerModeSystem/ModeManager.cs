@@ -25,7 +25,7 @@ namespace _01.Scripts.PlayerModeSystem
             {
                 Destroy(gameObject);
             }
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);  
         }
 
         public PlayerMode GetMode(ModeEnum modeEnum)
