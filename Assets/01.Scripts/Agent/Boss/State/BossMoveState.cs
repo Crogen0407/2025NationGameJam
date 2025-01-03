@@ -70,7 +70,8 @@ public class BossMoveState : AgentState
             float dis = Vector3.Distance(_agentBase.transform.position, (_agentBase as Boss).playerObject.transform.position);
             if (dis > 6)
             {
-                 _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
+                if (!RadomEventPattern(2)) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
+                else _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern4);
             }
             else
             {
@@ -90,7 +91,7 @@ public class BossMoveState : AgentState
     {
         int index = Random.Range(0, percent);
 
-        if(index == 5)
+        if(index == 0)
         {
             return true;
         }

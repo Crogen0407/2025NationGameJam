@@ -30,6 +30,7 @@ public class SimplePoolingObject : MonoBehaviour, IPoolingObject
 
 	private void Update()
 	{
+		if(isAutoPush == false) return;
 		_curTime += Time.deltaTime;
 		if(_curTime > duration)
 		{

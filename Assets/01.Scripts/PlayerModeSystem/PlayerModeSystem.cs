@@ -30,6 +30,8 @@ namespace _01.Scripts.PlayerModeSystem
             _currentModeIndex = 0;
             _modes =ModeManager.Instance.GetModes().ToList();
             currentMode = _modes[_currentModeIndex%_modes.Count]; 
+            nextMode = _modes.Count > 1 ? _modes[_currentModeIndex+1%_modes.Count] : null;
+            onModeChanged?.Invoke();
         }
 
         private void InitSkills()
