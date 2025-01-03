@@ -19,17 +19,22 @@ public class Stage : MonoBehaviour
     public FollowTarget mirrorCam;
     
     private List<Enemy> Enemies;
-    public int surviveEnemyCount => Enemies.Count(x => !x.isDead);
+    public int surviveEnemyCount => Enemies.Count;
 
-    private void Awake()
+    private void Start()
     {
         Enemies = GetComponentsInChildren<Enemy>().ToList();
-        
         foreach (Enemy enemy in Enemies)
         {
             DefaultHealthSystem defaultHealthSystem = enemy.healthSystem as DefaultHealthSystem;
             if (defaultHealthSystem != null)
-                defaultHealthSystem.dieEvent.AddListener(StageManager.Instance.StageClearCheck);
+            {
+                defaultHealthSystem.dieEvent.AddListener(()=>
+                {
+                    Enemies.Remove(enemy);
+                    StageManager.Instance.StageClearCheck();
+                });
+            }
         }
     }
 

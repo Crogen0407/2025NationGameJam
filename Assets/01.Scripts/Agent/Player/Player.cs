@@ -24,4 +24,9 @@ public class Player : Agent
         //Movement
         Movement.Initialize(this);
     }
+
+    public void HitSound()
+    {
+        SoundManager.Instance.PlaySFX("PlayerHitSound");
+    }
 }
