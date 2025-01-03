@@ -27,9 +27,9 @@ namespace Crogen.PowerfulInput
                 _controls = new Controls();
                 _controls.Player.SetCallbacks(this);
                 _controls.UI.SetCallbacks(this);
-            }
+            } 
             _controls.Enable();
-        }
+        } 
 
         private void OnDisable()
         {
