@@ -9,6 +9,7 @@ namespace _01.Scripts.PlayerModeSystem
     public class ModeManager : MonoBehaviour
     {
         public static ModeManager Instance;
+        public bool _isNewSkill;
         public List<ModeEnum> holdingPlayerModes = new();
         
     
@@ -55,6 +56,8 @@ namespace _01.Scripts.PlayerModeSystem
         public void AddMode(ModeEnum mode)
         {
             if(holdingPlayerModes.Any((o)=>o== mode)) return;
+            
+            _isNewSkill = true;
             holdingPlayerModes.Add(mode); 
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _01.Scripts.PlayerModeSystem;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -97,7 +98,16 @@ public class HeartManager : MonoBehaviour
                         }
                         else
                         {
-                            PaintColor(hit.collider.gameObject, color, StartDisable);
+                            PaintColor(hit.collider.gameObject, color, ()=>
+                            {
+                                if (ModeManager.Instance._isNewSkill)
+                                {
+                                    DOVirtual.DelayedCall(0.3f,
+                                        () => GetSkillUIManager.Instance.Show(StageSaveData.Instance.currentStage
+                                            .stageType));
+                                }
+                                StartDisable();
+                            });
                         }
                     }
                 }
@@ -127,11 +137,11 @@ public class HeartManager : MonoBehaviour
         return color;
     }
 
-    private void PaintColor(GameObject pice, Color color, Action action = null)
+    private void PaintColor(GameObject piece, Color color, Action action = null)
     {
         _isPainting = true;
         
-        pice.GetComponent<SpriteRenderer>().DOColor(color, 0.8f).OnComplete(()=>
+        piece.GetComponent<SpriteRenderer>().DOColor(color, 0.8f).OnComplete(()=>
         {
             action?.Invoke();
             _isPainting = false;
