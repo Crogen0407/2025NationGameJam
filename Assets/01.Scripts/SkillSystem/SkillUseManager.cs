@@ -19,7 +19,12 @@ namespace _01.Scripts.SkillSystem
 
         private void Awake()
         {
-            Instance = this;
+            if(Instance == null)
+                Instance = this;
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void Use(Skill skill)
