@@ -74,7 +74,8 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
         if (_curJumpCount >= JumpCount) return;
         if(_curJumpCount == 0)
             GroundCheck();
-        if (IsGround == false) return; 
+        if (IsGround == false) return;
+        SoundManager.Instance.PlaySFX("Jump");
         ++_curJumpCount;
         StopFallingImmediately();
         _rigidbody.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
