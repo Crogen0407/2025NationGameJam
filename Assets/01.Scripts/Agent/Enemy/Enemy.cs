@@ -1,4 +1,5 @@
 using Crogen.AgentFSM;
+using Crogen.CrogenPooling;
 using Crogen.HealthSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ public class Enemy : Agent
     [field: SerializeField] private LayerMask playerLayer;
 
     [field: SerializeField] public float playerAttackDistance { get; private set; }
-    [field:SerializeField] public Transform attackPos { get; private set; }
     public float currentAttackDelay { get; private set; }
 
     private void Awake()
@@ -77,6 +77,6 @@ public class Enemy : Agent
 
     public void Die()
     {
-        Animator.SetBool("Die", true);
+        StateMachine.ChangeState(EnemyStateEnum.Die, true);
     }
 }

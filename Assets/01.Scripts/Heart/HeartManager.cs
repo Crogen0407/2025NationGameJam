@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class HeartAction : MonoBehaviour
+[System.Serializable]
+public class HeartList
+{
+    public GameObject heartPice;
+    public Color piceColor;
+}
+
+public class HeartManager : MonoBehaviour
 {
     [field: SerializeField] private Camera mainCamera;
 
-    [field: SerializeField] List<GameObject> heartPice = new List<GameObject>();
+    [field: SerializeField] List<HeartList> heartPice = new List<HeartList>();
 
     private void Awake()
     {
         if (mainCamera == null)
         {
             mainCamera = Camera.main; 
+        }
+    }
+
+    private void Start()
+    {
+        if(HeartDataManager.instance != null)
+        {
+            for(int i = 0; i < heartPice.Count; i++)
+            {
+                PaintColor(heartPice[i].heartPice, HeartDataManager.instance.heartColorList[i]);
+            }
         }
     }
 
@@ -24,11 +43,6 @@ public class HeartAction : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        StartCoroutine(HeartActionCoroutine());
-    }
-
     private void SelectHeartPice()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -38,7 +52,14 @@ public class HeartAction : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("HeartPice"))
             {
-                PaintColor(hit.collider.gameObject, Color.red);
+                foreach (var heart in heartPice)
+                {
+                    if(heart.heartPice == hit.collider.gameObject)
+                    {
+                         PaintColor(hit.collider.gameObject, Color.red);
+                         heart.piceColor = Color.red;
+                    }
+                }
             }
         }
     }

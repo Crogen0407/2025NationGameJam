@@ -10,6 +10,7 @@ public class BossPattern3State : AgentState
     }
 
     private readonly int hashPattern3 = Animator.StringToHash("Pattern3");
+    private float frontAttackValue = 1.2f;
 
     public override void Enter()
     {
@@ -34,7 +35,7 @@ public class BossPattern3State : AgentState
         Boss boss = _agentBase as Boss;
         _agentBase.Animator.SetBool(hashPattern3, true);
         boss.frontAttack.SetActive(true);
-        boss.DamageCoster2D_Front.CastDamage((int)boss.statSO.damage);
+        boss.DamageCoster2D_Front.CastDamage((int)(boss.statSO.damage * frontAttackValue));
         yield return new WaitForSeconds(1);
         boss.frontAttack.SetActive(false);
         _agentBase.Animator.SetBool(hashPattern3, false);
