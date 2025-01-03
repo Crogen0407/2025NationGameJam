@@ -52,6 +52,7 @@ public class BossPattern1State : AgentState
         _agentBase.transform.DOMoveY(_agentBase.transform.position.y - 3f, 0.1f);
         yield return new WaitForSeconds(0.1f);
         (_agentBase as Boss).gameObject.Pop(_boss.groundEffect, _boss.groundPos);
+        CameraShakeController.Shake(0.2f, 10);
 
         _boss.DamageCaster2D_Ground.CastDamage((int)(_boss.statSO.damage * jumpDamageValue));
         yield return new WaitForSeconds(0.2f);

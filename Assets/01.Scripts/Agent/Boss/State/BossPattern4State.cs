@@ -32,6 +32,7 @@ public class BossPattern4State : AgentState
     {
         float originalVelocity = rb.velocity.x;
         rb.velocity = new Vector2(rb.velocity.x * 4f, rb.velocity.y);
+        CameraShakeController.Shake(0.2f, 10f);
         yield return new WaitForSeconds(0.2f);
         rb.velocity = Vector2.zero;
         _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
