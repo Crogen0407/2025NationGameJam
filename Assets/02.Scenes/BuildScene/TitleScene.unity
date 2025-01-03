@@ -293,7 +293,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.819
   sharedProfile: {fileID: 11400000, guid: ba9a5809d0f5ebf44b5f15f8fdc18d68, type: 2}
 --- !u!4 &220473784
 Transform:
@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 6701312716793880502, guid: 664894a348e779e43bdfee3d47c852fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4184472a6717cad488d9361ba3d51782, type: 2}
+      objectReference: {fileID: 2100000, guid: 3130d065983fd614f86521a1a6fec06b, type: 2}
     - target: {fileID: 7311788712001115501, guid: 664894a348e779e43bdfee3d47c852fc, type: 3}
       propertyPath: target
       value: 
