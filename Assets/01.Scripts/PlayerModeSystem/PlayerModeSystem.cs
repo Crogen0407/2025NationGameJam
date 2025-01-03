@@ -55,7 +55,7 @@ namespace _01.Scripts.PlayerModeSystem
                 _modes.Add(m);
             }
             Debug.Log(_modes.Count);
-            if(_modes.Count > 1) nextMode = _modes[_currentModeIndex+1];
+            if(_modes.Count > 1) nextMode = _modes[_currentModeIndex+1]; 
             currentMode = _modes[_currentModeIndex%_modes.Count];
             onModeAdded?.Invoke();
         }
