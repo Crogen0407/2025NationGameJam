@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _01.Scripts.PlayerModeSystem;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
@@ -12,6 +13,7 @@ public class Stage : MonoBehaviour
     [SerializeField] private SpriteRenderer _background;
     [SerializeField] private Transform _platfromParents;
     [SerializeField] private Transform _groundParents;
+    [SerializeField] private ModeAdder _modeAdder;
     
     public FollowTarget mirror;
     public FollowTarget mirrorCam;
@@ -42,5 +44,10 @@ public class Stage : MonoBehaviour
         
         foreach (SpriteRenderer spriteRenderer in _platfromParents.GetComponentsInChildren<SpriteRenderer>())
             spriteRenderer.material = materials.platformMat;
+    }
+
+    public void StageClear()
+    {
+        _modeAdder.Trigger(stageType);
     }
 }

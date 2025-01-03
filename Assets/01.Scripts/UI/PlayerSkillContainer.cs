@@ -24,7 +24,12 @@ namespace _01.Scripts.UI
             skillIcon.sprite = _playerModeSystem.currentMode.skillInstance.skillSprite;
             skillFill.fillAmount = _playerModeSystem.currentMode.skillInstance.GetSkillCoolPercent();
             playerIcon.color = _playerModeSystem.currentMode.modeInfo.modeColor;
-            nextIcon.color = _playerModeSystem.nextMode.modeInfo.modeColor;
+            if (_playerModeSystem.nextMode is not null)
+            {
+                nextIcon.gameObject.SetActive(true);
+                nextIcon.color = _playerModeSystem.nextMode.modeInfo.modeColor;
+            }
+            else nextIcon.gameObject.SetActive(false);
         }
 
         private void AddMode()

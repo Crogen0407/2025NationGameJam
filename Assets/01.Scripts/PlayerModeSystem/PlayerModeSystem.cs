@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using _01.Scripts.SkillSystem;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,8 +10,7 @@ namespace _01.Scripts.PlayerModeSystem
 {
     public class PlayerModeSystem : MonoBehaviour
     {
-        public static PlayerModeSystem Instance;
-        private readonly List<PlayerMode> _modes = new();
+        private List<PlayerMode> _modes = new();
         public int ModeLength => _modes.Count;
         public PlayerMode currentMode;
         public PlayerMode nextMode;
@@ -17,16 +18,20 @@ namespace _01.Scripts.PlayerModeSystem
         public UnityEvent onModeChanged;
         public UnityEvent onModeAdded;
         [SerializeField] private ModeEnum[] startModeForDebug;
-    
+
+
+        private void Awake()
+        {
+            
+        }
 
         private void Start()
         {
             _currentModeIndex = 0;
-            if (startModeForDebug.Length > 0)
-            {
-                ModeInit(startModeForDebug);
-            }
-            currentMode = _modes[_currentModeIndex%_modes.Count];
+            _modes =ModeManager.Instance.GetModes().ToList();
+            currentMode = _modes[_currentModeIndex%_modes.Count]; 
+            nextMode = _modes.Count > 1 ? _modes[_currentModeIndex+1%_modes.Count] : null;
+            onModeChanged?.Invoke();
         }
 
         private void InitSkills()
@@ -35,15 +40,6 @@ namespace _01.Scripts.PlayerModeSystem
             {
                 mode.Init();
             }
-        }
-
-        public void AddMode(ModeEnum mode)
-        {
-            var o = ModeManager.Instance.GetMode(mode);
-            _modes.Add(o);
-            nextMode = _modes.Count == 1 ? o : _modes[_currentModeIndex+1];
-            currentMode = _modes[_currentModeIndex%_modes.Count];
-            onModeAdded?.Invoke();
         }
 
         public void ModeInit(ModeEnum[] modes)

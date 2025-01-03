@@ -2496,7 +2496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1797709176560497162, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1797709176560497162, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -2514,6 +2514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueStage1
       objectReference: {fileID: 0}
+    - target: {fileID: 9010584618867581560, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

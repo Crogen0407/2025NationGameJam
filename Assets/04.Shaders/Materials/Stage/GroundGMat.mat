@@ -43,6 +43,7 @@ Material:
     m_Floats:
     - _Edge1: 0.85
     - _Edge2: 1
+    - _Outline: 0
     m_Colors:
     - _Color1: {r: 0.6997539, g: 1, b: 0.65471697, a: 1}
     - _Color2: {r: 0.09409212, g: 0.6377357, b: 0, a: 1}

@@ -44,17 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f55b9ef32509f4cbb25e74348d5adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _systemEventChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
+  _nextSceneName: InHae2
+  _heart: {fileID: 0}
   mainCamera: {fileID: 0}
-  heartPice:
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
-  - heartPice: {fileID: 0}
-    piceColor: {r: 0, g: 0, b: 0, a: 0}
+  heartPiece:
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  - heartPiece: {fileID: 0}
+    pieceColor: {r: 0, g: 0, b: 0, a: 0}
