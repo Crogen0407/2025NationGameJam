@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
             foreach (var soundData in soundDataSO.soundDataList)
                 _soundDataDictionary.Add(soundData.name, soundData);
     }
-
+    
     public void PlayBGM(string soundName)
     {
         if (_soundDataDictionary.TryGetValue(soundName, out SoundData sd))
@@ -99,18 +99,20 @@ public class SoundManager : MonoBehaviour
         oldSoundPlayer?.Push();
     }
     
-    public void PlaySFX(string soundName)
+    public SoundPlayer PlaySFX(string soundName)
     {
         if (_soundDataDictionary.TryGetValue(soundName, out SoundData sd))
         {
-            if (sd.type != SoundType.SFX) return;
+            if (sd.type != SoundType.SFX) return null;
             
             //사운드 재생
             SoundPlayer soundPlayer = gameObject.Pop(SoundPoolType.SoundPlayer, Vector3.zero, Quaternion.identity) as SoundPlayer;
             if(_curSoundPlayer)
                 _curSoundPlayer.AudioSource.loop = false;
             soundPlayer.SetAudioResource(sd.clip, false, 1.0f);
+            return soundPlayer;
         }
+        return null;
     }
     
     public void PlaySFX(string soundName, float pitch = 1.0f, Vector3 position = default)
