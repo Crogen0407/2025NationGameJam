@@ -76,6 +76,7 @@ public class StageManager : MonoBehaviour
 
     public void StageClearCheck()
     {
+        Debug.Log(_currentStage.surviveEnemyCount);
         if(_currentStage.surviveEnemyCount > 0)
             return;
         

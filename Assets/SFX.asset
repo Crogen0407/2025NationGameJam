@@ -46,3 +46,12 @@ MonoBehaviour:
   - name: ShootSound
     type: 1
     clip: {fileID: 8300000, guid: 41d4bd9fde38ea74e9289a39bf9c34a3, type: 3}
+  - name: EnemyHitSound
+    type: 1
+    clip: {fileID: 8300000, guid: f20ee5d6cd0ec5a4bb1bc62273758966, type: 3}
+  - name: PlayerHitSound
+    type: 1
+    clip: {fileID: 8300000, guid: bfba56c8936bd6b489875e46464c3a04, type: 3}
+  - name: EnemyDieSound
+    type: 1
+    clip: {fileID: 8300000, guid: e97ce1be77c2ca645b338048314e1420, type: 3}

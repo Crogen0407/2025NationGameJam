@@ -80,4 +80,9 @@ public class Enemy : Agent
     {
         StateMachine.ChangeState(EnemyStateEnum.Die, true);
     }
+    
+    public void HitSound()
+    {
+        SoundManager.Instance.PlaySFX("PlayerHitSound");
+    }
 }

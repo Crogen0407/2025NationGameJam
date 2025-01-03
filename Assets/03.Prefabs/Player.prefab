@@ -174,7 +174,19 @@ MonoBehaviour:
       m_Calls: []
   hpDownEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1758423134974034682}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
