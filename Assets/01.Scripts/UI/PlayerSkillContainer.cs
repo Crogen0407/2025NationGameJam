@@ -11,6 +11,7 @@ namespace _01.Scripts.UI
         [SerializeField] private Image skillFill;
         [SerializeField] private Image playerIcon;
         [SerializeField] private Image nextIcon;
+        [SerializeField] private Image nextArrow;
 
         private void Start()
         {
@@ -30,7 +31,11 @@ namespace _01.Scripts.UI
                 nextIcon.gameObject.SetActive(true);
                 nextIcon.color = _playerModeSystem.nextMode.modeInfo.modeColor;
             }
-            else nextIcon.gameObject.SetActive(false);
+            else
+            {
+                nextIcon.gameObject.SetActive(false);
+                nextArrow.gameObject.SetActive(false);
+            }
         }
 
         private void AddMode()
