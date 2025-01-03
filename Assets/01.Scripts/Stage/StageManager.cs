@@ -40,7 +40,7 @@ public class StageManager : MonoBehaviour
 
         Stage randomStage = _stages[Random.Range(0, _stages.Count)];
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
-        _currentStage.Init(_materialsList.Find(x => x.type == type));
+        _currentStage.Init(_materialsList.Find(x => x.type == type), type);
 
         Player player = Instantiate(_player, Vector3.zero, Quaternion.identity);
         
