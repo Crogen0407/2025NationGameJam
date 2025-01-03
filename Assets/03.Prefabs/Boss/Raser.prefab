@@ -53,6 +53,37 @@ MonoBehaviour:
   excludedDamageCasterList: []
   center: {x: -3.56, y: 0.27}
   size: {x: 12.1, y: 0.45}
+--- !u!1 &844680657576924135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038239248253684343}
+  m_Layer: 0
+  m_Name: EffectPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038239248253684343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844680657576924135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 60087316594192432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7272721964022464025
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &60087316594192432
 Transform:
   m_ObjectHideFlags: 0
@@ -169,6 +200,7 @@ Transform:
   m_Children:
   - {fileID: 6092179866698560542}
   - {fileID: 3788541303089100915}
+  - {fileID: 2038239248253684343}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &4093214118578280849
@@ -183,4 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d100493bef425fe4ba52b6921bf46580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 0.8
+  raserEffect: 7
+  effectPos: {fileID: 2038239248253684343}

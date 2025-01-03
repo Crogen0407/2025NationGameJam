@@ -20,7 +20,6 @@ public class BossPattern2State : AgentState
         rb = _agentBase.GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
         _agentBase.StartCoroutine(Co_RaserPattern());
-        Debug.Log("2번 패턴 실행");
     }
 
     public override void UpdateState()
@@ -36,6 +35,7 @@ public class BossPattern2State : AgentState
     IEnumerator Co_RaserPattern()
     {
         Boss _boss = _agentBase as Boss;
+        Debug.Log("2번 패턴 실행");
 
         for (int i = 0; i < _boss.raserAttackTransforms.Count; i++)
         {
