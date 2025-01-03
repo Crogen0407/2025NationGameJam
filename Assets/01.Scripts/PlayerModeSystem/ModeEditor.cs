@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using _01.Scripts.SkillSystem;
 using UnityEditor;
@@ -45,3 +46,4 @@ namespace _01.Scripts.PlayerModeSystem
         }
     }
 }
+#endif
