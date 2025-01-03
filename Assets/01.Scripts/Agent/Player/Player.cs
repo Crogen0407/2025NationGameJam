@@ -9,6 +9,7 @@ public class Player : Agent
     [field:SerializeField] public InputReader InputReader { get; private set; }
     [field:SerializeField] public AgentStatSO AgentStatSO { get; private set; }
     private HealthSystem _healthSystem;
+    public Vector2 LookDirection { get; set; }
     
     private void Awake()
     {

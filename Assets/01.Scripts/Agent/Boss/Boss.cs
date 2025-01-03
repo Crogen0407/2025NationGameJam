@@ -5,6 +5,7 @@ using Crogen.AgentFSM;
 using Crogen.HealthSystem;
 using DG.Tweening;
 using UnityEditor.Rendering;
+using Crogen.CrogenPooling;
 
 public class Boss : Agent
 {
@@ -23,14 +24,18 @@ public class Boss : Agent
     [field: SerializeField] public GameObject raserEffect { get; set; }
     [field: SerializeField] public float raserDamageValue { get; private set; }
     [field: SerializeField] public List<Transform> raserAttackTransforms { get; private set; }
-    private float maxRaserCool = 2f;
+    private float maxRaserCool = 20f;
     private float currentRaserCool;
 
     [field: SerializeField] public DamageCaster2D DamageCaster2D_Ground { get; private set; }
-    [field: SerializeField] public GameObject groundEffect { get; private set; }
+    //[field: SerializeField] public GameObject groundEffect { get; private set; }
+    [field: SerializeField] public EffectPoolType groundEffect { get; private set; }
+    [field: SerializeField] public Transform groundPos { get; private set; }    
 
     [field: SerializeField] public DamageCaster2D DamageCoster2D_Front { get; private set; }
-    [field: SerializeField] public GameObject frontAttack { get; private set; }
+    //[field: SerializeField] public GameObject frontAttack { get; private set; }
+    [field: SerializeField] public EffectPoolType frontAttack { get; private set; }
+    [field: SerializeField] public Transform frontPos { get; private set; }
 
     private void Awake()
     {
@@ -44,6 +49,7 @@ public class Boss : Agent
     {
         base.Start();
         StateMachine.ChangeState(BossStateEnum.Move);
+        currentRaserCool = maxRaserCool;
     }
 
     protected override void Update()

@@ -68,7 +68,7 @@ public class BossMoveState : AgentState
             if ((_agentBase as Boss).playerObject == null) return;
             Debug.Log("패턴 실행");
             float dis = Vector3.Distance(_agentBase.transform.position, (_agentBase as Boss).playerObject.transform.position);
-            if (dis > 8)
+            if (dis > 6)
             {
                  _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
             }

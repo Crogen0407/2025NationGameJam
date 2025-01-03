@@ -28,6 +28,6 @@ public class EnemyAnimatorExtension : MonoBehaviour
 
     public void TriggerSkillEffect()
     {
-        gameObject.Pop(enemy.AttackEffectPoolType, effectPos.position, Quaternion.Euler(0, 0, 0));
+        gameObject.Pop(enemy.AttackEffectPoolType, effectPos);
     }
 }

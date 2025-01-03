@@ -90,6 +90,7 @@ public class StageManager : MonoBehaviour
         StageSaveData.Instance.currentStage.isClear = true;
         _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
         _systemEventChannel.RaiseEvent(fadeEvt);
+        _currentStage.StageClear();
     }
 
     private void HandleFadeComplete(FadeComplete evt)

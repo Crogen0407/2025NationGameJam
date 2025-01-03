@@ -16,8 +16,11 @@ public class PlayerAttack : MonoBehaviour
     private bool _canAttack = false;
     private Transform _visualTrm;
 
+    private Player _player;
+    
     private void Awake()
     {
+        _player = GetComponent<Player>();
         _visualTrm = transform.Find("Visual");
         if (_firePointTrm == null) return;
         InputReader.AttackEvent += OnAttack;
@@ -31,8 +34,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(InputReader.MousePosition) - transform.position;
-        Flip(direction.x < 0);
+        _player.LookDirection=Camera.main.ScreenToWorldPoint(InputReader.MousePosition) - transform.position;
+        _player.LookDirection.Normalize();
+        Flip(_player.LookDirection.x < 0);
         if (_firePointTrm == null) return;
         OnDelayPercentEvent?.Invoke(_curDelayTime/PlayerStat.attackDelay);
         if (_curDelayTime > PlayerStat.attackDelay)
@@ -52,9 +56,7 @@ public class PlayerAttack : MonoBehaviour
     
     public void OnAttack()
     {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(InputReader.MousePosition) - transform.position;
-        direction = direction.normalized;        
         PlayerBullet playerBullet = gameObject.Pop(ProjectilePoolType.PlayerBullet, _firePointTrm.position, Quaternion.identity) as PlayerBullet;
-        playerBullet.Initialize(direction, 10f, (int)PlayerStat.damage);
+        playerBullet.Initialize(_player.LookDirection, 10f, (int)PlayerStat.damage);
     }
 }
