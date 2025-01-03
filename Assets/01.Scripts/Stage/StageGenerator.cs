@@ -102,7 +102,7 @@ public class StageGenerator : MonoBehaviour
             blocks[randIdx].SetType((StageType)stageIdx);
             
             stageIdx++;
-            if (stageIdx >= (int)StageType.End)
+            if (stageIdx >= (int)StageType.Black)
                 stageIdx = (int)StageType.None + 1;
 
             (blocks[randIdx], blocks[lastIdx]) = (blocks[lastIdx], blocks[randIdx]);

@@ -11,6 +11,7 @@ public enum StageType
     Yellow = 2,
     Green = 3,
     Blue = 4,
+    Black = 5,
     End,
 }
 
