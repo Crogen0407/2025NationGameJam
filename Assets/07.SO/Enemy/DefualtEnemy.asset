@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefualtEnemy
   m_EditorClassIdentifier: 
   speed: 3
-  health: 0
+  health: 100
   damage: 9
   attackDelay: 5
   defensive: 0
