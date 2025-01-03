@@ -13,7 +13,8 @@ public class EnemyDieState : AgentState
         base.Enter();
         EnemyMovement enemyMovement = _agentBase.GetComponent<EnemyMovement>();
         enemyMovement.enabled = false;
-        SoundManager.Instance.PlaySFX("EnemyDieSound"); }
+        SoundManager.Instance.PlaySFX("EnemyDieSound"); 
+    }
 
     public override void Exit()
     {
