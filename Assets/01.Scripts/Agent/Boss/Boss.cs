@@ -19,8 +19,9 @@ public class Boss : Agent
     public float currentAttackDelay { get; private set; }
 
     [field: SerializeField] public DamageCaster2D DamageCaster2D_Raser { get; private set; }
-    [field: SerializeField] public GameObject raserEffect { get; private set; }
+    [field: SerializeField] public GameObject raserEffect { get; set; }
     [field: SerializeField] public float raserDamageValue { get; private set; }
+    [field: SerializeField] public List<Transform> raserAttackTransforms { get; private set; } 
 
     [field: SerializeField] public DamageCaster2D DamageCaster2D_Ground { get; private set; }
     [field: SerializeField] public GameObject groundEffect { get; private set; }

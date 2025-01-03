@@ -65,25 +65,45 @@ public class BossMoveState : AgentState
     {
         if (patternCool <= 0)
         {
+            if ((_agentBase as Boss).playerObject == null) return;
             Debug.Log("패턴 실행");
             float dis = Vector3.Distance(_agentBase.transform.position, (_agentBase as Boss).playerObject.transform.position);
-            switch (dis)
+
+            if(dis > 4.5f)
             {
-                default:
-                    _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
-                    break;
-                case > 5:
-                    _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
-                    break;
-                case > 0:
-                    _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
-                    break;
+                if(!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
+                else if (RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
+            }
+            else if (dis > 2)
+            {
+                if (!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
+                else if (RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
+            }
+            else
+            {
+                if (!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
+                else if (RadomEventPattern())_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
+                else if (RadomEventPattern())_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
             }
         }
         else if (patternCool > 0)
         {
             Debug.Log("패턴 대기 중");
             patternCool -= Time.deltaTime;
+        }
+    }
+
+    private bool RadomEventPattern()
+    {
+        int index = Random.Range(0, 10);
+
+        if(index == 5)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
