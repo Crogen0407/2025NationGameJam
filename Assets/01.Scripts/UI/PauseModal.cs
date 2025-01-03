@@ -66,17 +66,18 @@ public class PauseModal : MonoBehaviour
    public void PauseOn()
    {
       backGround.SetActive(true);
-      _isUiOn = true; 
-      backGround.GetComponent<Image>().DOFade(0.4f, 1f);
-      panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1f).OnComplete(()=>Time.timeScale = 0f);
+      _isUiOn = true;
+      Time.timeScale = 0f;
+      backGround.GetComponent<Image>().DOFade(0.4f, 1f).SetUpdate(true);
+      panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1f).SetUpdate(true);
    }
 
    public void PauseOff()
    {
       _isUiOn = false;
       Time.timeScale = 1;
-      backGround.GetComponent<Image>().DOFade(0f, 0.1f).OnComplete(()=>backGround.SetActive(false));
-      panel.GetComponent<RectTransform>().DOAnchorPosX(-3000f, 0.5f);
+      backGround.GetComponent<Image>().DOFade(0f, 1f).OnComplete(()=>backGround.SetActive(false)).SetUpdate(true);
+      panel.GetComponent<RectTransform>().DOAnchorPosX(-3000f, 1f).SetUpdate(true);
    }
    
 }
