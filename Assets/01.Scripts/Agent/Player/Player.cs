@@ -53,6 +53,6 @@ public class Player : Agent
     private void HandleFadeComplete(FadeComplete obj)
     {
         _systemChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("DeadScene");
     }
 }
