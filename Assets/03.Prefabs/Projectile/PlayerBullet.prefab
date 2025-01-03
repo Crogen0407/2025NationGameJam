@@ -71,7 +71,7 @@ MonoBehaviour:
   _usingExcludeCast: 0
   excludedDamageCasterList: []
   center: {x: 0, y: 0}
-  radius: 0.55
+  radius: 0.13
 --- !u!1 &279283117464289925
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.41
+      value: 0.14
       mode: 0
       spread: 0
       speed:
@@ -4929,8 +4929,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2122655321391982181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
