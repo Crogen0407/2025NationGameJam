@@ -582,10 +582,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 946895320983046137, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 952182535264201681, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -702,14 +698,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3891715814387693174, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3891715814387693174, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4056784324402432403, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -726,17 +714,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 9008856129290442667, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
-      propertyPath: m_Name
-      value: PlayerStatusCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9008856129290442667, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7706565073545718400, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e8095dec04e53945944fc74a9c5fe9b, type: 3}

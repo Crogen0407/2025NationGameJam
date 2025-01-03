@@ -20,12 +20,7 @@ namespace _01.Scripts.PlayerModeSystem
         [SerializeField] private ModeEnum[] startModeForDebug;
 
 
-        private void Awake()
-        {
-            
-        }
-
-        private void Start()
+        private void Start() 
         {
             _currentModeIndex = 0;
             _modes =ModeManager.Instance.GetModes().ToList();
