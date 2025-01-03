@@ -46,3 +46,6 @@ MonoBehaviour:
   - poolType: SmileBumb
     prefab: {fileID: 4523144011223639228, guid: 27efa3753cf81644799e00daae115a81, type: 3}
     poolCount: 1
+  - poolType: PlayerBulletExplosionEffect
+    prefab: {fileID: 6774912552023532700, guid: 757c27d4847d4d34597140754ce4b8c8, type: 3}
+    poolCount: 20

@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour, IPoolingObject
     {
     }
 
-    public void OnPush()
+    public virtual void OnPush()
     {
     }
 
