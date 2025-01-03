@@ -102,9 +102,21 @@ MonoBehaviour:
   _redMat: {fileID: 2100000, guid: 193c304ecf68eeb44b926f34378e84ea, type: 2}
   _greenMat: {fileID: 2100000, guid: f953879b473b089428705a75514bd9d5, type: 2}
   _yellowMat: {fileID: 2100000, guid: 477350320479acf488a3d36933181ab6, type: 2}
-  _outLineMat: {fileID: 2100000, guid: a12396b1842db4748b1ba2aac0c1af1a, type: 2}
+  _blueMat: {fileID: 2100000, guid: dda38e34409032d468b690ac759f994a, type: 2}
   stageType: 0
   isClear: 0
+  _closetCol:
+    startPoint: {x: 0, y: 0}
+    endPoint: {x: 0, y: 0}
+  _closetRow:
+    startPoint: {x: 0, y: 0}
+    endPoint: {x: 0, y: 0}
+  _currentCol:
+    startPoint: {x: 0, y: 0}
+    endPoint: {x: 0, y: 0}
+  _currentRow:
+    startPoint: {x: 0, y: 0}
+    endPoint: {x: 0, y: 0}
 --- !u!61 &1594397549270881596
 BoxCollider2D:
   m_ObjectHideFlags: 0
