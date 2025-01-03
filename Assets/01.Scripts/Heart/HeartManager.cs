@@ -41,18 +41,17 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        StartBlackHeart();
-        // if(HeartDataManager.instance != null)
-        // {
-        //     for(int i = 0; i < heartPiece.Count; i++)
-        //     {
-        //         heartPiece[i].pieceColor = HeartDataManager.instance.heartColorList[i];
-        //         if (i == 0)
-        //             PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i], () => _isInit = true);
-        //         else
-        //             PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i]);
-        //     }
-        // }
+        if(HeartDataManager.instance != null)
+        {
+            for(int i = 0; i < heartPiece.Count; i++)
+            {
+                heartPiece[i].pieceColor = HeartDataManager.instance.heartColorList[i];
+                if (i == 0)
+                    PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i], () => _isInit = true);
+                else
+                    PaintColor(heartPiece[i].heartPiece, HeartDataManager.instance.heartColorList[i]);
+            }
+        }
     }
 
     private void Update()
