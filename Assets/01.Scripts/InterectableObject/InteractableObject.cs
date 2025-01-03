@@ -18,10 +18,14 @@ public class InteractableObject : MonoBehaviour
                 OnSelectedEvent?.Invoke();
             }
             _isSelected = true;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                OnInteractEvent?.Invoke();
-            }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && _isSelected)
+        {
+            OnInteractEvent?.Invoke();
         }
     }
 

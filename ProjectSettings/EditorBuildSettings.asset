@@ -15,7 +15,13 @@ EditorBuildSettings:
     path: Assets/02.Scenes/InHae.unity
     guid: 15f0299ba9709a847baf0ccc358f008c
   - enabled: 1
+    path: Assets/02.Scenes/BuildScene/StageSelectScene.unity
+    guid: b84ed2a807230334eac6607e1d9c0cd9
+  - enabled: 1
     path: Assets/02.Scenes/InHae2.unity
     guid: 00321badc71637044bf46e8eedb2fc82
+  - enabled: 1
+    path: Assets/02.Scenes/BuildScene/GameScene.unity
+    guid: 27e7d1d8967121f47b8b45cc8913cb2a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a0cbef023d873af498cdc2d3c6177d94, type: 2}
