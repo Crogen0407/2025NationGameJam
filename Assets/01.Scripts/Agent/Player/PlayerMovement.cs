@@ -1,4 +1,3 @@
-using System;
 using Crogen.AgentFSM;
 using Crogen.AgentFSM.Movement;
 using UnityEngine;
@@ -7,13 +6,14 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
 {
     private Rigidbody2D _rigidbody;
     
-    private float Speed { get => _player.AgentStatSO.speed;  set => _player.AgentStatSO.speed = value; }
-    
+    private float Speed => _player.AgentStatSO.speed;
+
     public Vector3 Velocity { get; set; }
     public Agent AgentBase { get; set; }
     public bool IsGround { get; set; }
     
     private Player _player;
+    
     //Jump
     [SerializeField] private float _jumpPower = 10f;
     [SerializeField] private LayerMask _whatIsGround;
@@ -28,7 +28,15 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
 
     private void Update()
     {
-        GroundCheck();
+        if (IsGround == false && _curJumpCount == 0)
+        {
+            GroundCheck();
+        }
+        
+        if (IsGround && _curJumpCount >= JumpCount)
+        {
+            _curJumpCount = 0;
+        }
     }
 
     private void GroundCheck()
@@ -64,6 +72,9 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
     public void OnJump()
     {
         if (_curJumpCount >= JumpCount) return;
+        if(_curJumpCount == 0)
+            GroundCheck();
+        if (IsGround == false) return; 
         ++_curJumpCount;
         StopFallingImmediately();
         _rigidbody.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
