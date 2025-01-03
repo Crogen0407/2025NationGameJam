@@ -8,6 +8,7 @@ public class EnemyAnimatorExtension : MonoBehaviour
 {
     private Enemy enemy;
     [SerializeField] private UnityEvent attackEvent;
+    [SerializeField] private Transform effectPos;
 
     private void Awake()
     {
@@ -27,6 +28,6 @@ public class EnemyAnimatorExtension : MonoBehaviour
 
     public void TriggerSkillEffect()
     {
-        gameObject.Pop(enemy.AttackEffectPoolType, transform);
+        gameObject.Pop(enemy.AttackEffectPoolType, effectPos.position, Quaternion.Euler(0, 0, 0));
     }
 }

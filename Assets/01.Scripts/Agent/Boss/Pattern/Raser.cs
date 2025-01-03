@@ -1,3 +1,4 @@
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ public class Raser : MonoBehaviour
     private DamageCaster2D damageCaster;
     public float damage;
     private float raserValue = 0.5f;
+    [SerializeField] private EffectPoolType raserEffect;
+    [SerializeField] private Transform effectPos;
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class Raser : MonoBehaviour
     {
         StartCoroutine(TickDamaage());
         StartCoroutine(Co_DestoryRaser());
+        gameObject.Pop(raserEffect, effectPos);
     }
 
     void Update()
