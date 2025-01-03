@@ -259,18 +259,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 67fbb83b9efbc354785eb595f72c4628, type: 2}
   - {fileID: 11400000, guid: aff9f569bd4564a468776b4c60a1429a, type: 2}
   soundDataList:
-  - name: WaterBeam
-    type: 1
-    clip: {fileID: 8300000, guid: 91b65af072ca4014a82d84722e6dc321, type: 3}
-  - name: Spike
-    type: 1
-    clip: {fileID: 8300000, guid: b61684c8035eb4a4294e95e741090694, type: 3}
-  - name: Walk
-    type: 1
-    clip: {fileID: 8300000, guid: ed198619e54f6fd40b2251c7f12096af, type: 3}
-  - name: Jump
-    type: 1
-    clip: {fileID: 8300000, guid: 925beb9d598a9d54e956d9e95db42127, type: 3}
+  - name: TitleScene
+    type: 2
+    clip: {fileID: 8300000, guid: f26d921ba5636ef4ebc53a730e2d2f1d, type: 3}
+  - name: Yellow
+    type: 2
+    clip: {fileID: 8300000, guid: 3221b459d7e7df340af8a0cb06e19eeb, type: 3}
+  - name: Yellow
+    type: 2
+    clip: {fileID: 8300000, guid: 3221b459d7e7df340af8a0cb06e19eeb, type: 3}
 --- !u!1 &220473782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2219603167316686166, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: startModeForDebug.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219603167316686166, guid: 95e01321128f39d43a65b94885235c75, type: 3}
+      propertyPath: startModeForDebug.Array.data[1]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3094528251220390309, guid: 95e01321128f39d43a65b94885235c75, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1661,15 +1662,15 @@ MonoBehaviour:
     gaugeSkillChargeSpeed: 0.25
     doGaugeSkillCharge: 1
   - modeType: 5
-    skillName: 
-    skillSprite: {fileID: 0}
-    skillTime: 0
+    skillName: "\uAC00\uC2DC!!"
+    skillSprite: {fileID: 21300000, guid: 46c72f5388b24fe469be00c27144fae7, type: 3}
+    skillTime: 0.3
     currentSkillTime: 0
     isUsingSkill: 0
-    isGaugeSkill: 0
-    skillGauge: -1
+    isGaugeSkill: 1
+    skillGauge: 5
     currentSkillGauge: 0
-    gaugeSkillChargeSpeed: 0
+    gaugeSkillChargeSpeed: 0.25
     doGaugeSkillCharge: 1
   - modeType: 6
     skillName: 
@@ -2222,7 +2223,7 @@ MonoBehaviour:
       currentSkillGauge: 0
       gaugeSkillChargeSpeed: 0
       doGaugeSkillCharge: 1
-  - modeInfo: {fileID: 0}
+  - modeInfo: {fileID: 11400000, guid: d621389345046594ea33f5193261e6c6, type: 2}
     skillInstance:
       modeType: 0
       skillName: 

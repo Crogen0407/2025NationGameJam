@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         _soundDataDictionary = new Dictionary<string, SoundData>();
         foreach (var soundDataSO in soundDataSOList)
-            foreach (var soundData in soundDataSO.soundDataList)
+            foreach (var soundData in soundDataSO.soundDataList) 
                 _soundDataDictionary.Add(soundData.name, soundData);
     }
     
@@ -65,7 +65,7 @@ public class SoundManager : MonoBehaviour
             _oldSoundPlayer = _curSoundPlayer;
             _curSoundPlayer = gameObject.Pop(SoundPoolType.SoundPlayer, Vector3.zero, Quaternion.identity) as SoundPlayer;
             if(_curSoundPlayer)
-                _curSoundPlayer.AudioSource.loop = true;
+                _curSoundPlayer.AudioSource.loop = true; 
             if (sd.clip != null)
             {
                 _curSoundPlayer.SetAudioResource(sd.clip, true, pitch); 
