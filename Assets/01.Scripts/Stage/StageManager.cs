@@ -36,7 +36,7 @@ public class StageManager : MonoBehaviour
         else
             Destroy(Instance.gameObject);
         
-        StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
+        StageType type = StageSaveData.Instance.currentStage.stageType;
 
         Stage randomStage = _stages[Random.Range(0, _stages.Count)];
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
@@ -82,8 +82,8 @@ public class StageManager : MonoBehaviour
     {
         FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
         fadeEvt.isFadeIn = true;
-
-        StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].isClear = true;
+        
+        StageSaveData.Instance.currentStage.isClear = true;
         _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
         _systemEventChannel.RaiseEvent(fadeEvt);
     }
