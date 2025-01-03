@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,11 @@ public class PlayerHealthContainer : MonoBehaviour
     {
         _rectTransform = transform as RectTransform;
         _originPosition = _rectTransform.anchoredPosition;
+        
+    }
+
+    private void Start()
+    {
         _playerHealthSystem = FindFirstObjectByType<Player>().GetComponent<DefaultHealthSystem>();
         _playerHealthSystem.hpDownEvent.AddListener(HandleTakeDamage);
         _playerHealthSystem.hpChangeEvent.AddListener(HandleChangeHealth);

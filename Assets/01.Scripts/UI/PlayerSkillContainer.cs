@@ -12,12 +12,12 @@ namespace _01.Scripts.UI
         [SerializeField] private Image playerIcon;
         [SerializeField] private Image nextIcon;
 
-        private void Awake()
+        private void Start()
         {
             _playerModeSystem = FindFirstObjectByType<Player>().GetComponent<PlayerModeSystem.PlayerModeSystem>();
             _playerModeSystem.onModeChanged.AddListener(ChangeSkill);
-            _playerModeSystem.onModeAdded.AddListener(AddMode);
-        }
+            _playerModeSystem.onModeAdded.AddListener(AddMode);        }
+
 
         private void ChangeSkill()
         {

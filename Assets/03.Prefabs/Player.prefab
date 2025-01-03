@@ -74,7 +74,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _groundCheckSize: {x: 0.4, y: 0.25}
-  <JumpCount>k__BackingField: 1
+  <JumpCount>k__BackingField: 2
 --- !u!114 &7971180975089434342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7495740400221587509}
   - component: {fileID: 2819245432742239713}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8629239037046776573}
   - component: {fileID: 815732400769274003}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AttackPointOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
