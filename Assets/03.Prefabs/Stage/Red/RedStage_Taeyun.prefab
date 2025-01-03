@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
       value: Ground5 (1)
@@ -400,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 7823776111469194749}
     - target: {fileID: 8675215781030229084, guid: 672fc0955a09dc143a9f0125e28e44e9, type: 3}
       propertyPath: m_Name
-      value: TemplateStage Variant 1
+      value: RedStage_Taeyun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -482,6 +486,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
       value: Ground5 (2)
@@ -560,6 +568,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
       value: Ground5 (3)
@@ -637,6 +649,10 @@ PrefabInstance:
     - target: {fileID: 2818387432473698049, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194297199843303636, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
+      propertyPath: m_Size.x
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 6783954176432823103, guid: e9fc6119e3349cd49a9e4faffc4454a3, type: 3}
       propertyPath: m_Name
