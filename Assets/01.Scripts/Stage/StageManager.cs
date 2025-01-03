@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    
     [SerializeField] private List<Stage> _stages;
     private Stage _currentStage;
     
@@ -20,17 +24,16 @@ public class StageManager : MonoBehaviour
             Instance = this;
         else
             Destroy(Instance.gameObject);
-    }
-
-    private void Start()
-    {
-        Debug.Log(StageSaveData.Instance.blockDictionary.Count);
+        
         StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
 
         List<Stage> typeMatchStage = _stages.Where(x => x.type == type).ToList();
         Stage randomStage = typeMatchStage[Random.Range(0, typeMatchStage.Count)];
 
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
+
+        Player player = Instantiate(_player, Vector3.zero, Quaternion.identity);
+        _virtualCamera.m_Follow = player.transform;
     }
 
 #if UNITY_EDITOR

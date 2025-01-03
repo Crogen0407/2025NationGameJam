@@ -19,13 +19,11 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _visualTrm = transform.Find("Visual");
-        if (_firePointTrm == null) return;
         InputReader.AttackEvent += OnAttack;
     }
 
     private void OnDestroy()
     {
-        if (_firePointTrm == null) return;
         InputReader.AttackEvent -= OnAttack;
     }
 
@@ -33,7 +31,6 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(InputReader.MousePosition) - transform.position;
         Flip(direction.x < 0);
-        if (_firePointTrm == null) return;
         OnDelayPercentEvent?.Invoke(_curDelayTime/PlayerStat.attackDelay);
         if (_curDelayTime > PlayerStat.attackDelay)
         {
