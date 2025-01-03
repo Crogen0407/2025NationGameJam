@@ -4,7 +4,7 @@ namespace _01.Scripts.SkillSystem
 {
     public class SkillInfoManager : MonoBehaviour
     {
-        public static SkillInfoManager Instance;
+        public static SkillInfoManager Instance ;
         
         //스킬 에디터
         public Skill[] skills;

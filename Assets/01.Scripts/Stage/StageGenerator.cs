@@ -37,7 +37,17 @@ public class StageGenerator : MonoBehaviour
     private List<StageLine> _colLineList = new List<StageLine>();
     private List<StageLine> currentColLines = new List<StageLine>();
 
+    public static StageGenerator Instance;
+
     private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    public void SaveOrLoad()
     {
         if (!StageSaveData.Instance.isSave || StageSaveData.Instance.isReset)
         {

@@ -21,4 +21,14 @@ public class StageSaveData : MonoBehaviour
     public bool isReset;
     public Dictionary<Tuple<Vector2Int, Vector2Int>, StageBlock> blockDictionary = new ();
     public Tuple<Vector2Int, Vector2Int> currentKey;
+    public StageBlock currentStage
+    {
+        get
+        {
+            if (currentKey == null)
+                return null;
+            
+            return blockDictionary[currentKey];
+        }
+    }
 }
