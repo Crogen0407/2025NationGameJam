@@ -8,7 +8,7 @@ public class TitleSceneController : MonoBehaviour
     {
         SoundManager.Instance.PlayBGM("TitleScene", 0.5f);
     } 
-
+ 
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

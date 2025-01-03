@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
@@ -13,6 +11,7 @@ public class Stage : MonoBehaviour
     [SerializeField] private Material _greenMat;
     [SerializeField] private Material _yellowMat;
     [SerializeField] private Transform _groundParents;
+    public FollowTarget mirror;
     
     private List<Enemy> Enemies;
     public int surviveEnemyCount => Enemies.Count(x => !x.isDead);
