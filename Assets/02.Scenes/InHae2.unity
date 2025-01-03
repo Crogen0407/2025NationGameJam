@@ -222,11 +222,7 @@ MonoBehaviour:
   _player: {fileID: 1758423134974034682, guid: 95e01321128f39d43a65b94885235c75, type: 3}
   _virtualCamera: {fileID: 1325019615}
   _stages:
-  - {fileID: 6584009396090298541, guid: 29ed032e3b7e00449bce8abe396aed0e, type: 3}
-  - {fileID: 8154694935765613386, guid: 545fa26f8897099428473599e2e30aac, type: 3}
-  - {fileID: 6087801000344380276, guid: 49f0c3bb788428c4db42d473e4d1085a, type: 3}
-  - {fileID: 850284859990376548, guid: 9e7c7e4974603f44a8a25851dc886d36, type: 3}
-  - {fileID: 3211674129251490649, guid: 6f348c032dc3e6b429635dbb834e3cea, type: 3}
+  - {fileID: 6133346467226523902, guid: 38efde182d1677241b12f43571a32534, type: 3}
   _systemEventChannel: {fileID: 11400000, guid: a8f3a161465c3ba41bf6554d76995704, type: 2}
   _nextSceneName: InHae
 --- !u!1 &1151547329
