@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0c8d03b5e9c4440be6adf8e04fcb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseStageBlock: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
+  _baseStageBlock: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
+  _stageLine: {fileID: 2238845958319824270, guid: b2133bc129f6a2f4c922b2447c8d9112, type: 3}
   _sliceCount: 15
   _stageCount: 9
   _width: 15
@@ -503,6 +504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSave: 0
   isReset: 0
+  rowLineList: []
+  colLineList: []
 --- !u!4 &1242239425
 Transform:
   m_ObjectHideFlags: 0

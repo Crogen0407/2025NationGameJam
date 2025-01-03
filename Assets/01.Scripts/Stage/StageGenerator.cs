@@ -22,7 +22,7 @@ public struct StageLine
 
 public class StageGenerator : MonoBehaviour
 {
-    [FormerlySerializedAs("_baseStage")] [SerializeField] private StageBlock baseStageBlock;
+    [SerializeField] private StageBlock _baseStageBlock;
     
     [SerializeField] private int _sliceCount;
     [SerializeField] private int _stageCount;
@@ -162,7 +162,7 @@ public class StageGenerator : MonoBehaviour
 
                 if (!_blockDictionary.ContainsKey(LTAndRB))
                 {
-                    StageBlock stageBlock = Instantiate(this.baseStageBlock, transform);
+                    StageBlock stageBlock = Instantiate(_baseStageBlock, transform);
                     stageBlock.Init(LTAndRB);
                     StageMoveEffect(stageBlock, new Vector3(LTAndRB.Item1.x + stageBlock.Width * 0.5f, 
                         LTAndRB.Item1.y + stageBlock.Height * 0.5f));
@@ -176,7 +176,7 @@ public class StageGenerator : MonoBehaviour
     {
         foreach (var loadBlock in _blockDictionary)
         {
-            StageBlock stageBlock = Instantiate(this.baseStageBlock, transform);
+            StageBlock stageBlock = Instantiate(_baseStageBlock, transform);
 
             if (loadBlock.Value.isClear)
                 stageBlock.isClear = true;
