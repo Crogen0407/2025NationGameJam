@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public StageType type;
     public Transform cameraBounds;
     
-    [SerializeField] private Material _redMat;
-    [SerializeField] private Material _greenMat;
-    [SerializeField] private Material _yellowMat;
-    [SerializeField] private Material _blueMat;
+    [SerializeField] private SpriteRenderer _background;
+    [SerializeField] private Transform _platfromParents;
     [SerializeField] private Transform _groundParents;
+    
     public FollowTarget mirror;
     public FollowTarget mirrorCam;
     
@@ -31,29 +29,14 @@ public class Stage : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Init(StageMaterials materials)
     {
-        Material material = null;
+        _background.material = materials.bgMat;
         
-        switch (type)
-        {
-            case StageType.Red:
-                material = _redMat;
-                break;
-            case StageType.Yellow:
-                material = _yellowMat;
-                break;
-            case StageType.Green:
-                material = _greenMat;
-                break;
-            case StageType.Blue:
-                material = _blueMat;
-                break;
-        }
-
         foreach (SpriteRenderer spriteRenderer in _groundParents.GetComponentsInChildren<SpriteRenderer>())
-        {
-            spriteRenderer.material = material;
-        }
+            spriteRenderer.material = materials.groundMat;
+        
+        foreach (SpriteRenderer spriteRenderer in _platfromParents.GetComponentsInChildren<SpriteRenderer>())
+            spriteRenderer.material = materials.platformMat;
     }
 }

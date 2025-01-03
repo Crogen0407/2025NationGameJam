@@ -1,12 +1,23 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+[Serializable]
+public struct StageMaterials
+{
+    public StageType type;
+    public Material bgMat;
+    public Material groundMat;
+    public Material platformMat;
+}
+
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private List<StageMaterials> _materialsList;
+
     [SerializeField] private Player _player;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     
@@ -27,10 +38,9 @@ public class StageManager : MonoBehaviour
         
         StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
 
-        List<Stage> typeMatchStage = _stages.Where(x => x.type == type).ToList();
-        Stage randomStage = typeMatchStage[Random.Range(0, typeMatchStage.Count)];
-
+        Stage randomStage = _stages[Random.Range(0, _stages.Count)];
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
+        _currentStage.Init(_materialsList.Find(x => x.type == type));
 
         Player player = Instantiate(_player, Vector3.zero, Quaternion.identity);
         
