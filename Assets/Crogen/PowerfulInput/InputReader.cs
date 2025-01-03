@@ -64,7 +64,6 @@ namespace Crogen.PowerfulInput
 
         public void OnMouseClick(InputAction.CallbackContext context)
         {
-            Cursor.visible = false;
         }
 
         public void OnMouseMove(InputAction.CallbackContext context)
