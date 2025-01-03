@@ -7,6 +7,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public StageType type;
+    public Transform cameraBounds;
     
     [SerializeField] private Material _redMat;
     [SerializeField] private Material _greenMat;
