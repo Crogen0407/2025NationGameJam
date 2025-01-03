@@ -8,7 +8,7 @@ namespace _01.Scripts.SkillSystem
     {
         public static SkillUseManager Instance;
         public Coroutine CurrentSkill;
-        [SerializeField] private GameObject smileBombPrefab;
+        [SerializeField] private EffectPoolType _smileBombPoolType;
         private Camera _camera;
 
         private void Start()
@@ -82,7 +82,7 @@ namespace _01.Scripts.SkillSystem
 
         IEnumerator HappyBomb(Skill skill)
         {
-            var bomb = Instantiate(smileBombPrefab, gameObject.transform.position + new Vector3(0,1f,0), Quaternion.identity);
+            var bomb = gameObject.Pop(_smileBombPoolType, gameObject.transform.position + new Vector3(0,1f,0), Quaternion.identity) as SimplePoolingObject;
             var rb = bomb.gameObject.GetComponent<Rigidbody2D>();
             var col = bomb.gameObject.GetComponent<Collider2D>();
             skill.isUsingSkill = true;
@@ -101,7 +101,7 @@ namespace _01.Scripts.SkillSystem
             skill.isUsingSkill = false;
             rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
-            Destroy(bomb);//폭탄 풀링(해도 되고 안해도 되고-)
+            bomb.Push();
             var ef = gameObject.Pop(EffectPoolType.SmileBumbExplosion, bomb.transform.position, Quaternion.identity);
             ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
             yield return new WaitForSeconds(0.3f);
