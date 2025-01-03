@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,10 @@ public class DeadScene : MonoBehaviour
 {
     [SerializeField] private GameEventChannelSO _systemChannel;
 
+    private void Awake()
+    {
+        SoundManager.Instance.PlayBGM("GameOverBgm");
+    }
 
     public void Restart()
     {
@@ -23,8 +28,11 @@ public class DeadScene : MonoBehaviour
     private void HandleFadeComplete(FadeComplete obj)
     {
         _systemChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
-        StageSaveData.Instance.isReset = true;
-        HeartDataManager.instance.Reset();
+        
+        if(StageSaveData.Instance != null)
+            StageSaveData.Instance.isReset = true;
+        if(HeartDataManager.instance != null)
+            HeartDataManager.instance.Reset();
         
         SceneManager.LoadScene("StageSelectScene");
     }
