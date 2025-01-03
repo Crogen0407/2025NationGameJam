@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3320263870390352832}
   - component: {fileID: 2248292107286707532}
   - component: {fileID: 2337206619732247608}
+  - component: {fileID: 2219603167316686166}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -35,6 +36,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9109853176094502188}
   - {fileID: 4496300920266736192}
   - {fileID: 8629239037046776573}
   - {fileID: 3976401619468519013}
@@ -176,6 +178,53 @@ MonoBehaviour:
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2219603167316686166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554721565515522626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada65dba1c274b548b5fb2409ee827d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMode:
+    modeInfo: {fileID: 0}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  nextMode:
+    modeInfo: {fileID: 0}
+    skillInstance:
+      modeType: 0
+      skillName: 
+      skillSprite: {fileID: 0}
+      skillTime: 0
+      currentSkillTime: 0
+      isUsingSkill: 0
+      isGaugeSkill: 0
+      skillGauge: -1
+      currentSkillGauge: 0
+      gaugeSkillChargeSpeed: 0
+      doGaugeSkillCharge: 1
+  onModeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onModeAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  startModeForDebug: 0600000000000000040000000200000001000000
 --- !u!1 &1560280149336632900
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +309,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4695488477775104250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9109853176094502188}
+  - component: {fileID: 1835710474546013566}
+  m_Layer: 0
+  m_Name: SkillUseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9109853176094502188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695488477775104250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.032, y: 0.63, z: 0.04778614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3094528251220390309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835710474546013566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695488477775104250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f8b809ce02c174c8d7f8c6a4b17450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smileBombPrefab: {fileID: 4523144011223639228, guid: 27efa3753cf81644799e00daae115a81, type: 3}
 --- !u!1 &5121209794502910517
 GameObject:
   m_ObjectHideFlags: 0
