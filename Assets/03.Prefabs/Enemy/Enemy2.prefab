@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5325191380680152504}
   - component: {fileID: 8507260758645502782}
   - component: {fileID: 6106242356414722152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2337993062335537646}
   - component: {fileID: 1815762551231498169}
   - component: {fileID: 3971532170487949675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802723793220503054}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: effectPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
