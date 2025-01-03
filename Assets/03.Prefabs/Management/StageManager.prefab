@@ -44,6 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeae9c564eb2cda48976ad6a9434293b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _materialsList:
+  - type: 1
+    bgMat: {fileID: 2100000, guid: 193c304ecf68eeb44b926f34378e84ea, type: 2}
+    groundMat: {fileID: 2100000, guid: 082ac70060b4ce248900d2a58b4fae65, type: 2}
+    platformMat: {fileID: 2100000, guid: 082ac70060b4ce248900d2a58b4fae65, type: 2}
+  - type: 2
+    bgMat: {fileID: 2100000, guid: 477350320479acf488a3d36933181ab6, type: 2}
+    groundMat: {fileID: 2100000, guid: 0e65ee5dfd37af24d9d781fb4e7f97d6, type: 2}
+    platformMat: {fileID: 2100000, guid: 0e65ee5dfd37af24d9d781fb4e7f97d6, type: 2}
+  - type: 3
+    bgMat: {fileID: 2100000, guid: f953879b473b089428705a75514bd9d5, type: 2}
+    groundMat: {fileID: 2100000, guid: 0a44b6eb5a01ddb459bd92ff06670c63, type: 2}
+    platformMat: {fileID: 2100000, guid: 0a44b6eb5a01ddb459bd92ff06670c63, type: 2}
+  - type: 4
+    bgMat: {fileID: 2100000, guid: dda38e34409032d468b690ac759f994a, type: 2}
+    groundMat: {fileID: 2100000, guid: a989f6f6c157ee54ba2a795f07bc317f, type: 2}
+    platformMat: {fileID: 2100000, guid: a989f6f6c157ee54ba2a795f07bc317f, type: 2}
   _player: {fileID: 1758423134974034682, guid: 95e01321128f39d43a65b94885235c75, type: 3}
   _virtualCamera: {fileID: 0}
   _stages:
