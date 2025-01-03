@@ -25,3 +25,21 @@ MonoBehaviour:
   - name: Jump
     type: 1
     clip: {fileID: 8300000, guid: 925beb9d598a9d54e956d9e95db42127, type: 3}
+  - name: OnButtonSound
+    type: 1
+    clip: {fileID: 8300000, guid: 6ddcf7ce79604a84a8ba6dad16457664, type: 3}
+  - name: ButtonClick
+    type: 1
+    clip: {fileID: 8300000, guid: a43c93d3e6a63b44c814db4463a82d89, type: 3}
+  - name: ZoomIn
+    type: 1
+    clip: {fileID: 8300000, guid: 6e16316719ee8de4d90b24f44272a164, type: 3}
+  - name: SkillGetSound
+    type: 1
+    clip: {fileID: 8300000, guid: 9a078419a97652942b417ee7ba0a75e7, type: 3}
+  - name: BrokenHeart
+    type: 1
+    clip: {fileID: 8300000, guid: 05fa9d8278f291c4cb0c621d479f3b80, type: 3}
+  - name: BlackHeart
+    type: 1
+    clip: {fileID: 8300000, guid: 487c5205ca137bb48913063d650a282c, type: 3}

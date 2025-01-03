@@ -94,8 +94,8 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if(stageType == StageType.None || _isClick)
             return;
 
+        SoundManager.Instance.PlaySFX("ButtonClick");
         _isClick = true;
-        
         var evt = CameraEvents.CameraZoomInEvent;
         Vector3 targetPos = transform.position;
         targetPos.z = -10;
@@ -115,7 +115,8 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         if(stageType == StageType.None || _isClick)
             return;
-
+        
+        SoundManager.Instance.PlaySFX("OnButtonSound");
         _spriteRenderer.sortingOrder = 2;
         Vector3 targetScale = new Vector3(Width + 0.5f, Height + 0.5f);
         transform.DOScale(targetScale, 0.2f);

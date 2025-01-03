@@ -2,11 +2,13 @@ using System.Collections;
 using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
+using Random = System.Random;
 
 namespace _01.Scripts.SkillSystem
 {
     public class SkillUseManager : MonoBehaviour
     {
+        private Random _random;
         public static SkillUseManager Instance;
         public Coroutine CurrentSkill;
         [SerializeField] private EffectPoolType _smileBombPoolType;
@@ -15,6 +17,7 @@ namespace _01.Scripts.SkillSystem
         private void Start()
         {
             _camera = Camera.main;
+            _random = new Random();
         }
 
         private void Awake()
@@ -128,11 +131,12 @@ namespace _01.Scripts.SkillSystem
             var bomb = gameObject.Pop(_smileBombPoolType, gameObject.transform.position + new Vector3(0,1f,0), Quaternion.identity) as SimplePoolingObject;
             var rb = bomb.gameObject.GetComponent<Rigidbody2D>();
             var col = bomb.gameObject.GetComponent<Collider2D>();
+            var sparkSound = SoundManager.Instance.PlaySFX("HappyBombSpark");
             skill.isUsingSkill = true;
             float elapsedTime = 0;
             col.isTrigger = true;
             yield return new WaitForSeconds(0.1f);
-            while (!Input.GetKeyDown(KeyCode.Q) && !Input.GetMouseButtonDown(0) && elapsedTime < 8)
+            while (!Input.GetKeyDown(KeyCode.Q) && !Input.GetMouseButtonDown(0) && elapsedTime < 5)
             {
                 bomb.transform.position= gameObject.transform.position + new Vector3(0,1f,0);
                 elapsedTime += Time.deltaTime;
@@ -140,11 +144,15 @@ namespace _01.Scripts.SkillSystem
             }
             col.isTrigger = false;
             skill.isUsingSkill = false;
-            rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized * 7.5f, ForceMode2D.Impulse);
+            rb.AddForce(((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized * 5f, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
             bomb.Push();
+            sparkSound.Push();
             var ef = gameObject.Pop(EffectPoolType.SmileBumbExplosion, bomb.transform.position, Quaternion.identity);
-            ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(5);
+            
+            SoundManager.Instance.PlaySFX("HappyBombBase");
+            SoundManager.Instance.PlaySFX(_random.Next(0, 2) == 0 ? "HappyBomb1" : "HappyBomb2");
+            ef.gameObject.GetComponent<DamageCaster2D>().CastDamage(80);
             yield return new WaitForSeconds(0.3f);
             ef.Push();
         }
@@ -170,7 +178,7 @@ namespace _01.Scripts.SkillSystem
         private IEnumerator FireBall(Skill skill)
         {
             var dirvec = ((Vector2)(_camera.ScreenToWorldPoint((Vector2)Input.mousePosition) - gameObject.transform.position)).normalized;
-            Debug.Log(dirvec);
+            SoundManager.Instance.PlaySFX("FireBall");
             float deg = Mathf.Atan2(dirvec.y, dirvec.x) * Mathf.Rad2Deg;
             var ef = gameObject.Pop(EffectPoolType.FireBall, gameObject.transform.position, Quaternion.Euler(0,0,deg-90));
             var caster = ef.gameObject.GetComponent<DamageCaster2D>();
