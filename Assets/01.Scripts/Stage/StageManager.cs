@@ -33,7 +33,10 @@ public class StageManager : MonoBehaviour
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
 
         Player player = Instantiate(_player, Vector3.zero, Quaternion.identity);
+        
         _virtualCamera.m_Follow = player.transform;
+        CinemachineConfiner2D confiner = _virtualCamera.GetComponent<CinemachineConfiner2D>();
+        confiner.m_BoundingShape2D = _currentStage.cameraBounds.GetComponent<Collider2D>();
     }
 
 #if UNITY_EDITOR
