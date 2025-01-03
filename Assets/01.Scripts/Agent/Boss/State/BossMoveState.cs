@@ -68,22 +68,15 @@ public class BossMoveState : AgentState
             if ((_agentBase as Boss).playerObject == null) return;
             Debug.Log("패턴 실행");
             float dis = Vector3.Distance(_agentBase.transform.position, (_agentBase as Boss).playerObject.transform.position);
-
-            if(dis > 4.5f)
+            if (dis > 8)
             {
-                if(!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
-                else if (RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
-            }
-            else if (dis > 2)
-            {
-                if (!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
-                else if (RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
+                 _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern1);
             }
             else
             {
-                if (!RadomEventPattern()) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
-                else if (RadomEventPattern())_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
-                else if (RadomEventPattern())_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
+                if (!RadomEventPattern(10)) _agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
+                else if (RadomEventPattern(10))_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern2);
+                else if (RadomEventPattern(10))_agentBase.StateMachine.ChangeState(BossStateEnum.Pattern3);
             }
         }
         else if (patternCool > 0)
@@ -93,9 +86,9 @@ public class BossMoveState : AgentState
         }
     }
 
-    private bool RadomEventPattern()
+    private bool RadomEventPattern(int percent)
     {
-        int index = Random.Range(0, 10);
+        int index = Random.Range(0, percent);
 
         if(index == 5)
         {

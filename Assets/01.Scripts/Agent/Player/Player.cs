@@ -13,7 +13,7 @@ public class Player : Agent
     private void Awake()
     {
         //처음 State는 Idle입니다.
-        Initialize<PlayerStateEnum>();
+        Initialize<PlayerStateEnum>(); 
         
         //HealthSystem
         _healthSystem = GetComponent<HealthSystem>();

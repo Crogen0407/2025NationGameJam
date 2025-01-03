@@ -1,4 +1,5 @@
 using Crogen.AgentFSM;
+using Crogen.AgentFSM.Boss;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,57 +36,14 @@ public class BossPattern2State : AgentState
     IEnumerator Co_RaserPattern()
     {
         Boss _boss = _agentBase as Boss;
-        float originalGravity = rb.gravityScale;
-        List<int> num = new List<int>();
 
         for (int i = 0; i < _boss.raserAttackTransforms.Count; i++)
         {
-            int index = Random.Range(0, _boss.raserAttackTransforms.Count);
-
-            while (num.Contains(index))
-            {
-                index = Random.Range(0, _boss.raserAttackTransforms.Count);
-            }
-
-            num.Add(index);
-            _agentBase.transform.position = _boss.raserAttackTransforms[num[i]].position;
-            rb.gravityScale = 0;
-
-            Vector3 direction = _boss.playerObject.transform.position - _boss.transform.position;
-
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            angle = Mathf.Round(angle * 10f) / 10f;
-
-            if (_boss.playerObject.transform.position.x > _boss.transform.position.x)
-            {
-                _boss.raserEffect.transform.rotation = Quaternion.Euler(0, 180, -angle); // ¿À¸¥ÂÊ
-                yield return null;
-                _boss.raserEffect.transform.DORotate(new Vector3(0, 180, -angle + 80f), 1f);
-            }
-            else
-            {
-                _boss.raserEffect.transform.rotation = Quaternion.Euler(0, 0, angle + 180); // ¿ÞÂÊ
-                yield return null;
-                _boss.raserEffect.transform.DORotate(new Vector3(0, 0, angle - 80f), 1f);
-            }
-
-            _boss.raserEffect.SetActive(true);
-
-            int tickCount = 4;
-            float tickInterval = 2f / tickCount;
-
-            for (int tick = 0; tick < tickCount; tick++)
-            {
-                _boss.DamageCaster2D_Raser.CastDamage((int)(_boss.statSO.damage * _boss.raserDamageValue / tickCount));
-                yield return new WaitForSeconds(tickInterval);
-            }
-            _boss.raserEffect.SetActive(false);
-
-            yield return new WaitForSeconds(0.2f);
+            Raser raser = _boss.SpawnSkillObject(_boss.raserEffect, _boss.raserAttackTransforms[i], Quaternion.identity).GetComponent<Raser>();
+            raser.damage = _boss.statSO.damage;
         }
-        _boss.raserEffect.transform.rotation = Quaternion.identity;
-        rb.gravityScale = originalGravity;
+
+        yield return null;
         _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
     }
 }
