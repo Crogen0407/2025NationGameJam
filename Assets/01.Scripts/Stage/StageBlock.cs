@@ -16,14 +16,24 @@ public enum StageType
 public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameEventChannelSO _cameraEvents;
+
+    [SerializeField] private Material _redMat;
+    [SerializeField] private Material _greenMat;
+    [SerializeField] private Material _yellowMat;
+    
     private SpriteRenderer _spriteRenderer;
     private static bool _isClick;
     
+    [HideInInspector] public StageType stageType = StageType.None;
     public Tuple<Vector2Int, Vector2Int> key;
-    public StageType stageType = StageType.None;
     public bool isClear;
     public float Width { get; private set; }
     public float Height { get; private set; }
+
+    public StageLine _closetCol;
+    public StageLine _closetRow;
+    public StageLine _currentCol;
+    public StageLine _currentRow;
     
     private void Awake()
     {
@@ -33,7 +43,7 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void Init(Tuple<Vector2Int, Vector2Int> LTandRB)
     {
-        this.key = LTandRB;
+        key = LTandRB;
         Width = LTandRB.Item2.x - LTandRB.Item1.x;
         Height = Mathf.Abs(LTandRB.Item1.y - LTandRB.Item2.y);
         transform.localScale = new Vector3(Width, Height);
@@ -51,17 +61,24 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             _spriteRenderer.sortingOrder = 1;
         
         stageType = type;
+        Material material = null;
+        
         switch (type)
         {
             case StageType.Red:
-                _spriteRenderer.DOColor(new Color(200, 0, 0), Random.Range(0.5f, 2f));
+                material = _redMat;
                 break;
             case StageType.Yellow:
-                _spriteRenderer.DOColor(Color.yellow, Random.Range(0.5f, 2f));
+                material = _yellowMat;
                 break;
             case StageType.Green:
-                _spriteRenderer.DOColor(Color.green, Random.Range(0.5f, 2f));
+                material = _greenMat;
                 break;
+        }
+
+        if (material != null)
+        {
+            _spriteRenderer.material = new Material(material);
         }
     }
 
@@ -82,8 +99,7 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         float lensSize = 0.01f;
         evt.lensSize = lensSize;
 
-        StageSaveData.currentKey = key;
-        Debug.Log(StageSaveData.currentKey);
+        StageSaveData.Instance.currentKey = key;
         
         _cameraEvents.RaiseEvent(evt);
     }

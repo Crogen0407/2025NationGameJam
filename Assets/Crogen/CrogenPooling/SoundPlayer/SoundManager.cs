@@ -66,10 +66,13 @@ public class SoundManager : MonoBehaviour
             _curSoundPlayer = gameObject.Pop(SoundPoolType.SoundPlayer, Vector3.zero, Quaternion.identity) as SoundPlayer;
             if(_curSoundPlayer)
                 _curSoundPlayer.AudioSource.loop = true;
-            _curSoundPlayer.SetAudioResource(sd.clip, true, pitch);
-            
-            StartCoroutine(CoroutineFadeBGM(_oldSoundPlayer, _curSoundPlayer));
-        }
+            if (sd.clip != null)
+            {
+                _curSoundPlayer.SetAudioResource(sd.clip, true, pitch); 
+
+                StartCoroutine(CoroutineFadeBGM(_oldSoundPlayer, _curSoundPlayer));
+            }
+        }  
     }
 
     private IEnumerator CoroutineFadeBGM(SoundPlayer oldSoundPlayer, SoundPlayer curSoundPlayer)

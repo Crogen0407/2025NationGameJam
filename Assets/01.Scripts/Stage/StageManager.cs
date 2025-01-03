@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    
     [SerializeField] private List<Stage> _stages;
     private Stage _currentStage;
     
@@ -20,16 +24,19 @@ public class StageManager : MonoBehaviour
             Instance = this;
         else
             Destroy(Instance.gameObject);
-    }
-
-    private void Start()
-    {
-        StageType type = StageSaveData.blockDictionary[StageSaveData.currentKey].stageType;
+        
+        StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
 
         List<Stage> typeMatchStage = _stages.Where(x => x.type == type).ToList();
         Stage randomStage = typeMatchStage[Random.Range(0, typeMatchStage.Count)];
 
         _currentStage = Instantiate(randomStage, transform.position, Quaternion.identity);
+
+        Player player = Instantiate(_player, Vector3.zero, Quaternion.identity);
+        _currentStage.mirror.target = player.transform;
+        _virtualCamera.m_Follow = player.transform;
+        CinemachineConfiner2D confiner = _virtualCamera.GetComponent<CinemachineConfiner2D>();
+        confiner.m_BoundingShape2D = _currentStage.cameraBounds.GetComponent<Collider2D>();
     }
 
 #if UNITY_EDITOR
@@ -43,7 +50,7 @@ public class StageManager : MonoBehaviour
             FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
             fadeEvt.isFadeIn = true;
 
-            StageSaveData.isEnd = true;
+            StageSaveData.Instance.isReset = true;
             _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
             _systemEventChannel.RaiseEvent(fadeEvt);
         }
@@ -63,7 +70,7 @@ public class StageManager : MonoBehaviour
         FadeScreenEvent fadeEvt = SystemEvents.FadeScreenEvent;
         fadeEvt.isFadeIn = true;
 
-        StageSaveData.blockDictionary[StageSaveData.currentKey].isClear = true;
+        StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].isClear = true;
         _systemEventChannel.AddListener<FadeComplete>(HandleFadeComplete);
         _systemEventChannel.RaiseEvent(fadeEvt);
     }

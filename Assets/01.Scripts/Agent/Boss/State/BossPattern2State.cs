@@ -1,7 +1,10 @@
 using Crogen.AgentFSM;
+using Crogen.AgentFSM.Boss;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class BossPattern2State : AgentState
 {
@@ -9,9 +12,13 @@ public class BossPattern2State : AgentState
     {
     }
 
+    private Rigidbody2D rb;
+
     public override void Enter()
     {
         base.Enter();
+        rb = _agentBase.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
         _agentBase.StartCoroutine(Co_RaserPattern());
         Debug.Log("2번 패턴 실행");
     }
@@ -28,26 +35,15 @@ public class BossPattern2State : AgentState
 
     IEnumerator Co_RaserPattern()
     {
-        int attackCount = Random.Range(1, 4);
         Boss _boss = _agentBase as Boss;
 
-        for (int i = 0; i < attackCount; i++)
+        for (int i = 0; i < _boss.raserAttackTransforms.Count; i++)
         {
-            _boss.raserEffect.SetActive(true);
-
-            int tickCount = 4;
-            float tickInterval = 2f / tickCount;
-
-            for (int tick = 0; tick < tickCount; tick++)
-            {
-                _boss.DamageCaster2D_Raser.CastDamage((int)(_boss.statSO.damage * _boss.raserDamageValue / tickCount));
-                yield return new WaitForSeconds(tickInterval);
-            }
-            _boss.raserEffect.SetActive(false);
-
-            yield return new WaitForSeconds(2f);
-            _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
+            Raser raser = _boss.SpawnSkillObject(_boss.raserEffect, _boss.raserAttackTransforms[i], Quaternion.identity).GetComponent<Raser>();
+            raser.damage = _boss.statSO.damage;
         }
-    }
 
+        yield return null;
+        _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
+    }
 }

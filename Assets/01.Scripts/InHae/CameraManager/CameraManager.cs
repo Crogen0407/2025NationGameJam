@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
-    public UnityEvent _sceneLoadEvent;
-    
     [SerializeField] private GameEventChannelSO _cameraEventChannel;
     [SerializeField] private GameEventChannelSO _systemEventChannel;
     [SerializeField] private string _nextSceneName;
@@ -57,7 +55,6 @@ public class CameraManager : MonoBehaviour
 
     private void HandleFadeComplete(FadeComplete obj)
     {
-        _sceneLoadEvent?.Invoke();
         _systemEventChannel.RemoveListener<FadeComplete>(HandleFadeComplete);
         SceneManager.LoadScene(_nextSceneName);
     }

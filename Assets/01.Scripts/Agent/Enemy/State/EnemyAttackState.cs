@@ -9,12 +9,15 @@ public class EnemyAttackState : AgentState
     public EnemyAttackState(Agent agentBase, StateMachine stateMachine, string animBoolName) : base(agentBase, stateMachine, animBoolName)
     {
     }
+    private readonly int hashAttack = Animator.StringToHash("Attack");
+
 
     public override void Enter()
     {
         // 공격
         Debug.Log("공격가능");
         base.Enter();
+        _agentBase.Movement.StopImmediately();
     }
 
     public override void UpdateState()
@@ -23,6 +26,7 @@ public class EnemyAttackState : AgentState
 
         base.UpdateState();
         float dis = (enemy).ClacPlayerDistance();
+        _agentBase.Movement.StopImmediately();
 
         if (enemy.playerObject == null || Mathf.Abs(dis) > Mathf.Abs(enemy.playerAttackDistance))
         {
@@ -30,15 +34,18 @@ public class EnemyAttackState : AgentState
         }
         else if (enemy.currentAttackDelay <= 0)
         {
-            _agentBase.Movement.StopImmediately();
+            
             enemy.InitAttackDelay();
             Turn(dis);
-            enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
+            //enemy.DamageCaster2D.CastDamage((int)enemy.statSO.damage);
+            _agentBase.Animator.SetBool(hashAttack, true);
         }
     }
 
     public override void Exit()
     {
+        _agentBase.Animator.SetBool(hashAttack, false);
+
         base.Exit();
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using Crogen.AgentFSM;
 using Crogen.HealthSystem;
 using DG.Tweening;
+using UnityEditor.Rendering;
 
 public class Boss : Agent
 {
@@ -19,8 +20,11 @@ public class Boss : Agent
     public float currentAttackDelay { get; private set; }
 
     [field: SerializeField] public DamageCaster2D DamageCaster2D_Raser { get; private set; }
-    [field: SerializeField] public GameObject raserEffect { get; private set; }
+    [field: SerializeField] public GameObject raserEffect { get; set; }
     [field: SerializeField] public float raserDamageValue { get; private set; }
+    [field: SerializeField] public List<Transform> raserAttackTransforms { get; private set; }
+    private float maxRaserCool = 20f;
+    private float currentRaserCool;
 
     [field: SerializeField] public DamageCaster2D DamageCaster2D_Ground { get; private set; }
     [field: SerializeField] public GameObject groundEffect { get; private set; }
@@ -46,6 +50,15 @@ public class Boss : Agent
     {
         base.Update();
         FindPlayer();
+        if(currentRaserCool > 0)
+        {
+            currentRaserCool -= Time.deltaTime;
+        }
+        else if(currentRaserCool <= 0)
+        {
+            StateMachine.ChangeState(BossStateEnum.Pattern2, true);
+            currentRaserCool = maxRaserCool;
+        }
     }
 
     public float ClacPlayerDistance()
@@ -74,5 +87,10 @@ public class Boss : Agent
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerAttackDistance);
+    }
+
+    public GameObject SpawnSkillObject(GameObject spawnObject, Transform spawnPos, Quaternion spawnRotation)
+    {
+        return Instantiate(spawnObject, spawnPos.position, spawnRotation);
     }
 }
