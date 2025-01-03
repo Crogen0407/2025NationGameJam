@@ -29,6 +29,8 @@ public class HeartManager : MonoBehaviour
     private bool _isInit;
     private Coroutine _coroutine;
 
+    private HeartPart _currentHeart;
+
     private void Awake()
     {
         if (mainCamera == null)
@@ -78,16 +80,20 @@ public class HeartManager : MonoBehaviour
         if (hit.collider != null)
         {
             Color color = GetStageColor();
-            
-            if (hit.collider.gameObject.CompareTag("HeartPice"))
+
+            if (hit.collider.TryGetComponent(out HeartPart heartPart))
             {
                 for (int i = 0; i < heartPiece.Count; i++)
                 {
                     var heart = heartPiece[i];
+                    
                     if (heart.heartPiece == hit.collider.gameObject)
                     {
                         if (heart.pieceColor != Color.white)
                             return;
+                        _currentHeart = heartPart;
+                        HeartPart.isClick = true;
+                        _currentHeart.SmallSize();
                         
                         HeartDataManager.instance.SaveColor(color, i);
                         int currentClearCnt = HeartDataManager.instance.heartColorList.Count(x => x != Color.white);
@@ -98,7 +104,7 @@ public class HeartManager : MonoBehaviour
                         }
                         else
                         {
-                            PaintColor(hit.collider.gameObject, color, ()=>
+                            PaintColor(hit.collider.gameObject, color, () =>
                             {
                                 if (ModeManager.Instance._isNewSkill)
                                 {
@@ -106,6 +112,7 @@ public class HeartManager : MonoBehaviour
                                         () => GetSkillUIManager.Instance.Show(StageSaveData.Instance.currentStage
                                             .stageType));
                                 }
+
                                 StartDisable();
                             });
                         }
