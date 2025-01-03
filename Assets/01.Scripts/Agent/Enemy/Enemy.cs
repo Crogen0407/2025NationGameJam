@@ -1,4 +1,5 @@
 using Crogen.AgentFSM;
+using Crogen.CrogenPooling;
 using Crogen.HealthSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -77,6 +78,6 @@ public class Enemy : Agent
 
     public void Die()
     {
-        Animator.SetBool("Die", true);
+        StateMachine.ChangeState(EnemyStateEnum.Die, true);
     }
 }
