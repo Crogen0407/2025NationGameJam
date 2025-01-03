@@ -70,7 +70,7 @@ MonoBehaviour:
   _jumpPower: 15
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   _groundCheckSize: {x: 0.4, y: 0.25}
   <JumpCount>k__BackingField: 1
 --- !u!114 &7971180975089434342

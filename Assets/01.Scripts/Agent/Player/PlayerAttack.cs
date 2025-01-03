@@ -22,6 +22,11 @@ public class PlayerAttack : MonoBehaviour
         InputReader.AttackEvent += OnAttack;
     }
 
+    private void OnDestroy()
+    {
+        InputReader.AttackEvent -= OnAttack;
+    }
+
     private void Update()
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(InputReader.MousePosition) - transform.position;
