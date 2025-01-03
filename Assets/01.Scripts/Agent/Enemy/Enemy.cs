@@ -18,6 +18,7 @@ public class Enemy : Agent
     [field: SerializeField] public float playerAttackDistance { get; private set; }
     public float currentAttackDelay { get; private set; }
     [field: SerializeField] public EffectPoolType AttackEffectPoolType;
+    [SerializeField] private DefaultHealthSystem _healthSystem;
 
     private void Awake()
     {
@@ -25,8 +26,13 @@ public class Enemy : Agent
         Initialize<EnemyStateEnum>();
 
         playerObject = null;
+        _healthSystem.dieEvent.AddListener(OnDie);
     }
 
+    private void OnDie()
+    {
+        StateMachine.ChangeState(PlayerStateEnum.Die, true);
+    }
     protected override void Start()
     {
         base.Start();
@@ -76,11 +82,6 @@ public class Enemy : Agent
         currentAttackDelay = statSO.attackDelay;
     }
 
-    public void Die()
-    {
-        StateMachine.ChangeState(EnemyStateEnum.Die, true);
-    }
-    
     public void HitSound()
     {
         SoundManager.Instance.PlaySFX("PlayerHitSound");

@@ -267,6 +267,7 @@ MonoBehaviour:
     m_Bits: 64
   <playerAttackDistance>k__BackingField: 1.98
   AttackEffectPoolType: 5
+  _healthSystem: {fileID: 0}
 --- !u!114 &1710628683634260745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,19 +305,7 @@ MonoBehaviour:
         m_CallState: 2
   dieEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6717157918657998081}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: Die
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7648653923838076312
 MonoBehaviour:
   m_ObjectHideFlags: 0
