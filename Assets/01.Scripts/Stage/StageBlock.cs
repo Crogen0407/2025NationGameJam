@@ -41,6 +41,8 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _isClick = false;
+        
+        _spriteRenderer.color = Color.gray;
     }
 
     public void Init(Tuple<Vector2Int, Vector2Int> LTandRB)
@@ -53,6 +55,8 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void SetType(StageType type)
     {
+        _spriteRenderer.color = type == StageType.None ? Color.gray : Color.white;
+        
         if (isClear)
         {
             _spriteRenderer.DOColor(Color.gray, Random.Range(1f, 2f));
