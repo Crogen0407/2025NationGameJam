@@ -24,6 +24,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(StageSaveData.Instance.blockDictionary.Count);
         StageType type = StageSaveData.Instance.blockDictionary[StageSaveData.Instance.currentKey].stageType;
 
         List<Stage> typeMatchStage = _stages.Where(x => x.type == type).ToList();

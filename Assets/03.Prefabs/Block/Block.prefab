@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a12396b1842db4748b1ba2aac0c1af1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,18 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraEvents: {fileID: 11400000, guid: 85502a1cb540619409c55ecce2eb88f1, type: 2}
-  _colLine:
-    startPoint: {x: 0, y: 0}
-    endPoint: {x: 0, y: 0}
-  _rowLine:
-    startPoint: {x: 0, y: 0}
-    endPoint: {x: 0, y: 0}
-  _currentRow:
-    startPoint: {x: 0, y: 0}
-    endPoint: {x: 0, y: 0}
-  _currentCol:
-    startPoint: {x: 0, y: 0}
-    endPoint: {x: 0, y: 0}
+  stageType: 0
+  isClear: 0
 --- !u!61 &1594397549270881596
 BoxCollider2D:
   m_ObjectHideFlags: 0
