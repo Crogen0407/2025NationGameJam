@@ -1,18 +1,82 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.PowerfulInput;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseModal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   [SerializeField] private GameObject backGround;
+   [SerializeField] private GameObject panel;
+   [SerializeField] private Animator anim;
+   [SerializeField] private Slider volumeSlider;
+   [SerializeField] private Slider frameSlider;
+   [SerializeField] private TextMeshProUGUI maxFrameText;
+   private bool _isUiOn = false;
+   
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   private void Awake()
+   {
+      backGround.GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 0f);
+      panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-3000f, 0f);
+      volumeSlider.onValueChanged.AddListener(OnVolumeChange);
+      frameSlider.onValueChanged.AddListener(OnFrameChange);
+   }
+
+   private void Update()
+   {
+      if(Input.GetKeyDown(KeyCode.Escape))
+      {
+         if (_isUiOn)
+            PauseOff();
+         else
+            PauseOn();
+         
+      }
+   }
+
+   private static void OnVolumeChange(float volume)
+   {
+      //todo: 사운드 매니저의 볼륨 조절
+   }
+
+   private void OnFrameChange(float frame)
+   {
+      Application.targetFrameRate = (int)frame * 15;
+      maxFrameText.text = ((int)frame * 15).ToString();
+   }
+
+   public void OnExit()
+   {
+      //todo: 저장하다
+      throw new NotImplementedException();
+      SceneManager.LoadScene("타이틀덩어리");//todo: 타이틀을 찾다
+   }
+
+   public void OnBackToTheScene()
+   {
+      PauseOff();
+   }
+
+   public void PauseOn()
+   {
+      backGround.SetActive(true);
+      _isUiOn = true; 
+      backGround.GetComponent<Image>().DOFade(0.4f, 1f);
+      panel.GetComponent<RectTransform>().DOAnchorPosX(0, 1f).OnComplete(()=>Time.timeScale = 0f);
+   }
+
+   public void PauseOff()
+   {
+      _isUiOn = false;
+      Time.timeScale = 1;
+      backGround.GetComponent<Image>().DOFade(0f, 0.1f).OnComplete(()=>backGround.SetActive(false));
+      panel.GetComponent<RectTransform>().DOAnchorPosX(-3000f, 0.5f);
+   }
+   
 }
