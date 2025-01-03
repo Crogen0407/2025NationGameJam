@@ -11,7 +11,7 @@ namespace Crogen.PowerfulInput
 
         public event Action<Vector2, bool> MoveEvent;
         public event Action DashEvent;
-        public event Action JumpEvent;
+        public Action JumpEvent;
         public event Action AttackEvent;
 
         #endregion
