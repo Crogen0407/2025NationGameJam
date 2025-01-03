@@ -28,6 +28,7 @@ public class HeartPart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if(_spriteRenderer.color != Color.white)
             return;
 
+        SoundManager.Instance.PlaySFX("OnButtonSound");
         _spriteRenderer.sortingOrder = 1;
         Vector3 targetScale = new Vector3(_defaultScale.x + 0.25f, _defaultScale.y + 0.25f);
         transform.DOScale(targetScale, 0.1f);

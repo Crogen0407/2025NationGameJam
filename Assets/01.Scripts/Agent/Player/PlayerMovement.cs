@@ -1,3 +1,4 @@
+using System;
 using Crogen.AgentFSM;
 using Crogen.AgentFSM.Movement;
 using UnityEngine;
@@ -26,6 +27,10 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
         _rigidbody = GetComponent<Rigidbody2D>(); 
     }
 
+    private void OnDestroy()
+    {
+    }
+
     private void Update()
     {
         if (IsGround == false && _curJumpCount == 0)
@@ -41,7 +46,7 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
 
     private void GroundCheck()
     {
-        IsGround = Physics2D.BoxCast(transform.position, _groundCheckSize, 0, Vector2.zero, 0, _whatIsGround);
+        IsGround = Physics2D.BoxCast(transform.position, _groundCheckSize, 0, Vector2.zero, 0, _whatIsGround).collider != null;
         if (IsGround && _curJumpCount > 0) _curJumpCount = 0;
     }
     
@@ -75,10 +80,10 @@ public class PlayerMovement : MonoBehaviour, IGroundMovement2D
         if(_curJumpCount == 0)
             GroundCheck();
         if (IsGround == false) return;
-        SoundManager.Instance.PlaySFX("Jump");
         ++_curJumpCount;
         StopFallingImmediately();
         _rigidbody.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
+        SoundManager.Instance.PlaySFX("Jump");
     }
     
     public void GetKnockback(Vector3 force)

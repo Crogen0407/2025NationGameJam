@@ -1816,6 +1816,7 @@ GameObject:
   - component: {fileID: 1484158545}
   - component: {fileID: 1484158544}
   - component: {fileID: 1484158543}
+  - component: {fileID: 1484158548}
   m_Layer: 0
   m_Name: CinemachineBrain
   m_TagString: MainCamera
@@ -1983,6 +1984,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1484158548
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484158542}
+  m_Enabled: 1
 --- !u!1 &1491282689
 GameObject:
   m_ObjectHideFlags: 0

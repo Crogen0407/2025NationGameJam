@@ -22,6 +22,7 @@ public class PlayerGroundState : AgentState
 
     private void OnJump()
     {
+        if (_playerMovement == null) return;
         _playerMovement.OnJump();
         _stateMachine.ChangeState(PlayerStateEnum.Jump);
     }

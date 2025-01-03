@@ -11,6 +11,8 @@ public class EnemyDieState : AgentState
     public override void Enter()
     {
         base.Enter();
+        EnemyMovement enemyMovement = _agentBase.GetComponent<EnemyMovement>();
+        enemyMovement.enabled = false;
     }
 
     public override void Exit()

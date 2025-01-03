@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
             if (sd.type != SoundType.BGM) return;
             
             //사운드 재생
-            _oldSoundPlayer = _curSoundPlayer;
+            _oldSoundPlayer = _curSoundPlayer; 
             _curSoundPlayer = gameObject.Pop(SoundPoolType.SoundPlayer, Vector3.zero, Quaternion.identity) as SoundPlayer;
             if(_curSoundPlayer)
                 _curSoundPlayer.AudioSource.loop = true;

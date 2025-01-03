@@ -46,6 +46,7 @@ public class GetSkillUIManager : MonoBehaviour
                 break;
         }
 
+        SoundManager.Instance.PlaySFX("SkillGetSound");
         ModeManager.Instance._isNewSkill = false;
         _group.DOFade(1f, 0.3f);
         DOVirtual.DelayedCall(2f, () => _group.DOFade(0f, 0.3f));

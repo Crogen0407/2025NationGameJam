@@ -32,7 +32,8 @@ public class CameraManager : MonoBehaviour
         _isZoomIn = true;
 
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(evt.targetPos, evt.moveTime));
+        sequence.Append(transform.DOMove(evt.targetPos, evt.moveTime)
+            .OnComplete(() => SoundManager.Instance.PlaySFX("ZoomIn")));
         sequence.AppendInterval(0.7f);
         sequence.Append(DOTween.To(() => _vCam.m_Lens.OrthographicSize, f => _vCam.m_Lens.OrthographicSize = f,
             evt.lensSize, evt.zoomInTime));
