@@ -12,10 +12,6 @@ public class Raser : MonoBehaviour
     [SerializeField] private EffectPoolType raserEffect;
     [SerializeField] private Transform effectPos;
 
-    private void Awake()
-    {
-        damageCaster = GetComponentInChildren<DamageCaster2D>();
-    }
 
     private void Start()
     {
@@ -28,6 +24,7 @@ public class Raser : MonoBehaviour
 
         SimplePoolingObject raser = gameObject.Pop(raserEffect, effectPos) as SimplePoolingObject;
         raser.transform.localRotation = Quaternion.Euler(0, 0, 90);
+        damageCaster = GetComponentInChildren<DamageCaster2D>();
     }
 
     void Update()
@@ -41,7 +38,7 @@ public class Raser : MonoBehaviour
         {
             Debug.Log("레이자피해");
             damageCaster.CastDamage((int)(damage * raserValue));
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

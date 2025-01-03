@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raser
       objectReference: {fileID: 0}
+    - target: {fileID: 8012562394254487388, guid: 4d87356976a82e444a0408bfe90c87ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -585,18 +589,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4252828393347493651, guid: e489aac59b0f03447b410aec19d55270, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4252828393347493651, guid: e489aac59b0f03447b410aec19d55270, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 4827350799703300779, guid: e489aac59b0f03447b410aec19d55270, type: 3}
-      propertyPath: AttackEffectPoolType
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7281456342366157898, guid: e489aac59b0f03447b410aec19d55270, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51780814
@@ -638,8 +630,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5945744673939298903, guid: e489aac59b0f03447b410aec19d55270, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e489aac59b0f03447b410aec19d55270, type: 3}
@@ -884,10 +875,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2
       objectReference: {fileID: 0}
-    - target: {fileID: 1560828531549358616, guid: 338143f5f062eb143966b4216f42cf37, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8656516771937042984, guid: 338143f5f062eb143966b4216f42cf37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1021,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5183378318843700155, guid: ba36846fde3e5a048baaa6cae9dd25e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9023520264236823032, guid: ba36846fde3e5a048baaa6cae9dd25e3, type: 3}
       propertyPath: <raserAttackTransforms>k__BackingField.Array.data[0]

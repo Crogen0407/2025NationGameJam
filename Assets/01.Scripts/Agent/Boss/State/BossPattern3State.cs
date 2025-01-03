@@ -1,4 +1,5 @@
 using Crogen.AgentFSM;
+using Crogen.CrogenPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,11 +34,12 @@ public class BossPattern3State : AgentState
     IEnumerator Co_FrontAttack()
     {
         Boss boss = _agentBase as Boss;
+        SimplePoolingObject effect = boss.gameObject.Pop(boss.frontAttack, boss.frontPos) as SimplePoolingObject;
         _agentBase.Animator.SetBool(hashPattern3, true);
-        boss.frontAttack.SetActive(true);
         boss.DamageCoster2D_Front.CastDamage((int)(boss.statSO.damage * frontAttackValue));
-        yield return new WaitForSeconds(1);
-        boss.frontAttack.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+        effect.Push();
+        yield return new WaitForSeconds(0.6f);
         _agentBase.Animator.SetBool(hashPattern3, false);
         _agentBase.StateMachine.ChangeState(BossStateEnum.Idle);
     }
