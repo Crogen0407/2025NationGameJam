@@ -1,16 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Crogen.PowerfulInput;
 using DG.Tweening;
 using TMPro;
-using UnityEditor.PackageManager;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PauseModal : MonoBehaviour
