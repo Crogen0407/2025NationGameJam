@@ -57,14 +57,6 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void SetType(StageType type)
     {
-        _spriteRenderer.color = type == StageType.None ? Color.gray : Color.white;
-        
-        if (isClear)
-        {
-            _spriteRenderer.DOColor(Color.gray, Random.Range(1f, 2f));
-            return;
-        }
-
         if (type != StageType.None)
             _spriteRenderer.sortingOrder = 1;
         
@@ -86,6 +78,9 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 material = _blueMat;
                 break;
         }
+        
+        if (isClear)
+            material = _garyMat;
 
         if (material != null)
             _spriteRenderer.material = new Material(material);
