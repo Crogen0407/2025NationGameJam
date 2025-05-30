@@ -301,6 +301,9 @@ MonoBehaviour:
   - name: EnemyDieSound
     type: 1
     clip: {fileID: 8300000, guid: e97ce1be77c2ca645b338048314e1420, type: 3}
+  - name: HappyBombSpark
+    type: 1
+    clip: {fileID: 8300000, guid: 599969ccee8821c4ba04179dc41bad4d, type: 3}
 --- !u!1 &220473782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,41 +1991,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d01c47b272aac24cb6f29bf72d5d339, type: 2}
   - {fileID: 11400000, guid: 70fc0bf0320d7524fbc1fb75bff7bc1a, type: 2}
   poolingPairs:
-  - poolType: WaterBeam
-    prefab: {fileID: 6106071834417346636, guid: 5b2fcac9d2977334aa575b18fc1a6bce, type: 3}
-    poolCount: 2
-  - poolType: FireBall
-    prefab: {fileID: 525850294450694971, guid: 1a7a220ed8f80cf4aa4b41cb642820f8, type: 3}
-    poolCount: 2
-  - poolType: SpikeEffect
-    prefab: {fileID: 1152448957404086859, guid: 8fc279a2b767a1e4fba46271281675b2, type: 3}
-    poolCount: 1
-  - poolType: SmileBumbExplosion
-    prefab: {fileID: 4229150000124977012, guid: 711780af6be00eb4c96ecdb112e0d605, type: 3}
-    poolCount: 5
-  - poolType: EnemyAttackEffect01
-    prefab: {fileID: 7851577568200583709, guid: ffa17411e94b4504e84d316513c8b1c5, type: 3}
-    poolCount: 8
-  - poolType: EnemyAttackEffect02
-    prefab: {fileID: 6258251917275545398, guid: c8fbd00b30157c043a2051ad0edcbd9b, type: 3}
-    poolCount: 8
-  - poolType: EnemyAttackEffect03
-    prefab: {fileID: 5541027382828644563, guid: e6124f786fb9a8d46bb88b7d23b9289a, type: 3}
-    poolCount: 8
-  - poolType: DarknessBeam
-    prefab: {fileID: 4052461292184501366, guid: d4558d4678bbb2445b57a633682f7422, type: 3}
-    poolCount: 8
-  - poolType: BossLandingEffect
-    prefab: {fileID: 1622956734090727241, guid: b03e8bdc51f790444a8748577ccff6ea, type: 3}
-    poolCount: 2
-  - poolType: BossFrontAttackEffect
-    prefab: {fileID: 7815850466813602163, guid: ff0ee39fec7050741b0f06dbd98a853e, type: 3}
-    poolCount: 2
-  - poolType: SmileBumb
-    prefab: {fileID: 4523144011223639228, guid: 27efa3753cf81644799e00daae115a81, type: 3}
-    poolCount: 1
-  - poolType: PlayerBulletExplosionEffect
-    prefab: {fileID: 6774912552023532700, guid: 757c27d4847d4d34597140754ce4b8c8, type: 3}
+  - poolType: SoundPlayer
+    prefab: {fileID: 1598646136496023633, guid: 759661f82fd32e24eb329c60f21b235f, type: 3}
     poolCount: 20
 --- !u!4 &1594783518
 Transform:

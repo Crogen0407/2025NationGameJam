@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bae846923339e74b88492b6fdc4c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isNewSkill: 0
+  holdingPlayerModes: 
   PlayerModes:
   - modeInfo: {fileID: 11400000, guid: 8ce51588067e4824fbaea46b8c35b91c, type: 2}
     skillInstance:
@@ -110,7 +112,7 @@ MonoBehaviour:
       currentSkillGauge: 0
       gaugeSkillChargeSpeed: 0
       doGaugeSkillCharge: 1
-  - modeInfo: {fileID: 0}
+  - modeInfo: {fileID: 11400000, guid: d621389345046594ea33f5193261e6c6, type: 2}
     skillInstance:
       modeType: 0
       skillName: 

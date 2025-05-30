@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 8666030248292844121}
   - component: {fileID: 3984199387355943413}
   - component: {fileID: 3093414341637015354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d63ed3b4335db4cbe4d5cd4a40b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  maxHp: 100
+  _hp: 400
+  maxHp: 400
   hpChangeEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -55,3 +55,6 @@ MonoBehaviour:
   - name: EnemyDieSound
     type: 1
     clip: {fileID: 8300000, guid: e97ce1be77c2ca645b338048314e1420, type: 3}
+  - name: HappyBombSpark
+    type: 1
+    clip: {fileID: 8300000, guid: 599969ccee8821c4ba04179dc41bad4d, type: 3}

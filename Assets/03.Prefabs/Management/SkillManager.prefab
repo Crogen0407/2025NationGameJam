@@ -101,15 +101,15 @@ MonoBehaviour:
     gaugeSkillChargeSpeed: 0.25
     doGaugeSkillCharge: 1
   - modeType: 5
-    skillName: 
-    skillSprite: {fileID: 0}
-    skillTime: 0
+    skillName: "\uAC00\uC2DC!!"
+    skillSprite: {fileID: 21300000, guid: 46c72f5388b24fe469be00c27144fae7, type: 3}
+    skillTime: 0.3
     currentSkillTime: 0
     isUsingSkill: 0
-    isGaugeSkill: 0
-    skillGauge: -1
+    isGaugeSkill: 1
+    skillGauge: 5
     currentSkillGauge: 0
-    gaugeSkillChargeSpeed: 0
+    gaugeSkillChargeSpeed: 0.25
     doGaugeSkillCharge: 1
   - modeType: 6
     skillName: 

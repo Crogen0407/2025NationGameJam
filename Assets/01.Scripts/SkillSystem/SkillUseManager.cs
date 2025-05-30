@@ -57,6 +57,7 @@ namespace _01.Scripts.SkillSystem
                     StartCoroutine(FireBall(skill));
                     break;
                 case ModeEnum.Green:
+                    StartCoroutine(Spike(skill));
                     Debug.Log("초록스킬사용~");
                     break;
             }
