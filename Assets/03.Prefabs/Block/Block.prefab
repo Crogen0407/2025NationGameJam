@@ -103,6 +103,7 @@ MonoBehaviour:
   _greenMat: {fileID: 2100000, guid: f953879b473b089428705a75514bd9d5, type: 2}
   _yellowMat: {fileID: 2100000, guid: 477350320479acf488a3d36933181ab6, type: 2}
   _blueMat: {fileID: 2100000, guid: dda38e34409032d468b690ac759f994a, type: 2}
+  _garyMat: {fileID: 2100000, guid: 6337afd5b9550954bae5b3cf072684b1, type: 2}
   stageType: 0
   isClear: 0
   _closetCol:

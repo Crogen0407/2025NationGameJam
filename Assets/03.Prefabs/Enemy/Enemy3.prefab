@@ -267,7 +267,7 @@ MonoBehaviour:
     m_Bits: 64
   <playerAttackDistance>k__BackingField: 1.98
   AttackEffectPoolType: 5
-  _healthSystem: {fileID: 0}
+  _healthSystem: {fileID: 1710628683634260745}
 --- !u!114 &1710628683634260745
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,23 +41,24 @@ public class StageGenerator : MonoBehaviour
 
     private void Awake()
     {
-        
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+        
+        Random.InitState(DateTime.Now.Millisecond);
     }
 
     private void Start()
     {
         SoundManager.Instance.PlayBGM("StageSelectScene");
-        
     }
 
     public void SaveOrLoad()
     {
         if (!StageSaveData.Instance.isSave || StageSaveData.Instance.isReset)
         {
+            Debug.Log("Afaf");
             StageGenerate();
             StageSaveData.Instance.isSave = true;
             StageSaveData.Instance.isReset = false;
@@ -65,6 +66,7 @@ public class StageGenerator : MonoBehaviour
         }
         else
         {
+            Debug.Log("Afaf");
             _blockDictionary = StageSaveData.Instance.blockDictionary;
             LoadStage();
         }

@@ -77,47 +77,44 @@ public class HeartManager : MonoBehaviour
         
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         
-        if (hit.collider != null)
+        if (!hit.collider.TryGetComponent(out HeartPart heartPart))
+            return;
+        
+        Color color = GetStageColor();
+        for (int i = 0; i < heartPiece.Count; i++)
         {
-            Color color = GetStageColor();
-
-            if (hit.collider.TryGetComponent(out HeartPart heartPart))
+            var heart = heartPiece[i];
+             
+            if (heart.heartPiece == hit.collider.gameObject)
             {
-                for (int i = 0; i < heartPiece.Count; i++)
+                if (heart.pieceColor != Color.white)
+                    return;
+                
+                SoundManager.Instance.PlaySFX("ButtonClick");
+                _currentHeart = heartPart;
+                HeartPart.isClick = true;
+                _currentHeart.SmallSize();
+                
+                HeartDataManager.instance.SaveColor(color, i);
+                int currentClearCnt = HeartDataManager.instance.heartColorList.Count(x => x != Color.white);
+                // 하트 다 채웠을 때
+                if (currentClearCnt == heartPiece.Count)
                 {
-                    var heart = heartPiece[i];
-                     
-                    if (heart.heartPiece == hit.collider.gameObject)
+                    PaintColor(hit.collider.gameObject, color, StartBlackHeart);
+                }
+                else
+                {
+                    PaintColor(hit.collider.gameObject, color, () =>
                     {
-                        if (heart.pieceColor != Color.white)
-                            return;
-                        SoundManager.Instance.PlaySFX("ButtonClick");
-                        _currentHeart = heartPart;
-                        HeartPart.isClick = true;
-                        _currentHeart.SmallSize();
-                        
-                        HeartDataManager.instance.SaveColor(color, i);
-                        int currentClearCnt = HeartDataManager.instance.heartColorList.Count(x => x != Color.white);
-                        // 하트 다 채웠을 때
-                        if (currentClearCnt == heartPiece.Count)
+                        if (ModeManager.Instance._isNewSkill)
                         {
-                            PaintColor(hit.collider.gameObject, color, StartBlackHeart);
+                            DOVirtual.DelayedCall(0.3f,
+                                () => GetSkillUIManager.Instance.Show(StageSaveData.Instance.currentStage
+                                    .stageType));
                         }
-                        else
-                        {
-                            PaintColor(hit.collider.gameObject, color, () =>
-                            {
-                                if (ModeManager.Instance._isNewSkill)
-                                {
-                                    DOVirtual.DelayedCall(0.3f,
-                                        () => GetSkillUIManager.Instance.Show(StageSaveData.Instance.currentStage
-                                            .stageType));
-                                }
 
-                                StartDisable();
-                            });
-                        }
-                    }
+                        StartDisable();
+                    });
                 }
             }
         }

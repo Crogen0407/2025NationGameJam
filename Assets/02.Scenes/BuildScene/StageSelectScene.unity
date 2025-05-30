@@ -333,10 +333,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseStageBlock: {fileID: -8116227841073494077, guid: 554c204887be9b64d8e85603550b6c44, type: 3}
-  _sliceCount: 24
-  _stageCount: 24
-  _width: 12
-  _height: 12
+  _sliceCount: 15
+  _stageCount: 15
+  _width: 10
+  _height: 10
 --- !u!4 &255769571
 Transform:
   m_ObjectHideFlags: 0
