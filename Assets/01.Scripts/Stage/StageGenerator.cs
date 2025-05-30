@@ -58,7 +58,6 @@ public class StageGenerator : MonoBehaviour
     {
         if (!StageSaveData.Instance.isSave || StageSaveData.Instance.isReset)
         {
-            Debug.Log("Afaf");
             StageGenerate();
             StageSaveData.Instance.isSave = true;
             StageSaveData.Instance.isReset = false;
@@ -66,7 +65,6 @@ public class StageGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("Afaf");
             _blockDictionary = StageSaveData.Instance.blockDictionary;
             LoadStage();
         }

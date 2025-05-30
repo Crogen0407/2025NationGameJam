@@ -1653,7 +1653,7 @@ MonoBehaviour:
     currentSkillTime: 0
     isUsingSkill: 0
     isGaugeSkill: 1
-    skillGauge: 30
+    skillGauge: 7
     currentSkillGauge: 0
     gaugeSkillChargeSpeed: 1
     doGaugeSkillCharge: 1

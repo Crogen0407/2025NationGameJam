@@ -6,26 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/02.Scenes/BuildScene/TitleScene.unity
+    guid: 27e7d1d8967121f47b8b45cc8913cb2a
+  - enabled: 1
     path: Assets/02.Scenes/BuildScene/GameScene.unity
     guid: a9649ec3de3b78e4d8d4a622713f3a63
   - enabled: 1
-    path: Assets/02.Scenes/YounghwanScene.unity
-    guid: da94f9192e3c26e4a83dae6e2c8ada2f
-  - enabled: 1
-    path: Assets/02.Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/02.Scenes/InHae.unity
-    guid: 15f0299ba9709a847baf0ccc358f008c
-  - enabled: 1
     path: Assets/02.Scenes/BuildScene/StageSelectScene.unity
     guid: b84ed2a807230334eac6607e1d9c0cd9
-  - enabled: 1
-    path: Assets/02.Scenes/InHae2.unity
-    guid: 00321badc71637044bf46e8eedb2fc82
-  - enabled: 1
-    path: Assets/02.Scenes/BuildScene/TitleScene.unity
-    guid: 27e7d1d8967121f47b8b45cc8913cb2a
   - enabled: 1
     path: Assets/02.Scenes/BuildScene/DeadScene.unity
     guid: b8969e99bbfbcc2408dba82e6ded8348
