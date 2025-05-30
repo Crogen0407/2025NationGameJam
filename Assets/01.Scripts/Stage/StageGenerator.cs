@@ -185,7 +185,7 @@ public class StageGenerator : MonoBehaviour
                     stageBlock.Init(LTAndRB);
 
                     stageBlock._currentCol = currentCol;
-                    stageBlock._closetRow = currentRow;
+                    stageBlock._currentRow = currentRow;
                     stageBlock._closetCol = closetColLine;
                     stageBlock._closetRow = closetRowLine;
                     
