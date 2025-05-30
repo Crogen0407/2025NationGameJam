@@ -23,6 +23,7 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     [SerializeField] private Material _greenMat;
     [SerializeField] private Material _yellowMat;
     [SerializeField] private Material _blueMat;
+    [SerializeField] private Material _garyMat;
     
     private SpriteRenderer _spriteRenderer;
     private static bool _isClick;
@@ -43,7 +44,7 @@ public class StageBlock : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _isClick = false;
         
-        _spriteRenderer.color = Color.gray;
+        _spriteRenderer.material = new Material(_garyMat);
     }
 
     public void Init(Tuple<Vector2Int, Vector2Int> LTandRB)
