@@ -161,7 +161,7 @@ public class StageGenerator : MonoBehaviour
             List<StageLine> colLine = _colLineList.Where(line => line.startPoint.y <= y 
                                                               && line.endPoint.y > y 
                                                               && line.startPoint.x >= currentRow.startPoint.x
-                                                              && currentRow.endPoint.x >= line.startPoint.x).ToList();
+                                                              && line.startPoint.x <= currentRow.endPoint.x).ToList();
             currentColLines = colLine;
             
             foreach (StageLine currentCol in currentColLines)
@@ -174,24 +174,19 @@ public class StageGenerator : MonoBehaviour
                                                            && line.startPoint.y > currentRow.startPoint.y).ToList();
                 var closetRowLine = GetMostClosetRowLine(ableRowLines);
                 
-                Tuple<Vector2Int, Vector2Int> LTAndRB =
+                Tuple<Vector2Int, Vector2Int> leftTopAndRightBottom =
                     new Tuple<Vector2Int, Vector2Int>(
                         new Vector2Int(currentCol.startPoint.x, currentRow.startPoint.y),
                         new Vector2Int(closetColLine.startPoint.x, closetRowLine.startPoint.y));
 
-                if (!_blockDictionary.ContainsKey(LTAndRB))
+                if (!_blockDictionary.ContainsKey(leftTopAndRightBottom))
                 {
                     StageBlock stageBlock = Instantiate(_baseStageBlock, transform);
-                    stageBlock.Init(LTAndRB);
+                    stageBlock.Init(leftTopAndRightBottom);
 
-                    stageBlock._currentCol = currentCol;
-                    stageBlock._currentRow = currentRow;
-                    stageBlock._closetCol = closetColLine;
-                    stageBlock._closetRow = closetRowLine;
-                    
-                    StageMoveEffect(stageBlock, new Vector3(LTAndRB.Item1.x + stageBlock.Width * 0.5f, 
-                        LTAndRB.Item1.y + stageBlock.Height * 0.5f));
-                    _blockDictionary.Add(LTAndRB, stageBlock);
+                    StageMoveEffect(stageBlock, new Vector3(leftTopAndRightBottom.Item1.x + stageBlock.Width * 0.5f, 
+                        leftTopAndRightBottom.Item1.y + stageBlock.Height * 0.5f));
+                    _blockDictionary.Add(leftTopAndRightBottom, stageBlock);
                 }
             }
         }
